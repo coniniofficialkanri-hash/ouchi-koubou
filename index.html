@@ -8,8 +8,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Noto+Serif+JP:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --ivory: #F7F4EE;
-    --warm-white: #FDFCF9;
+    --ivory: #EFE8D7;
+    --warm-white: #FBF7EF;
+    --yellow: #F2D63F;
     --moss: #4A6741;
     --moss-light: #6B8A61;
     --moss-pale: #EBF0E8;
@@ -22,7 +23,7 @@
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; scroll-padding-top: 84px; }
   body {
     font-family: 'Noto Sans JP', sans-serif;
     background: var(--warm-white);
@@ -40,7 +41,7 @@
     align-items: center;
     justify-content: space-between;
     padding: 0 40px;
-    background: rgba(253,252,249,0.94);
+    background: rgba(251,247,239,0.95);
     backdrop-filter: blur(14px);
     border-bottom: 1px solid transparent;
     transition: border-color 0.4s, box-shadow 0.4s;
@@ -57,7 +58,7 @@
     flex-shrink: 0;
   }
   .nav-logo-img {
-    height: 46px;
+    height: 56px;
     width: auto;
     display: block;
   }
@@ -153,6 +154,22 @@
     animation: fadeUp 1s cubic-bezier(0.16,1,0.3,1) 0.85s forwards;
   }
   .hero-title em { font-style: italic; color: #CFE3C2; }
+  .hero-date { display: inline-block; font-size: 0.5em; letter-spacing: 0.05em; margin-top: 4px; }
+  .hero-badge {
+    position: absolute;
+    right: 6%;
+    top: 47%;
+    transform: translateY(-50%) rotate(-1.5deg);
+    z-index: 3;
+    background: var(--yellow);
+    padding: 16px 26px;
+    text-align: center;
+    box-shadow: 0 8px 26px rgba(0,0,0,0.18);
+    opacity: 0;
+    animation: fadeScale 1s cubic-bezier(0.16,1,0.3,1) 1.3s forwards;
+  }
+  .hero-badge-sub { display: block; font-size: 13px; color: #6a6020; letter-spacing: 0.04em; margin-bottom: 5px; font-weight: 600; }
+  .hero-badge-main { display: block; font-family: 'Noto Serif JP', serif; font-size: clamp(20px, 2.6vw, 26px); font-weight: 700; color: var(--text-dark); letter-spacing: 0.04em; }
   .hero-sub {
     font-family: 'Noto Serif JP', serif;
     font-size: 16px;
@@ -775,28 +792,23 @@
 
   /* ========== FOOTER ========== */
   footer {
-    background: var(--text-dark);
-    color: rgba(255,255,255,0.4);
-    padding: 52px 48px 36px;
+    background: #ffffff;
+    color: var(--text-mid);
+    padding: 58px 48px 40px;
     text-align: center;
-  }
-  .footer-logo-chip {
-    display: inline-block;
-    background: #fff;
-    padding: 14px 22px;
-    border-radius: 10px;
-    margin-bottom: 18px;
+    border-top: 1px solid var(--line);
   }
   .footer-logo-img {
-    height: 66px;
+    height: 96px;
     width: auto;
     display: block;
+    margin: 0 auto 18px;
   }
   .footer-sub {
-    font-size: 10px;
-    letter-spacing: 0.22em;
-    color: rgba(255,255,255,0.3);
-    margin-bottom: 36px;
+    font-size: 11.5px;
+    letter-spacing: 0.18em;
+    color: var(--text-light);
+    margin-bottom: 32px;
   }
   .footer-nav {
     display: flex;
@@ -808,12 +820,12 @@
   .footer-nav a {
     font-size: 13px;
     letter-spacing: 0.12em;
-    color: rgba(255,255,255,0.35);
+    color: var(--text-mid);
     text-decoration: none;
     transition: color 0.2s;
   }
-  .footer-nav a:hover { color: rgba(255,255,255,0.85); }
-  .footer-copy { font-size: 12px; letter-spacing: 0.08em; }
+  .footer-nav a:hover { color: var(--moss); }
+  .footer-copy { font-size: 12px; letter-spacing: 0.08em; color: var(--text-light); }
 
   /* ========== SCROLL REVEAL ========== */
   .reveal {
@@ -892,7 +904,7 @@
   .nav-toggle.open span:nth-child(2) { opacity: 0; }
   .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
   .mobile-menu { display: none; position: fixed; top: 66px; left: 0; right: 0; z-index: 999;
-    background: rgba(253,252,249,0.98); backdrop-filter: blur(14px); border-bottom: 1px solid var(--line);
+    background: rgba(251,247,239,0.98); backdrop-filter: blur(14px); border-bottom: 1px solid var(--line);
     flex-direction: column; padding: 6px 0; box-shadow: 0 12px 30px rgba(0,0,0,.08); }
   .mobile-menu.open { display: flex; }
   .mobile-menu a { padding: 15px 24px; font-size: 15px; font-weight: 500; color: var(--text-dark);
@@ -912,7 +924,13 @@
     .open-badge { right: 20px; top: 72px; width: 68px; height: 68px; }
     .open-badge-date { font-size: 14px; }
 
-    .nav-toggle { display: flex; }
+    .nav-toggle { display: none; }
+    .mobile-menu { display: flex; flex-direction: row; top: 66px; padding: 0; gap: 0; overflow-x: auto; scrollbar-width: none; box-shadow: 0 4px 14px rgba(0,0,0,0.05); }
+    .mobile-menu a { padding: 11px 15px; font-size: 13px; border-bottom: none; white-space: nowrap; }
+    html { scroll-padding-top: 116px; }
+    .hero-badge { right: 14px; top: 42%; padding: 12px 16px; }
+    .hero-badge-main { font-size: 18px; }
+    .hero-badge-sub { font-size: 11px; }
     .products  { padding: 48px 12px; }
     .prod-grid { grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
     .prod-name { font-size: 12px; line-height: 1.45; }
@@ -923,7 +941,11 @@
     .cat-note { align-self: flex-start; }
     .cases { padding: 56px 14px; }
     .blog  { padding: 56px 16px; }
-    .blog-grid { grid-template-columns: 1fr; gap: 18px; }
+    .blog-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+    .blog-thumb { aspect-ratio: 4 / 5; }
+    .blog-body { padding: 12px 12px 16px; }
+    .blog-title { font-size: 13.5px; line-height: 1.5; }
+    .blog-excerpt { font-size: 12px; line-height: 1.8; }
     .cat-tab   { padding: 10px 16px; font-size: 14px; }
     .cat-tabs  { justify-content: flex-start; }
 
@@ -933,8 +955,13 @@
 
     .fullbleed  { height: 240px; }
 
-    .events     { padding: 64px 20px; }
-    .events-grid { grid-template-columns: 1fr; }
+    .events     { padding: 56px 16px; }
+    .events-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+    .event-img  { aspect-ratio: 4 / 5; }
+    .event-body { padding: 13px 13px 17px; }
+    .event-title{ font-size: 14px; line-height: 1.5; }
+    .event-desc { font-size: 12px; line-height: 1.8; }
+    .event-placeholder { padding: 22px 12px; }
 
     .notice     { padding: 64px 20px; }
     .notice-item { grid-template-columns: 1fr; gap: 6px; }
@@ -957,7 +984,7 @@
 
 <!-- ===== NAV ===== -->
 <nav class="nav" id="mainNav">
-  <a href="#" class="nav-logo">
+  <a href="index.html" class="nav-logo">
     <img src="logo.png" alt="HYGGE PLANTS & ZAKKA" class="nav-logo-img">
   </a>
   <ul class="nav-links">
@@ -983,20 +1010,19 @@
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="hero-overlay"></div>
-  <div class="open-badge">
-    <span class="open-badge-new">新着</span>
-    <span class="open-badge-date">7/9</span>
-    <span class="open-badge-open">OPEN</span>
-  </div>
   <div class="hero-content">
-    <div class="hero-tag">植物と暮らしの雑貨店 ・ 熊本</div>
-    <h1 class="hero-title">The <em>quiet</em><br>joy of<br>living.</h1>
+    <div class="hero-tag">熊本市南区 ・ おうち工房内</div>
+    <h1 class="hero-title">New Open<br><span class="hero-date">7/9 <em>thu</em></span></h1>
     <p class="hero-sub">植物と、暮らしを彩るセレクト雑貨。<br>日常のなかに、小さな豊かさを。</p>
     <div class="hero-meta">
       <span>OPEN <b>10:00 – 17:00</b></span>
       <span>CLOSED <b>水曜</b></span>
       <span>TEL <b>096-285-9061</b></span>
     </div>
+  </div>
+  <div class="hero-badge">
+    <span class="hero-badge-sub">お気に入りが見つかる</span>
+    <span class="hero-badge-main">植物と雑貨のお店</span>
   </div>
 </section>
 
@@ -1019,7 +1045,7 @@
       </div>
     </div>
     <div class="event-card reveal reveal-d1">
-      <div class="event-img"><img src="IMG_5748_2.JPG" alt="コラボイベント" loading="lazy" style="object-position:center 60%"></div>
+      <div class="event-img"><img src="event-collab.png" alt="Spice Curry momo × Hygge Brew And コラボ出店" loading="lazy" style="object-position:top center"></div>
       <div class="event-body">
         <div class="event-date">2026.07.09 (Thu)</div>
         <h3 class="event-title">Spice Curry momo<br>× Hygge Brew And<br>コラボ出店</h3>
@@ -1391,7 +1417,7 @@
 
 <!-- ===== FOOTER ===== -->
 <footer>
-  <span class="footer-logo-chip"><img src="logo.png" alt="HYGGE PLANTS & ZAKKA" class="footer-logo-img"></span>
+  <img src="logo.png" alt="HYGGE PLANTS & ZAKKA" class="footer-logo-img">
   <div class="footer-sub">熊本・植物と暮らしのセレクトショップ</div>
   <nav class="footer-nav">
     <a href="#products">商品</a>
