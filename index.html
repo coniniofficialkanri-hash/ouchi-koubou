@@ -1488,7 +1488,7 @@
    GASウェブアプリのURLを下のGAS_URLに貼ると、スプレッドシートの内容が反映されます。
    未設定の間は、HTMLに書かれている初期カードがそのまま表示されます。 */
 (function(){
-  var GAS_URL = '★ここにGASウェブアプリのURLを貼る（末尾は /exec）★';
+  var GAS_URL = 'https://script.google.com/macros/s/AKfycbyWDymEg-5fa75qh0o-NYM8e3T667Qcugv1j27nITZHYDI3gPc1XJkZ0Bm9QdgeDOta/exec';
   if (GAS_URL.indexOf('script.google.com') < 0) return; // 未設定なら静的カードのまま
 
   fetch(GAS_URL)
