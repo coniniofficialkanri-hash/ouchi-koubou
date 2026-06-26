@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>HYGGE PLANTS & ZAKKA | 熊本・植物と暮らしのセレクトショップ</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Noto+Serif+JP:wght@300;400;600&family=Noto+Sans+JP:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Noto+Serif+JP:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
   :root {
     --ivory: #F7F4EE;
@@ -35,7 +35,7 @@
     position: fixed;
     top: 0; left: 0; right: 0;
     z-index: 1000;
-    height: 60px;
+    height: 66px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -56,6 +56,11 @@
     text-decoration: none;
     flex-shrink: 0;
   }
+  .nav-logo-img {
+    height: 46px;
+    width: auto;
+    display: block;
+  }
   .nav-logo-text {
     font-family: 'Cormorant Garamond', serif;
     font-size: 15px;
@@ -72,14 +77,14 @@
   .nav-links a {
     display: block;
     padding: 0 18px;
-    font-size: 11px;
-    letter-spacing: 0.14em;
+    font-size: 12.5px;
+    letter-spacing: 0.08em;
     color: var(--text-mid);
     text-decoration: none;
-    font-weight: 300;
+    font-weight: 500;
     white-space: nowrap;
     transition: color 0.2s;
-    line-height: 60px;
+    line-height: 66px;
   }
   .nav-links a:hover { color: var(--moss); }
   .nav-links a.active { color: var(--moss); border-bottom: 1.5px solid var(--moss); }
@@ -99,6 +104,7 @@
     background-image: url('16800D16-FC59-4E79-B590-6C435E828B26.PNG');
     background-size: cover;
     background-position: center top;
+    filter: saturate(1.32) contrast(1.07) brightness(1.03);
     animation: kenBurns 14s ease-in-out infinite alternate;
   }
   @keyframes kenBurns {
@@ -108,12 +114,10 @@
   .hero-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to bottom,
-      rgba(253,252,249,0) 0%,
-      rgba(253,252,249,0) 38%,
-      rgba(253,252,249,0.65) 66%,
-      rgba(253,252,249,0.97) 86%,
-      rgba(253,252,249,1) 100%
+    background: linear-gradient(to top,
+      rgba(18,26,16,0.58) 0%,
+      rgba(18,26,16,0.20) 30%,
+      rgba(18,26,16,0) 60%
     );
   }
   .hero-content {
@@ -126,31 +130,36 @@
     display: inline-block;
     font-size: 10px;
     letter-spacing: 0.24em;
-    color: var(--moss);
-    border: 1px solid var(--moss-light);
-    padding: 5px 14px;
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.55);
+    background: rgba(0,0,0,0.20);
+    padding: 6px 15px;
     margin-bottom: 18px;
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 500;
     opacity: 0;
     animation: fadeUp 0.8s cubic-bezier(0.16,1,0.3,1) 0.6s forwards;
   }
   .hero-title {
     font-family: 'Cormorant Garamond', serif;
     font-size: clamp(44px, 9vw, 82px);
-    font-weight: 300;
+    font-weight: 400;
     line-height: 1.08;
     letter-spacing: 0.03em;
     margin-bottom: 16px;
+    color: #ffffff;
+    text-shadow: 0 2px 20px rgba(0,0,0,0.5);
     opacity: 0;
     animation: fadeUp 1s cubic-bezier(0.16,1,0.3,1) 0.85s forwards;
   }
-  .hero-title em { font-style: italic; color: var(--moss); }
+  .hero-title em { font-style: italic; color: #CFE3C2; }
   .hero-sub {
     font-family: 'Noto Serif JP', serif;
-    font-size: 13px;
-    font-weight: 300;
+    font-size: 16px;
+    font-weight: 500;
     line-height: 2.1;
-    color: var(--text-mid);
+    color: rgba(255,255,255,0.96);
+    text-shadow: 0 1px 12px rgba(0,0,0,0.55);
     margin-bottom: 28px;
     opacity: 0;
     animation: fadeUp 1s cubic-bezier(0.16,1,0.3,1) 1.05s forwards;
@@ -158,14 +167,16 @@
   .hero-meta {
     display: flex;
     gap: 24px;
-    font-size: 11px;
+    font-size: 13px;
     letter-spacing: 0.08em;
-    color: var(--text-mid);
+    color: rgba(255,255,255,0.92);
+    text-shadow: 0 1px 10px rgba(0,0,0,0.55);
     flex-wrap: wrap;
     opacity: 0;
     animation: fadeUp 1s cubic-bezier(0.16,1,0.3,1) 1.25s forwards;
   }
-  .hero-meta span { color: var(--moss); }
+  .hero-meta span { color: var(--gold-pale); }
+  .hero-meta b { color: #fff; font-weight: 600; }
   .open-badge {
     position: absolute;
     top: 88px; right: 48px;
@@ -192,42 +203,42 @@
 
   /* ========== SECTION BASE ========== */
   .section-label {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 10px;
-    letter-spacing: 0.28em;
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.22em;
     color: var(--moss);
-    text-transform: uppercase;
-    margin-bottom: 10px;
+    font-weight: 500;
+    margin-bottom: 12px;
   }
   .section-title-en {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(34px, 6vw, 60px);
-    font-weight: 300;
-    line-height: 1.05;
+    font-family: 'Noto Serif JP', serif;
+    font-size: clamp(26px, 4.4vw, 40px);
+    font-weight: 600;
+    line-height: 1.3;
     letter-spacing: 0.04em;
     color: var(--text-dark);
   }
   .section-body {
-    font-size: 13px;
-    line-height: 2.2;
+    font-size: 16px;
+    line-height: 2.05;
     color: var(--text-mid);
-    font-weight: 300;
+    font-weight: 400;
   }
 
   /* ========== PRODUCTS ========== */
   .products {
-    padding: 96px 48px;
+    padding: 96px max(40px, calc((100% - 1200px) / 2));
     background: var(--warm-white);
   }
   .products-head {
     margin-bottom: 48px;
   }
   .products-head-sub {
-    font-size: 13px;
-    color: var(--text-light);
-    font-weight: 300;
-    margin-top: 10px;
-    line-height: 1.9;
+    font-size: 15px;
+    color: var(--text-mid);
+    font-weight: 400;
+    margin-top: 12px;
+    line-height: 1.95;
   }
 
   /* Category Tabs */
@@ -238,20 +249,22 @@
     margin-bottom: 40px;
     overflow-x: auto;
     scrollbar-width: none;
+    justify-content: center;
   }
   .cat-tabs::-webkit-scrollbar { display: none; }
   .cat-tab {
     flex-shrink: 0;
-    padding: 12px 28px;
-    font-size: 11px;
-    letter-spacing: 0.16em;
+    padding: 14px 34px;
+    font-size: 15px;
+    letter-spacing: 0.08em;
     color: var(--text-light);
     cursor: pointer;
     border-bottom: 2px solid transparent;
     margin-bottom: -1px;
     transition: color 0.2s, border-color 0.2s;
     white-space: nowrap;
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 500;
     background: none;
     border-top: none;
     border-left: none;
@@ -278,24 +291,24 @@
     flex: 1;
   }
   .cat-intro-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 28px;
-    font-weight: 300;
+    font-family: 'Noto Serif JP', serif;
+    font-size: 26px;
+    font-weight: 600;
     color: var(--text-dark);
     margin-bottom: 8px;
     letter-spacing: 0.04em;
   }
   .cat-intro-desc {
-    font-size: 12px;
+    font-size: 15px;
     line-height: 2;
     color: var(--text-mid);
-    font-weight: 300;
+    font-weight: 400;
   }
   .cat-note {
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    font-size: 10px;
+    font-size: 12px;
     letter-spacing: 0.1em;
     color: var(--text-light);
     padding: 6px 14px;
@@ -330,23 +343,25 @@
   }
   .prod-item:hover .prod-img img { transform: scale(1.06); }
   .prod-cat-badge {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 9px;
-    letter-spacing: 0.18em;
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.1em;
     color: var(--moss);
-    margin-bottom: 4px;
+    font-weight: 500;
+    margin-bottom: 5px;
   }
   .prod-name {
     font-family: 'Noto Serif JP', serif;
-    font-size: 13px;
-    font-weight: 400;
+    font-size: 16px;
+    font-weight: 600;
     color: var(--text-dark);
-    line-height: 1.6;
+    line-height: 1.55;
     margin-bottom: 4px;
+    word-break: keep-all;
   }
   .prod-name-en {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 11px;
+    font-size: 12.5px;
     color: var(--text-light);
     letter-spacing: 0.06em;
   }
@@ -392,7 +407,7 @@
     font-family: 'Cormorant Garamond', serif;
     font-size: clamp(26px, 4.5vw, 52px);
     font-style: italic;
-    font-weight: 300;
+    font-weight: 400;
     color: white;
     letter-spacing: 0.08em;
     text-align: center;
@@ -402,7 +417,7 @@
   /* ========== ATMOSPHERE ========== */
   .atmosphere {
     background: var(--ivory);
-    padding: 96px 48px;
+    padding: 96px max(40px, calc((100% - 1200px) / 2));
   }
   .atm-text {
     text-align: center;
@@ -432,7 +447,7 @@
 
   /* ========== STORE GALLERY ========== */
   .store {
-    padding: 96px 48px;
+    padding: 96px max(40px, calc((100% - 1200px) / 2));
     background: var(--ivory);
   }
   .store-head {
@@ -445,7 +460,7 @@
     font-size: 14px;
     line-height: 2;
     color: var(--text-mid);
-    font-weight: 300;
+    font-weight: 400;
   }
   .store-grid {
     display: grid;
@@ -477,7 +492,7 @@
     font-size: 12px;
     letter-spacing: 0.06em;
     color: #fff;
-    font-weight: 300;
+    font-weight: 400;
     background: linear-gradient(to top, rgba(0,0,0,0.5), rgba(0,0,0,0));
   }
   @media (max-width: 760px) {
@@ -496,7 +511,7 @@
 
   /* ========== EVENTS ========== */
   .events {
-    padding: 96px 48px;
+    padding: 96px max(40px, calc((100% - 1200px) / 2));
     background: var(--warm-white);
   }
   .events-head { margin-bottom: 48px; }
@@ -530,7 +545,7 @@
   .event-body { padding: 22px 24px 28px; }
   .event-date {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 12px;
+    font-size: 13px;
     letter-spacing: 0.16em;
     color: var(--gold);
     margin-bottom: 7px;
@@ -538,17 +553,17 @@
   }
   .event-title {
     font-family: 'Noto Serif JP', serif;
-    font-size: 15px;
+    font-size: 17px;
     font-weight: 400;
     line-height: 1.65;
     color: var(--text-dark);
     margin-bottom: 10px;
   }
   .event-desc {
-    font-size: 12px;
+    font-size: 14px;
     line-height: 2;
     color: var(--text-mid);
-    font-weight: 300;
+    font-weight: 400;
   }
   .event-tag {
     display: inline-block;
@@ -583,7 +598,7 @@
     color: var(--text-light);
     line-height: 2;
     font-family: 'Noto Serif JP', serif;
-    font-weight: 300;
+    font-weight: 400;
   }
   .event-ig-link {
     margin-top: 18px;
@@ -599,7 +614,7 @@
 
   /* ========== NOTICE ========== */
   .notice {
-    padding: 80px 48px;
+    padding: 80px max(40px, calc((100% - 1200px) / 2));
     background: var(--moss-pale);
   }
   .notice-inner {
@@ -616,16 +631,16 @@
   }
   .notice-date {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 12px;
+    font-size: 13.5px;
     letter-spacing: 0.12em;
     color: var(--moss);
     font-weight: 600;
   }
   .notice-text {
-    font-size: 13px;
+    font-size: 15px;
     line-height: 1.9;
     color: var(--text-dark);
-    font-weight: 300;
+    font-weight: 400;
   }
   .notice-badge {
     display: inline-block;
@@ -641,7 +656,7 @@
 
   /* ========== EC BANNER ========== */
   .ec-banner {
-    margin: 72px 48px;
+    margin: 72px max(40px, calc((100% - 1200px) / 2));
     background: var(--text-dark);
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -669,16 +684,16 @@
     margin-bottom: 14px;
   }
   .ec-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 30px;
-    font-weight: 300;
+    font-family: 'Noto Serif JP', serif;
+    font-size: 28px;
+    font-weight: 600;
     color: white;
-    line-height: 1.3;
+    line-height: 1.4;
     margin-bottom: 10px;
     letter-spacing: 0.04em;
   }
   .ec-desc {
-    font-size: 12px;
+    font-size: 14.5px;
     color: rgba(255,255,255,0.55);
     line-height: 2;
     margin-bottom: 24px;
@@ -704,7 +719,7 @@
 
   /* ========== SHOP INFO ========== */
   .shopinfo {
-    padding: 96px 48px;
+    padding: 96px max(40px, calc((100% - 1200px) / 2));
     background: var(--warm-white);
   }
   .shopinfo-inner {
@@ -721,7 +736,7 @@
     gap: 16px;
     padding: 14px 0;
     border-bottom: 1px solid var(--line);
-    font-size: 13px;
+    font-size: 15px;
     line-height: 1.9;
     align-items: baseline;
   }
@@ -733,7 +748,7 @@
     font-weight: 600;
     padding-top: 2px;
   }
-  .info-val { color: var(--text-dark); font-weight: 300; }
+  .info-val { color: var(--text-dark); font-weight: 400; }
   .info-val a { color: inherit; text-decoration: none; }
   .map-wrap { overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.07); }
   .map-wrap iframe { width: 100%; height: 300px; border: none; display: block; }
@@ -747,7 +762,7 @@
     display: flex;
     align-items: center;
     gap: 7px;
-    font-size: 11px;
+    font-size: 13px;
     letter-spacing: 0.1em;
     color: var(--text-mid);
     text-decoration: none;
@@ -765,13 +780,17 @@
     padding: 52px 48px 36px;
     text-align: center;
   }
-  .footer-logo {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 20px;
-    font-weight: 300;
-    letter-spacing: 0.2em;
-    color: white;
-    margin-bottom: 6px;
+  .footer-logo-chip {
+    display: inline-block;
+    background: #fff;
+    padding: 14px 22px;
+    border-radius: 10px;
+    margin-bottom: 18px;
+  }
+  .footer-logo-img {
+    height: 66px;
+    width: auto;
+    display: block;
   }
   .footer-sub {
     font-size: 10px;
@@ -787,14 +806,14 @@
     margin-bottom: 36px;
   }
   .footer-nav a {
-    font-size: 11px;
+    font-size: 13px;
     letter-spacing: 0.12em;
     color: rgba(255,255,255,0.35);
     text-decoration: none;
     transition: color 0.2s;
   }
   .footer-nav a:hover { color: rgba(255,255,255,0.85); }
-  .footer-copy { font-size: 10px; letter-spacing: 0.08em; }
+  .footer-copy { font-size: 12px; letter-spacing: 0.08em; }
 
   /* ========== SCROLL REVEAL ========== */
   .reveal {
@@ -807,6 +826,39 @@
   .reveal-d2 { transition-delay: 0.2s; }
   .reveal-d3 { transition-delay: 0.3s; }
   .reveal-d4 { transition-delay: 0.4s; }
+
+
+  /* ========== CUSTOMER CAROUSEL ========== */
+  .cust-carousel { margin: 4px 0 40px; overflow: hidden; }
+  .cust-head {
+    text-align: center;
+    font-size: 14.5px;
+    color: var(--text-mid);
+    font-weight: 500;
+    margin-bottom: 22px;
+  }
+  .cust-track {
+    display: flex;
+    width: max-content;
+    animation: custScroll 40s linear infinite;
+  }
+  .cust-carousel:hover .cust-track { animation-play-state: paused; }
+  .cust-slide { width: 260px; margin-right: 18px; flex-shrink: 0; }
+  .cust-slide img {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    border-radius: 6px;
+    display: block;
+  }
+  .cust-slide figcaption {
+    margin-top: 11px;
+    font-size: 13px;
+    line-height: 1.75;
+    color: var(--text-mid);
+  }
+  @keyframes custScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  @media (prefers-reduced-motion: reduce) { .cust-track { animation: none; } }
 
   /* ========== RESPONSIVE ========== */
   @media (max-width: 900px) {
@@ -821,9 +873,10 @@
     .open-badge { right: 20px; top: 72px; width: 68px; height: 68px; }
     .open-badge-date { font-size: 14px; }
 
-    .products  { padding: 64px 20px; }
-    .prod-grid { grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 12px; }
-    .cat-tab   { padding: 10px 18px; }
+    .products  { padding: 56px 16px; }
+    .prod-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+    .cat-tab   { padding: 10px 16px; font-size: 14px; }
+    .cat-tabs  { justify-content: flex-start; }
 
     .atmosphere { grid-template-columns: 1fr; }
     .atm-text   { padding: 48px 24px; }
@@ -844,6 +897,9 @@
     .shopinfo   { padding: 64px 20px; }
     .shopinfo-inner { grid-template-columns: 1fr; gap: 36px; }
 
+    .cust-slide { width: 200px; margin-right: 14px; }
+    .cust-head  { font-size: 13px; }
+    .cat-intro-desc br, .products-head-sub br, .section-body br, .hero-sub br, .ec-desc br { display: none; }
     footer      { padding: 44px 20px 28px; }
   }
 </style>
@@ -853,12 +909,7 @@
 <!-- ===== NAV ===== -->
 <nav class="nav" id="mainNav">
   <a href="#" class="nav-logo">
-    <svg width="28" height="28" viewBox="0 0 40 40" fill="none">
-      <rect x="6" y="4" width="26" height="24" rx="2" fill="#4A6741" opacity="0.85"/>
-      <rect x="6" y="4" width="12" height="10" rx="2" fill="#6B8A61"/>
-      <ellipse cx="19" cy="26" rx="6" ry="6" fill="#D4A629"/>
-    </svg>
-    <span class="nav-logo-text">HYGGE</span>
+    <img src="logo.png" alt="HYGGE PLANTS & ZAKKA" class="nav-logo-img">
   </a>
   <ul class="nav-links">
     <li><a href="#products">商品紹介</a></li>
@@ -874,12 +925,12 @@
   <div class="hero-bg"></div>
   <div class="hero-overlay"></div>
   <div class="open-badge">
-    <span class="open-badge-new">NEW</span>
+    <span class="open-badge-new">新着</span>
     <span class="open-badge-date">7/9</span>
     <span class="open-badge-open">OPEN</span>
   </div>
   <div class="hero-content">
-    <div class="hero-tag">PLANTS &amp; ZAKKA — KUMAMOTO</div>
+    <div class="hero-tag">植物と暮らしの雑貨店 ・ 熊本</div>
     <h1 class="hero-title">The <em>quiet</em><br>joy of<br>living.</h1>
     <p class="hero-sub">植物と、暮らしを彩るセレクト雑貨。<br>日常のなかに、小さな豊かさを。</p>
     <div class="hero-meta">
@@ -890,18 +941,55 @@
   </div>
 </section>
 
+<!-- ===== NOTICE ===== -->
+<section id="notice" class="notice">
+  <div class="reveal" style="text-align:center;">
+    <p class="section-label" style="text-align:center;">新着</p>
+    <h2 class="section-title-en" style="text-align:center;">お知らせ</h2>
+  </div>
+  <div class="notice-inner">
+    <div class="notice-item reveal">
+      <div class="notice-date">2026.07.09</div>
+      <div class="notice-text"><span class="notice-badge">新着</span>HYGGE PLANTS & ZAKKA、グランドオープン！観葉植物・照明・セレクト雑貨・DIY用品が揃います。</div>
+    </div>
+    <div class="notice-item reveal reveal-d1">
+      <div class="notice-date">2026.07.09</div>
+      <div class="notice-text"><span class="notice-badge">イベント</span>オープン当日、Spice Curry momo × Hygge Brew And のコラボ出店を開催します。</div>
+    </div>
+    <div class="notice-item reveal reveal-d2">
+      <div class="notice-date">—</div>
+      <div class="notice-text">Instagramにて入荷情報・イベント情報を随時発信中。ぜひフォローをお願いします。</div>
+    </div>
+  </div>
+</section>
+
 <!-- ===== PRODUCTS ===== -->
 <section id="products" class="products">
   <div class="products-head reveal">
-    <p class="section-label">Products</p>
-    <h2 class="section-title-en">Our Collection</h2>
+    <p class="section-label">商品</p>
+    <h2 class="section-title-en">取り扱い商品</h2>
     <p class="products-head-sub">HYGGEが取り扱う商品のラインナップです。<br>在庫状況は日によって変わります。気になる商品はお気軽にお問い合わせください。</p>
+  </div>
+
+  <!-- CUSTOMER CAROUSEL -->
+  <div class="cust-carousel reveal">
+    <p class="cust-head">お客様のお部屋に飾っていただいた設置事例をご紹介します</p>
+    <div class="cust-track">
+      <figure class="cust-slide"><img src="case-1.png" alt="設置事例" loading="lazy"><figcaption>玄関の壁に板付けビカクシダを。グリーンが空間のアクセントになりました。</figcaption></figure>
+      <figure class="cust-slide"><img src="case-2.png" alt="設置事例" loading="lazy"><figcaption>リビングの棚にちょこんと。育てる楽しみが毎日の暮らしに加わりました。</figcaption></figure>
+      <figure class="cust-slide"><img src="case-3.png" alt="設置事例" loading="lazy"><figcaption>窓辺に置いて日光浴。やわらかな光と植物の相性が抜群です。</figcaption></figure>
+      <figure class="cust-slide"><img src="case-4.png" alt="設置事例" loading="lazy"><figcaption>デスクのそばにグリーンを。仕事の合間にほっと癒されています。</figcaption></figure>
+      <figure class="cust-slide" aria-hidden="true"><img src="case-1.png" alt="" loading="lazy"><figcaption>玄関の壁に板付けビカクシダを。グリーンが空間のアクセントになりました。</figcaption></figure>
+      <figure class="cust-slide" aria-hidden="true"><img src="case-2.png" alt="" loading="lazy"><figcaption>リビングの棚にちょこんと。育てる楽しみが毎日の暮らしに加わりました。</figcaption></figure>
+      <figure class="cust-slide" aria-hidden="true"><img src="case-3.png" alt="" loading="lazy"><figcaption>窓辺に置いて日光浴。やわらかな光と植物の相性が抜群です。</figcaption></figure>
+      <figure class="cust-slide" aria-hidden="true"><img src="case-4.png" alt="" loading="lazy"><figcaption>デスクのそばにグリーンを。仕事の合間にほっと癒されています。</figcaption></figure>
+    </div>
   </div>
 
   <!-- TABS -->
   <div class="cat-tabs reveal">
-    <button class="cat-tab active" data-tab="plants">🌿 Plants（植物）</button>
-    <button class="cat-tab" data-tab="zakka">🏺 Zakka（雑貨）</button>
+    <button class="cat-tab active" data-tab="plants">🌿 植物</button>
+    <button class="cat-tab" data-tab="zakka">🏺 雑貨</button>
     <button class="cat-tab" data-tab="light">💡 照明</button>
     <button class="cat-tab" data-tab="diy">🔨 DIY用品</button>
   </div>
@@ -910,7 +998,7 @@
   <div class="cat-panel active" id="panel-plants">
     <div class="cat-intro">
       <div class="cat-intro-text">
-        <h3 class="cat-intro-title">Plants — 植物</h3>
+        <h3 class="cat-intro-title">植物</h3>
         <p class="cat-intro-desc">ビカクシダ・アンスリウム・苔玉など、個性豊かな植物たちが揃います。<br>バイヤーが厳選した希少品種から育てやすいスタンダード品種まで幅広く。</p>
       </div>
       <div class="cat-note">
@@ -920,28 +1008,28 @@
     <div class="prod-grid">
       <div class="prod-item">
         <div class="prod-img"><img src="prod-wallmount.png" alt="ビカクシダ 板付け" loading="lazy"></div>
-        <div class="prod-cat-badge">PLATYCERIUM</div>
+        <div class="prod-cat-badge">ビカクシダ</div>
         <div class="prod-name">ビカクシダ<br>ウォールマウント</div>
         <div class="prod-name-en">Staghorn Fern</div>
         <span class="prod-status in-stock">取扱中</span>
       </div>
       <div class="prod-item">
         <div class="prod-img"><img src="prod-staghorn.png" alt="ビカクシダ 各種" loading="lazy"></div>
-        <div class="prod-cat-badge">PLATYCERIUM</div>
+        <div class="prod-cat-badge">ビカクシダ</div>
         <div class="prod-name">ビカクシダ<br>各種</div>
         <div class="prod-name-en">Staghorn Fern varieties</div>
         <span class="prod-status in-stock">取扱中</span>
       </div>
       <div class="prod-item">
         <div class="prod-img"><img src="prod-alocasia.png" alt="アンスリウム・ミニプランツ" loading="lazy"></div>
-        <div class="prod-cat-badge">ANTHURIUM</div>
+        <div class="prod-cat-badge">アンスリウム</div>
         <div class="prod-name">アンスリウム<br>ミニポット</div>
         <div class="prod-name-en">Anthurium crystallinum</div>
         <span class="prod-status in-stock">取扱中</span>
       </div>
       <div class="prod-item">
         <div class="prod-img"><img src="prod-kokedama.png" alt="苔玉 ハンギング" loading="lazy"></div>
-        <div class="prod-cat-badge">KOKEDAMA</div>
+        <div class="prod-cat-badge">苔玉</div>
         <div class="prod-name">苔玉<br>ハンギング</div>
         <div class="prod-name-en">Hanging Moss Ball</div>
         <span class="prod-status in-stock">取扱中</span>
@@ -950,7 +1038,7 @@
         <div class="prod-img" style="background:var(--moss-pale); display:flex; align-items:center; justify-content:center;">
           <span style="font-size:28px; opacity:0.3;">🌱</span>
         </div>
-        <div class="prod-cat-badge">FICUS</div>
+        <div class="prod-cat-badge">フィカス</div>
         <div class="prod-name">フィカス<br>各種</div>
         <div class="prod-name-en">Ficus</div>
         <span class="prod-status sold-out">入荷待ち</span>
@@ -959,7 +1047,7 @@
         <div class="prod-img" style="background:var(--moss-pale); display:flex; align-items:center; justify-content:center;">
           <span style="font-size:28px; opacity:0.3;">🌿</span>
         </div>
-        <div class="prod-cat-badge">MONSTERA</div>
+        <div class="prod-cat-badge">モンステラ</div>
         <div class="prod-name">モンステラ<br>各種</div>
         <div class="prod-name-en">Monstera</div>
         <span class="prod-status sold-out">入荷待ち</span>
@@ -971,7 +1059,7 @@
   <div class="cat-panel" id="panel-zakka">
     <div class="cat-intro">
       <div class="cat-intro-text">
-        <h3 class="cat-intro-title">Zakka — 雑貨</h3>
+        <h3 class="cat-intro-title">雑貨</h3>
         <p class="cat-intro-desc">暮らしをすこし豊かにする、セレクト雑貨が揃います。<br>陶器・器・インテリア小物など、日常に溶け込む質の良いものを選び抜きました。</p>
       </div>
       <div class="cat-note">⚠ 在庫は日により変動します</div>
@@ -981,7 +1069,7 @@
         <div class="prod-img" style="background:var(--gold-pale); display:flex; align-items:center; justify-content:center;">
           <span style="font-size:28px; opacity:0.4;">🏺</span>
         </div>
-        <div class="prod-cat-badge">POTTERY</div>
+        <div class="prod-cat-badge">陶器</div>
         <div class="prod-name">陶器・器<br>セレクト</div>
         <div class="prod-name-en">Ceramic Goods</div>
         <span class="prod-status in-stock">取扱中</span>
@@ -990,7 +1078,7 @@
         <div class="prod-img" style="background:var(--gold-pale); display:flex; align-items:center; justify-content:center;">
           <span style="font-size:28px; opacity:0.4;">🕯️</span>
         </div>
-        <div class="prod-cat-badge">CANDLE</div>
+        <div class="prod-cat-badge">キャンドル</div>
         <div class="prod-name">キャンドル<br>アロマ雑貨</div>
         <div class="prod-name-en">Candle & Aroma</div>
         <span class="prod-status in-stock">取扱中</span>
@@ -999,7 +1087,7 @@
         <div class="prod-img" style="background:var(--gold-pale); display:flex; align-items:center; justify-content:center;">
           <span style="font-size:28px; opacity:0.4;">🪴</span>
         </div>
-        <div class="prod-cat-badge">PLANTER</div>
+        <div class="prod-cat-badge">プランター</div>
         <div class="prod-name">プランター<br>鉢・カバー</div>
         <div class="prod-name-en">Planters & Pots</div>
         <span class="prod-status in-stock">取扱中</span>
@@ -1008,7 +1096,7 @@
         <div class="prod-img" style="background:var(--gold-pale); display:flex; align-items:center; justify-content:center;">
           <span style="font-size:28px; opacity:0.4;">🧺</span>
         </div>
-        <div class="prod-cat-badge">BASKET</div>
+        <div class="prod-cat-badge">バスケット</div>
         <div class="prod-name">かご・ストレージ<br>バスケット</div>
         <div class="prod-name-en">Basket & Storage</div>
         <span class="prod-status in-stock">取扱中</span>
@@ -1030,7 +1118,7 @@
         <div class="prod-img" style="background:#F5EED8; display:flex; align-items:center; justify-content:center;">
           <span style="font-size:28px; opacity:0.4;">💡</span>
         </div>
-        <div class="prod-cat-badge">PENDANT</div>
+        <div class="prod-cat-badge">ペンダント</div>
         <div class="prod-name">ペンダントライト<br>各種</div>
         <div class="prod-name-en">Pendant Light</div>
         <span class="prod-status in-stock">取扱中</span>
@@ -1039,7 +1127,7 @@
         <div class="prod-img" style="background:#F5EED8; display:flex; align-items:center; justify-content:center;">
           <span style="font-size:28px; opacity:0.4;">🕯</span>
         </div>
-        <div class="prod-cat-badge">TABLE</div>
+        <div class="prod-cat-badge">テーブル</div>
         <div class="prod-name">テーブルランプ</div>
         <div class="prod-name-en">Table Lamp</div>
         <span class="prod-status in-stock">取扱中</span>
@@ -1048,7 +1136,7 @@
         <div class="prod-img" style="background:#F5EED8; display:flex; align-items:center; justify-content:center;">
           <span style="font-size:28px; opacity:0.4;">✨</span>
         </div>
-        <div class="prod-cat-badge">BULB</div>
+        <div class="prod-cat-badge">電球</div>
         <div class="prod-name">フィラメント電球<br>エジソン球</div>
         <div class="prod-name-en">Filament Bulb</div>
         <span class="prod-status in-stock">取扱中</span>
@@ -1070,7 +1158,7 @@
         <div class="prod-img" style="background:#EEE8E0; display:flex; align-items:center; justify-content:center;">
           <span style="font-size:28px; opacity:0.4;">🪣</span>
         </div>
-        <div class="prod-cat-badge">PAINT</div>
+        <div class="prod-cat-badge">塗料</div>
         <div class="prod-name">ペンキ・塗料<br>各種</div>
         <div class="prod-name-en">Paint & Coating</div>
         <span class="prod-status in-stock">取扱中</span>
@@ -1079,7 +1167,7 @@
         <div class="prod-img" style="background:#EEE8E0; display:flex; align-items:center; justify-content:center;">
           <span style="font-size:28px; opacity:0.4;">🔩</span>
         </div>
-        <div class="prod-cat-badge">HARDWARE</div>
+        <div class="prod-cat-badge">金具</div>
         <div class="prod-name">金具・ブラケット<br>フック類</div>
         <div class="prod-name-en">Hardware & Bracket</div>
         <span class="prod-status in-stock">取扱中</span>
@@ -1088,7 +1176,7 @@
         <div class="prod-img" style="background:#EEE8E0; display:flex; align-items:center; justify-content:center;">
           <span style="font-size:28px; opacity:0.4;">🌱</span>
         </div>
-        <div class="prod-cat-badge">GARDEN</div>
+        <div class="prod-cat-badge">ガーデン</div>
         <div class="prod-name">ガーデニング<br>資材・土</div>
         <div class="prod-name-en">Garden Material</div>
         <span class="prod-status in-stock">取扱中</span>
@@ -1097,7 +1185,7 @@
         <div class="prod-img" style="background:#EEE8E0; display:flex; align-items:center; justify-content:center;">
           <span style="font-size:28px; opacity:0.4;">🪵</span>
         </div>
-        <div class="prod-cat-badge">WOOD</div>
+        <div class="prod-cat-badge">ウッド</div>
         <div class="prod-name">ウッド素材<br>端材・スリット材</div>
         <div class="prod-name-en">Wood Material</div>
         <span class="prod-status sold-out">入荷待ち</span>
@@ -1117,8 +1205,8 @@
 <!-- ===== ATMOSPHERE ===== -->
 <section id="atmosphere" class="atmosphere">
   <div class="atm-text reveal">
-    <p class="section-label">Atmosphere</p>
-    <h2 class="section-title-en" style="font-size:clamp(32px,5vw,52px);">Inside<br><em>Hygge</em></h2>
+    <p class="section-label">店内</p>
+    <h2 class="section-title-en">店内のご案内</h2>
     <div class="atm-divider"></div>
     <p class="section-body">ヒュッゲとはデンマーク語で「居心地の良さ」を意味する言葉。<br>木の温もり、植物の緑、ひとつひとつ選び抜かれた雑貨たち。訪れるたびに、すこし豊かな気持ちになれる場所をつくりたい。</p>
   </div>
@@ -1141,13 +1229,13 @@
 <!-- ===== EVENTS ===== -->
 <section id="events" class="events">
   <div class="events-head reveal">
-    <p class="section-label">Events</p>
-    <h2 class="section-title-en">Event &amp; News</h2>
-    <p style="margin-top:10px; font-size:13px; color:var(--text-mid); font-weight:300;">HYGGEで開催されるイベント・出店情報をお届けします。</p>
+    <p class="section-label">イベント</p>
+    <h2 class="section-title-en">イベント・お知らせ</h2>
+    <p style="margin-top:10px; font-size:13px; color:var(--text-mid); font-weight: 400;">HYGGEで開催されるイベント・出店情報をお届けします。</p>
   </div>
   <div class="events-grid">
     <div class="event-card reveal">
-      <div class="event-img"><img src="ChatGPT_Image_2026年6月25日_23_24_02.png" alt="グランドオープン" loading="lazy"></div>
+      <div class="event-img"><img src="16800D16-FC59-4E79-B590-6C435E828B26.PNG" alt="グランドオープン" loading="lazy"></div>
       <div class="event-body">
         <div class="event-date">2026.07.09 (Thu)</div>
         <h3 class="event-title">HYGGE PLANTS & ZAKKA<br>グランドオープン</h3>
@@ -1156,7 +1244,7 @@
       </div>
     </div>
     <div class="event-card reveal reveal-d1">
-      <div class="event-img"><img src="ChatGPT_Image_2026年6月25日_23_24_02.png" alt="コラボイベント" loading="lazy" style="object-position:center 60%"></div>
+      <div class="event-img"><img src="IMG_5748_2.JPG" alt="コラボイベント" loading="lazy" style="object-position:center 60%"></div>
       <div class="event-body">
         <div class="event-date">2026.07.09 (Thu)</div>
         <h3 class="event-title">Spice Curry momo<br>× Hygge Brew And<br>コラボ出店</h3>
@@ -1172,36 +1260,15 @@
   </div>
 </section>
 
-<!-- ===== NOTICE ===== -->
-<section id="notice" class="notice">
-  <div class="reveal" style="text-align:center;">
-    <p class="section-label" style="text-align:center;">Notice</p>
-    <h2 class="section-title-en" style="text-align:center;">お知らせ</h2>
-  </div>
-  <div class="notice-inner">
-    <div class="notice-item reveal">
-      <div class="notice-date">2026.07.09</div>
-      <div class="notice-text"><span class="notice-badge">NEW</span>HYGGE PLANTS & ZAKKA、グランドオープン！観葉植物・照明・セレクト雑貨・DIY用品が揃います。</div>
-    </div>
-    <div class="notice-item reveal reveal-d1">
-      <div class="notice-date">2026.07.09</div>
-      <div class="notice-text"><span class="notice-badge">EVENT</span>オープン当日、Spice Curry momo × Hygge Brew And のコラボ出店を開催します。</div>
-    </div>
-    <div class="notice-item reveal reveal-d2">
-      <div class="notice-date">—</div>
-      <div class="notice-text">Instagramにて入荷情報・イベント情報を随時発信中。ぜひフォローをお願いします。</div>
-    </div>
-  </div>
-</section>
 
 <!-- ===== EC BANNER ===== -->
 <div id="ec" class="ec-banner reveal">
   <div class="ec-banner-img"><img src="IMG_5748_2.JPG" alt="Online Store" loading="lazy"></div>
   <div class="ec-body">
     <div class="ec-label">ONLINE STORE</div>
-    <h3 class="ec-title">Online<br>Shop</h3>
+    <h3 class="ec-title">オンライン<br>ショップ</h3>
     <p class="ec-desc">HYGGEのセレクト商品をオンラインでも。<br>全国どこからでもお買い物いただけます。</p>
-    <span class="ec-btn">準備中 — Coming Soon</span>
+    <span class="ec-btn">準備中</span>
     <p class="ec-coming">オープン準備中です。今しばらくお待ちください。</p>
   </div>
 </div>
@@ -1209,8 +1276,8 @@
 <!-- ===== SHOP INFO ===== -->
 <section id="shopinfo" class="shopinfo">
   <div class="reveal" style="text-align:center;">
-    <p class="section-label" style="text-align:center;">Access</p>
-    <h2 class="section-title-en" style="text-align:center;">Shop Info</h2>
+    <p class="section-label" style="text-align:center;">アクセス</p>
+    <h2 class="section-title-en" style="text-align:center;">店舗情報</h2>
   </div>
   <div class="shopinfo-inner">
     <div>
@@ -1241,8 +1308,8 @@
 
 <!-- ===== FOOTER ===== -->
 <footer>
-  <div class="footer-logo">HYGGE</div>
-  <div class="footer-sub">PLANTS &amp; ZAKKA — KUMAMOTO</div>
+  <span class="footer-logo-chip"><img src="logo.png" alt="HYGGE PLANTS & ZAKKA" class="footer-logo-img"></span>
+  <div class="footer-sub">熊本・植物と暮らしのセレクトショップ</div>
   <nav class="footer-nav">
     <a href="#products">商品紹介</a>
     <a href="#atmosphere">店内雰囲気</a>
@@ -1250,7 +1317,7 @@
     <a href="#notice">お知らせ</a>
     <a href="#shopinfo">店舗情報</a>
   </nav>
-  <p class="footer-copy">© 2026 HYGGE PLANTS &amp; ZAKKA. All rights reserved.</p>
+  <p class="footer-copy">© 2026 HYGGE PLANTS &amp; ZAKKA</p>
 </footer>
 
 <script>
