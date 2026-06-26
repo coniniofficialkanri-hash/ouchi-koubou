@@ -254,8 +254,8 @@
   .cat-tabs::-webkit-scrollbar { display: none; }
   .cat-tab {
     flex-shrink: 0;
-    padding: 14px 34px;
-    font-size: 15px;
+    padding: 16px 40px;
+    font-size: 16.5px;
     letter-spacing: 0.08em;
     color: var(--text-light);
     cursor: pointer;
@@ -860,6 +860,45 @@
   @keyframes custScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
   @media (prefers-reduced-motion: reduce) { .cust-track { animation: none; } }
 
+
+  /* ========== CASES ========== */
+  .cases { padding: 88px max(40px, calc((100% - 1200px) / 2)); background: var(--warm-white); }
+  .cases-head { text-align: center; max-width: 640px; margin: 0 auto 36px; }
+  .cases-sub { margin-top: 16px; font-size: 14.5px; line-height: 1.95; color: var(--text-mid); font-weight: 400; }
+
+  /* ========== BLOG ========== */
+  .blog { padding: 96px max(40px, calc((100% - 1200px) / 2)); background: var(--ivory); }
+  .blog-head { text-align: center; max-width: 640px; margin: 0 auto 44px; }
+  .blog-sub { margin-top: 14px; font-size: 14.5px; color: var(--text-mid); }
+  .blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; }
+  .blog-card { display: block; text-decoration: none; color: inherit; background: var(--warm-white);
+    border: 1px solid var(--line); border-radius: 8px; overflow: hidden;
+    transition: transform .4s cubic-bezier(.16,1,.3,1), box-shadow .4s; }
+  .blog-card:hover { transform: translateY(-5px); box-shadow: 0 14px 36px rgba(74,103,65,.12); }
+  .blog-thumb { aspect-ratio: 16/10; overflow: hidden; }
+  .blog-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .8s; }
+  .blog-card:hover .blog-thumb img { transform: scale(1.05); }
+  .blog-body { padding: 20px 22px 24px; }
+  .blog-date { font-family: 'Cormorant Garamond', serif; font-size: 13px; letter-spacing: .1em; color: var(--gold); font-weight: 600; }
+  .blog-title { font-family: 'Noto Serif JP', serif; font-size: 17px; font-weight: 600; line-height: 1.55; color: var(--text-dark); margin: 8px 0 10px; }
+  .blog-excerpt { font-size: 13.5px; line-height: 1.9; color: var(--text-mid); }
+  .blog-more { display: inline-block; margin-top: 14px; font-size: 13px; color: var(--moss); font-weight: 500; }
+
+  /* ========== NAV TOGGLE / MOBILE MENU ========== */
+  .nav-toggle { display: none; flex-direction: column; justify-content: center; gap: 5px;
+    width: 42px; height: 42px; background: none; border: none; cursor: pointer; padding: 9px; }
+  .nav-toggle span { display: block; height: 2px; width: 100%; background: var(--text-dark); border-radius: 2px; transition: .3s; }
+  .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-toggle.open span:nth-child(2) { opacity: 0; }
+  .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  .mobile-menu { display: none; position: fixed; top: 66px; left: 0; right: 0; z-index: 999;
+    background: rgba(253,252,249,0.98); backdrop-filter: blur(14px); border-bottom: 1px solid var(--line);
+    flex-direction: column; padding: 6px 0; box-shadow: 0 12px 30px rgba(0,0,0,.08); }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a { padding: 15px 24px; font-size: 15px; font-weight: 500; color: var(--text-dark);
+    text-decoration: none; border-bottom: 1px solid rgba(224,218,208,.5); }
+  .mobile-menu a:active { background: var(--moss-pale); }
+
   /* ========== RESPONSIVE ========== */
   @media (max-width: 900px) {
     .nav { padding: 0 20px; }
@@ -873,8 +912,18 @@
     .open-badge { right: 20px; top: 72px; width: 68px; height: 68px; }
     .open-badge-date { font-size: 14px; }
 
-    .products  { padding: 56px 16px; }
-    .prod-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+    .nav-toggle { display: flex; }
+    .products  { padding: 48px 12px; }
+    .prod-grid { grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
+    .prod-name { font-size: 12px; line-height: 1.45; }
+    .prod-cat-badge { font-size: 10px; margin-bottom: 3px; }
+    .prod-name-en { display: none; }
+    .prod-status { font-size: 8.5px; padding: 2px 6px; }
+    .cat-intro { flex-direction: column; gap: 14px; }
+    .cat-note { align-self: flex-start; }
+    .cases { padding: 56px 14px; }
+    .blog  { padding: 56px 16px; }
+    .blog-grid { grid-template-columns: 1fr; gap: 18px; }
     .cat-tab   { padding: 10px 16px; font-size: 14px; }
     .cat-tabs  { justify-content: flex-start; }
 
@@ -912,13 +961,23 @@
     <img src="logo.png" alt="HYGGE PLANTS & ZAKKA" class="nav-logo-img">
   </a>
   <ul class="nav-links">
-    <li><a href="#products">商品紹介</a></li>
-    <li><a href="#atmosphere">店内雰囲気</a></li>
+    <li><a href="#products">商品</a></li>
+    <li><a href="#cases">設置事例</a></li>
     <li><a href="#events">イベント</a></li>
-    <li><a href="#notice">お知らせ</a></li>
+    <li><a href="#blog">ブログ</a></li>
+    <li><a href="#atmosphere">店内</a></li>
     <li><a href="#shopinfo">店舗情報</a></li>
   </ul>
+  <button class="nav-toggle" id="navToggle" aria-label="メニュー"><span></span><span></span><span></span></button>
 </nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#products">商品</a>
+  <a href="#cases">設置事例</a>
+  <a href="#events">イベント</a>
+  <a href="#blog">ブログ</a>
+  <a href="#atmosphere">店内</a>
+  <a href="#shopinfo">店舗情報</a>
+</div>
 
 <!-- ===== HERO ===== -->
 <section class="hero">
@@ -941,24 +1000,37 @@
   </div>
 </section>
 
-<!-- ===== NOTICE ===== -->
-<section id="notice" class="notice">
-  <div class="reveal" style="text-align:center;">
-    <p class="section-label" style="text-align:center;">新着</p>
-    <h2 class="section-title-en" style="text-align:center;">お知らせ</h2>
+
+<!-- ===== EVENTS ===== -->
+<section id="events" class="events">
+  <div class="events-head reveal">
+    <p class="section-label">イベント</p>
+    <h2 class="section-title-en">イベント・お知らせ</h2>
+    <p style="margin-top:10px; font-size:13px; color:var(--text-mid); font-weight: 400;">HYGGEで開催されるイベント・出店情報をお届けします。</p>
   </div>
-  <div class="notice-inner">
-    <div class="notice-item reveal">
-      <div class="notice-date">2026.07.09</div>
-      <div class="notice-text"><span class="notice-badge">新着</span>HYGGE PLANTS & ZAKKA、グランドオープン！観葉植物・照明・セレクト雑貨・DIY用品が揃います。</div>
+  <div class="events-grid">
+    <div class="event-card reveal">
+      <div class="event-img"><img src="16800D16-FC59-4E79-B590-6C435E828B26.PNG" alt="グランドオープン" loading="lazy"></div>
+      <div class="event-body">
+        <div class="event-date">2026.07.09 (Thu)</div>
+        <h3 class="event-title">HYGGE PLANTS & ZAKKA<br>グランドオープン</h3>
+        <p class="event-desc">植物と暮らし雑貨の新しいお店が、おうち工房内にオープン。当日はオープニング限定の特別商品も登場予定です。</p>
+        <span class="event-tag">NEW OPEN</span>
+      </div>
     </div>
-    <div class="notice-item reveal reveal-d1">
-      <div class="notice-date">2026.07.09</div>
-      <div class="notice-text"><span class="notice-badge">イベント</span>オープン当日、Spice Curry momo × Hygge Brew And のコラボ出店を開催します。</div>
+    <div class="event-card reveal reveal-d1">
+      <div class="event-img"><img src="IMG_5748_2.JPG" alt="コラボイベント" loading="lazy" style="object-position:center 60%"></div>
+      <div class="event-body">
+        <div class="event-date">2026.07.09 (Thu)</div>
+        <h3 class="event-title">Spice Curry momo<br>× Hygge Brew And<br>コラボ出店</h3>
+        <p class="event-desc">HYGGE駐車場にてスパイスカレーとコーヒーの特別出店を開催。国産素材のカレーと、香り高いドリップコーヒーをどうぞ。</p>
+        <span class="event-tag">COLLAB</span>
+      </div>
     </div>
-    <div class="notice-item reveal reveal-d2">
-      <div class="notice-date">—</div>
-      <div class="notice-text">Instagramにて入荷情報・イベント情報を随時発信中。ぜひフォローをお願いします。</div>
+    <div class="event-placeholder reveal reveal-d2">
+      <div class="event-placeholder-icon">＋</div>
+      <p>次回イベント情報<br>近日公開予定</p>
+      <a href="https://www.instagram.com/hygge_kumamoto" target="_blank" class="event-ig-link">@hygge_kumamoto</a>
     </div>
   </div>
 </section>
@@ -971,27 +1043,12 @@
     <p class="products-head-sub">HYGGEが取り扱う商品のラインナップです。<br>在庫状況は日によって変わります。気になる商品はお気軽にお問い合わせください。</p>
   </div>
 
-  <!-- CUSTOMER CAROUSEL -->
-  <div class="cust-carousel reveal">
-    <p class="cust-head">お客様のお部屋に飾っていただいた設置事例をご紹介します</p>
-    <div class="cust-track">
-      <figure class="cust-slide"><img src="case-1.png" alt="設置事例" loading="lazy"><figcaption>玄関の壁に板付けビカクシダを。グリーンが空間のアクセントになりました。</figcaption></figure>
-      <figure class="cust-slide"><img src="case-2.png" alt="設置事例" loading="lazy"><figcaption>リビングの棚にちょこんと。育てる楽しみが毎日の暮らしに加わりました。</figcaption></figure>
-      <figure class="cust-slide"><img src="case-3.png" alt="設置事例" loading="lazy"><figcaption>窓辺に置いて日光浴。やわらかな光と植物の相性が抜群です。</figcaption></figure>
-      <figure class="cust-slide"><img src="case-4.png" alt="設置事例" loading="lazy"><figcaption>デスクのそばにグリーンを。仕事の合間にほっと癒されています。</figcaption></figure>
-      <figure class="cust-slide" aria-hidden="true"><img src="case-1.png" alt="" loading="lazy"><figcaption>玄関の壁に板付けビカクシダを。グリーンが空間のアクセントになりました。</figcaption></figure>
-      <figure class="cust-slide" aria-hidden="true"><img src="case-2.png" alt="" loading="lazy"><figcaption>リビングの棚にちょこんと。育てる楽しみが毎日の暮らしに加わりました。</figcaption></figure>
-      <figure class="cust-slide" aria-hidden="true"><img src="case-3.png" alt="" loading="lazy"><figcaption>窓辺に置いて日光浴。やわらかな光と植物の相性が抜群です。</figcaption></figure>
-      <figure class="cust-slide" aria-hidden="true"><img src="case-4.png" alt="" loading="lazy"><figcaption>デスクのそばにグリーンを。仕事の合間にほっと癒されています。</figcaption></figure>
-    </div>
-  </div>
-
   <!-- TABS -->
   <div class="cat-tabs reveal">
-    <button class="cat-tab active" data-tab="plants">🌿 植物</button>
-    <button class="cat-tab" data-tab="zakka">🏺 雑貨</button>
-    <button class="cat-tab" data-tab="light">💡 照明</button>
-    <button class="cat-tab" data-tab="diy">🔨 DIY用品</button>
+    <button class="cat-tab active" data-tab="plants">植物</button>
+    <button class="cat-tab" data-tab="zakka">雑貨</button>
+    <button class="cat-tab" data-tab="light">照明</button>
+    <button class="cat-tab" data-tab="diy">DIY用品</button>
   </div>
 
   <!-- PANEL: PLANTS -->
@@ -1194,6 +1251,27 @@
   </div>
 </section>
 
+<!-- ===== CASES ===== -->
+<section id="cases" class="cases">
+  <div class="cases-head reveal">
+    <p class="section-label">設置事例</p>
+    <h2 class="section-title-en">暮らしの中のグリーン</h2>
+    <p class="cases-sub">HYGGEでお迎えいただいた植物を、お部屋に飾っていただいた様子をご紹介します。<br>お客様の暮らしに寄り添うグリーンのある風景です。</p>
+  </div>
+  <div class="cust-carousel reveal">
+    <div class="cust-track">
+      <figure class="cust-slide"><img src="case-1.png" alt="設置事例" loading="lazy"><figcaption>リビングの壁面に板付けビカクシダを。お部屋の主役になりました。</figcaption></figure>
+      <figure class="cust-slide"><img src="case-2.png" alt="設置事例" loading="lazy"><figcaption>窓辺の棚にそっと。朝の光と緑で、気持ちのいい一日が始まります。</figcaption></figure>
+      <figure class="cust-slide"><img src="case-3.png" alt="設置事例" loading="lazy"><figcaption>玄関にグリーンを迎えて。帰宅のたびにほっと癒されています。</figcaption></figure>
+      <figure class="cust-slide"><img src="case-4.png" alt="設置事例" loading="lazy"><figcaption>デスクのそばに小さな鉢を。仕事の合間のリフレッシュに。</figcaption></figure>
+      <figure class="cust-slide" aria-hidden="true"><img src="case-1.png" alt="" loading="lazy"><figcaption>リビングの壁面に板付けビカクシダを。お部屋の主役になりました。</figcaption></figure>
+      <figure class="cust-slide" aria-hidden="true"><img src="case-2.png" alt="" loading="lazy"><figcaption>窓辺の棚にそっと。朝の光と緑で、気持ちのいい一日が始まります。</figcaption></figure>
+      <figure class="cust-slide" aria-hidden="true"><img src="case-3.png" alt="" loading="lazy"><figcaption>玄関にグリーンを迎えて。帰宅のたびにほっと癒されています。</figcaption></figure>
+      <figure class="cust-slide" aria-hidden="true"><img src="case-4.png" alt="" loading="lazy"><figcaption>デスクのそばに小さな鉢を。仕事の合間のリフレッシュに。</figcaption></figure>
+    </div>
+  </div>
+</section>
+
 <!-- ===== FULLBLEED ===== -->
 <div class="fullbleed">
   <img src="IMG_5748_2.JPG" alt="おうち工房 店内" loading="lazy">
@@ -1226,40 +1304,45 @@
   </div>
 </section>
 
-<!-- ===== EVENTS ===== -->
-<section id="events" class="events">
-  <div class="events-head reveal">
-    <p class="section-label">イベント</p>
-    <h2 class="section-title-en">イベント・お知らせ</h2>
-    <p style="margin-top:10px; font-size:13px; color:var(--text-mid); font-weight: 400;">HYGGEで開催されるイベント・出店情報をお届けします。</p>
+
+
+<!-- ===== BLOG ===== -->
+<section id="blog" class="blog">
+  <div class="blog-head reveal">
+    <p class="section-label">ブログ</p>
+    <h2 class="section-title-en">読みもの</h2>
+    <p class="blog-sub">植物の育て方や、暮らしを彩るヒントをお届けします。</p>
   </div>
-  <div class="events-grid">
-    <div class="event-card reveal">
-      <div class="event-img"><img src="16800D16-FC59-4E79-B590-6C435E828B26.PNG" alt="グランドオープン" loading="lazy"></div>
-      <div class="event-body">
-        <div class="event-date">2026.07.09 (Thu)</div>
-        <h3 class="event-title">HYGGE PLANTS & ZAKKA<br>グランドオープン</h3>
-        <p class="event-desc">植物と暮らし雑貨の新しいお店が、おうち工房内にオープン。当日はオープニング限定の特別商品も登場予定です。</p>
-        <span class="event-tag">NEW OPEN</span>
+  <div class="blog-grid">
+    <a href="#" class="blog-card reveal">
+      <div class="blog-thumb"><img src="prod-wallmount.png" alt="" loading="lazy"></div>
+      <div class="blog-body">
+        <span class="blog-date">2026.07.10</span>
+        <h3 class="blog-title">ビカクシダの育て方｜水やりと置き場所の基本</h3>
+        <p class="blog-excerpt">板付けビカクシダを元気に育てるための水やり頻度や、置き場所のコツを初めての方にもわかりやすくご紹介します。</p>
+        <span class="blog-more">続きを読む →</span>
       </div>
-    </div>
-    <div class="event-card reveal reveal-d1">
-      <div class="event-img"><img src="IMG_5748_2.JPG" alt="コラボイベント" loading="lazy" style="object-position:center 60%"></div>
-      <div class="event-body">
-        <div class="event-date">2026.07.09 (Thu)</div>
-        <h3 class="event-title">Spice Curry momo<br>× Hygge Brew And<br>コラボ出店</h3>
-        <p class="event-desc">HYGGE駐車場にてスパイスカレーとコーヒーの特別出店を開催。国産素材のカレーと、香り高いドリップコーヒーをどうぞ。</p>
-        <span class="event-tag">COLLAB</span>
+    </a>
+    <a href="#" class="blog-card reveal reveal-d1">
+      <div class="blog-thumb"><img src="IMG_5743.JPG" alt="" loading="lazy"></div>
+      <div class="blog-body">
+        <span class="blog-date">2026.07.03</span>
+        <h3 class="blog-title">観葉植物のある暮らし｜お部屋に緑を取り入れるコツ</h3>
+        <p class="blog-excerpt">インテリアになじむ植物の選び方や飾り方を、実例を交えながらご紹介します。はじめの一鉢にもおすすめです。</p>
+        <span class="blog-more">続きを読む →</span>
       </div>
-    </div>
-    <div class="event-placeholder reveal reveal-d2">
-      <div class="event-placeholder-icon">＋</div>
-      <p>次回イベント情報<br>近日公開予定</p>
-      <a href="https://www.instagram.com/hygge_kumamoto" target="_blank" class="event-ig-link">@hygge_kumamoto</a>
-    </div>
+    </a>
+    <a href="#" class="blog-card reveal reveal-d2">
+      <div class="blog-thumb"><img src="16800D16-FC59-4E79-B590-6C435E828B26.PNG" alt="" loading="lazy"></div>
+      <div class="blog-body">
+        <span class="blog-date">2026.06.28</span>
+        <h3 class="blog-title">HYGGEのこだわり｜植物と雑貨のセレクトについて</h3>
+        <p class="blog-excerpt">バイヤーが全国から選び抜いた植物と雑貨たち。お店づくりに込めた想いについてお話しします。</p>
+        <span class="blog-more">続きを読む →</span>
+      </div>
+    </a>
   </div>
 </section>
-
 
 <!-- ===== EC BANNER ===== -->
 <div id="ec" class="ec-banner reveal">
@@ -1311,10 +1394,10 @@
   <span class="footer-logo-chip"><img src="logo.png" alt="HYGGE PLANTS & ZAKKA" class="footer-logo-img"></span>
   <div class="footer-sub">熊本・植物と暮らしのセレクトショップ</div>
   <nav class="footer-nav">
-    <a href="#products">商品紹介</a>
-    <a href="#atmosphere">店内雰囲気</a>
+    <a href="#products">商品</a>
+    <a href="#cases">設置事例</a>
     <a href="#events">イベント</a>
-    <a href="#notice">お知らせ</a>
+    <a href="#blog">ブログ</a>
     <a href="#shopinfo">店舗情報</a>
   </nav>
   <p class="footer-copy">© 2026 HYGGE PLANTS &amp; ZAKKA</p>
@@ -1361,6 +1444,15 @@
     });
   }, { threshold: 0.08, rootMargin: '0px 0px -36px 0px' });
   revealEls.forEach(el => observer.observe(el));
+</script>
+<script>
+(function(){
+  var t=document.getElementById('navToggle'), m=document.getElementById('mobileMenu');
+  if(t&&m){
+    t.addEventListener('click',function(){ t.classList.toggle('open'); m.classList.toggle('open'); });
+    m.querySelectorAll('a').forEach(function(a){ a.addEventListener('click',function(){ t.classList.remove('open'); m.classList.remove('open'); }); });
+  }
+})();
 </script>
 </body>
 </html>
