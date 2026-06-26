@@ -402,21 +402,18 @@
   /* ========== ATMOSPHERE ========== */
   .atmosphere {
     background: var(--ivory);
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    min-height: 500px;
+    padding: 96px 48px;
   }
   .atm-text {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 80px 60px;
+    text-align: center;
+    max-width: 620px;
+    margin: 0 auto 48px;
   }
   .atm-divider {
     width: 36px;
     height: 1px;
     background: var(--moss);
-    margin: 20px 0 20px;
+    margin: 20px auto;
   }
   .atm-images {
     display: grid;
@@ -452,7 +449,7 @@
   }
   .store-grid {
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-columns: 1.5fr 1fr;
     grid-template-rows: 1fr 1fr;
     gap: 12px;
     max-width: 1120px;
@@ -1123,36 +1120,19 @@
     <p class="section-label">Atmosphere</p>
     <h2 class="section-title-en" style="font-size:clamp(32px,5vw,52px);">Inside<br><em>Hygge</em></h2>
     <div class="atm-divider"></div>
-    <p class="section-body">ヒュッゲとはデンマーク語で「居心地の良さ」を意味する言葉。<br><br>木の温もり、植物の緑、ひとつひとつ選び抜かれた雑貨たち。訪れるたびに、すこし豊かな気持ちになれる場所をつくりたい。</p>
-  </div>
-  <div class="atm-images">
-    <div class="atm-img"><img src="IMG_5743.JPG" alt="店内 ビカクシダ壁面" loading="lazy"></div>
-    <div class="atm-img"><img src="IMG_5747.JPG" alt="店内 ベンチとグリーン" loading="lazy"></div>
-  </div>
-</section>
-
-<!-- ===== STORE GALLERY ===== -->
-<section id="store" class="store">
-  <div class="store-head reveal">
-    <p class="section-label">Store</p>
-    <h2 class="section-title-en">Our Space</h2>
-    <p class="store-lead">緑に包まれた店内には、植物・雑貨・照明がゆったりと並びます。<br>晴れた日はテラスでひと休みも。ぶらりと、暮らしのヒントを探しにきてください。</p>
+    <p class="section-body">ヒュッゲとはデンマーク語で「居心地の良さ」を意味する言葉。<br>木の温もり、植物の緑、ひとつひとつ選び抜かれた雑貨たち。訪れるたびに、すこし豊かな気持ちになれる場所をつくりたい。</p>
   </div>
   <div class="store-grid reveal">
     <figure class="store-item store-item--lg">
-      <img src="store-interior.jpg" alt="HYGGE 店内のようす" loading="lazy">
+      <img src="16800D16-FC59-4E79-B590-6C435E828B26.PNG" alt="HYGGE 店内のようす" loading="lazy">
       <figcaption>緑に囲まれた店内</figcaption>
     </figure>
     <figure class="store-item">
-      <img src="store-entrance.jpg" alt="おうち工房 エントランス" loading="lazy">
+      <img src="IMG_5747.JPG" alt="おうち工房 エントランス" loading="lazy">
       <figcaption>エントランス</figcaption>
     </figure>
     <figure class="store-item">
-      <img src="store-terrace.jpg" alt="テラス席" loading="lazy">
-      <figcaption>テラス席</figcaption>
-    </figure>
-    <figure class="store-item">
-      <img src="store-bench.jpg" alt="店内のベンチコーナー" loading="lazy">
+      <img src="IMG_5743.JPG" alt="店内のベンチコーナー" loading="lazy">
       <figcaption>くつろぎのベンチ</figcaption>
     </figure>
   </div>
