@@ -101,11 +101,11 @@
   }
   .hero-bg {
     position: absolute;
-    inset: 0;
+    inset: -14px;
     background-image: url('16800D16-FC59-4E79-B590-6C435E828B26.PNG');
     background-size: cover;
     background-position: center top;
-    filter: saturate(1.32) contrast(1.07) brightness(1.03);
+    filter: saturate(1.28) contrast(1.05) brightness(0.94) blur(3px);
     animation: kenBurns 14s ease-in-out infinite alternate;
   }
   @keyframes kenBurns {
@@ -115,11 +115,14 @@
   .hero-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to top,
-      rgba(18,26,16,0.58) 0%,
-      rgba(18,26,16,0.20) 30%,
-      rgba(18,26,16,0) 60%
-    );
+    background:
+      linear-gradient(to top,
+        rgba(14,20,12,0.72) 0%,
+        rgba(14,20,12,0.34) 34%,
+        rgba(14,20,12,0.12) 68%,
+        rgba(14,20,12,0.06) 100%
+      ),
+      rgba(0,0,0,0.10);
   }
   .hero-content {
     position: relative;
@@ -1034,7 +1037,7 @@
     <h2 class="section-title-en">イベント・お知らせ</h2>
     <p style="margin-top:10px; font-size:13px; color:var(--text-mid); font-weight: 400;">HYGGEで開催されるイベント・出店情報をお届けします。</p>
   </div>
-  <div class="events-grid">
+  <div class="events-grid" id="eventsGrid">
     <div class="event-card reveal">
       <div class="event-img"><img src="16800D16-FC59-4E79-B590-6C435E828B26.PNG" alt="グランドオープン" loading="lazy"></div>
       <div class="event-body">
@@ -1339,7 +1342,7 @@
     <h2 class="section-title-en">読みもの</h2>
     <p class="blog-sub">植物の育て方や、暮らしを彩るヒントをお届けします。</p>
   </div>
-  <div class="blog-grid">
+  <div class="blog-grid" id="blogGrid">
     <a href="#" class="blog-card reveal">
       <div class="blog-thumb"><img src="prod-wallmount.png" alt="" loading="lazy"></div>
       <div class="blog-body">
@@ -1477,6 +1480,62 @@
   if(t&&m){
     t.addEventListener('click',function(){ t.classList.toggle('open'); m.classList.toggle('open'); });
     m.querySelectorAll('a').forEach(function(a){ a.addEventListener('click',function(){ t.classList.remove('open'); m.classList.remove('open'); }); });
+  }
+})();
+</script>
+<script>
+/* ===== GAS連携：イベント・お知らせ / ブログ をスプレッドシートから読み込み =====
+   GASウェブアプリのURLを下のGAS_URLに貼ると、スプレッドシートの内容が反映されます。
+   未設定の間は、HTMLに書かれている初期カードがそのまま表示されます。 */
+(function(){
+  var GAS_URL = '★ここにGASウェブアプリのURLを貼る（末尾は /exec）★';
+  if (GAS_URL.indexOf('script.google.com') < 0) return; // 未設定なら静的カードのまま
+
+  fetch(GAS_URL)
+    .then(function(r){ return r.json(); })
+    .then(function(d){
+      if (d && d.events && d.events.length) renderEvents(d.events);
+      if (d && d.blog && d.blog.length) renderBlog(d.blog);
+    })
+    .catch(function(){ /* 失敗時は初期カードのまま */ });
+
+  function esc(s){
+    return String(s == null ? '' : s).replace(/[&<>"]/g, function(c){
+      return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];
+    });
+  }
+
+  function renderEvents(items){
+    var grid = document.getElementById('eventsGrid');
+    if (!grid) return;
+    var html = items.map(function(ev){
+      var img  = ev.image ? '<div class="event-img"><img src="'+esc(ev.image)+'" alt="'+esc(ev.title)+'" loading="lazy"></div>' : '';
+      var date = ev.date  ? '<div class="event-date">'+esc(ev.date)+'</div>' : '';
+      var tag  = ev.tag   ? '<span class="event-tag">'+esc(ev.tag)+'</span>' : '';
+      return '<div class="event-card reveal visible">'+img+
+             '<div class="event-body">'+date+
+             '<h3 class="event-title">'+esc(ev.title)+'</h3>'+
+             '<p class="event-desc">'+esc(ev.desc)+'</p>'+tag+'</div></div>';
+    }).join('');
+    html += '<div class="event-placeholder reveal visible"><div class="event-placeholder-icon">＋</div>'+
+            '<p>次回イベント情報<br>近日公開予定</p>'+
+            '<a href="https://www.instagram.com/hygge_kumamoto" target="_blank" class="event-ig-link">@hygge_kumamoto</a></div>';
+    grid.innerHTML = html;
+  }
+
+  function renderBlog(items){
+    var grid = document.getElementById('blogGrid');
+    if (!grid) return;
+    grid.innerHTML = items.map(function(b){
+      var href = b.link ? esc(b.link) : '#';
+      var img  = b.image ? '<div class="blog-thumb"><img src="'+esc(b.image)+'" alt="" loading="lazy"></div>' : '';
+      var date = b.date  ? '<span class="blog-date">'+esc(b.date)+'</span>' : '';
+      return '<a href="'+href+'" class="blog-card reveal visible">'+img+
+             '<div class="blog-body">'+date+
+             '<h3 class="blog-title">'+esc(b.title)+'</h3>'+
+             '<p class="blog-excerpt">'+esc(b.excerpt)+'</p>'+
+             '<span class="blog-more">続きを読む →</span></div></a>';
+    }).join('');
   }
 })();
 </script>
