@@ -915,6 +915,24 @@
     text-decoration: none; border-bottom: 1px solid rgba(224,218,208,.5); }
   .mobile-menu a:active { background: var(--moss-pale); }
 
+  /* ========== EVENTS CAROUSEL ========== */
+  .events-carousel { position: relative; max-width: 600px; margin: 0 auto; }
+  .ev-viewport { overflow: hidden; border-radius: 8px; }
+  .ev-track { display: flex; transition: transform .5s cubic-bezier(.16,1,.3,1); }
+  .ev-slide { flex: 0 0 100%; min-width: 100%; }
+  .ev-card { background: var(--warm-white); border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+  .ev-img { width: 100%; background: var(--ivory); }
+  .ev-img img { width: 100%; height: auto; display: block; }
+  .ev-empty { padding: 60px 20px; text-align: center; color: var(--text-light); font-size: 14px; border: 1px dashed var(--line); border-radius: 8px; }
+  .ev-arrow { position: absolute; top: 40%; transform: translateY(-50%); z-index: 5; width: 44px; height: 44px; border-radius: 50%; background: rgba(255,255,255,0.92); border: 1px solid var(--line); box-shadow: 0 3px 12px rgba(0,0,0,.14); cursor: pointer; font-size: 15px; color: var(--text-dark); display: flex; align-items: center; justify-content: center; transition: background .2s, color .2s; }
+  .ev-arrow:hover { background: #fff; color: var(--moss); }
+  .ev-prev { left: -16px; }
+  .ev-next { right: -16px; }
+  .ev-arrow.hidden { display: none; }
+  .ev-dots { display: flex; justify-content: center; gap: 7px; margin-top: 16px; }
+  .ev-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--line); cursor: pointer; transition: background .2s; }
+  .ev-dot.active { background: var(--moss); }
+
   /* ========== RESPONSIVE ========== */
   @media (max-width: 900px) {
     .nav { padding: 0 20px; }
@@ -960,12 +978,13 @@
     .fullbleed  { height: 240px; }
 
     .events     { padding: 56px 16px; }
-    .events-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
-    .event-img  { aspect-ratio: 4 / 5; }
-    .event-body { padding: 13px 13px 17px; }
-    .event-title{ font-size: 14px; line-height: 1.5; }
-    .event-desc { font-size: 12px; line-height: 1.8; }
-    .event-placeholder { padding: 22px 12px; }
+    .events-carousel { max-width: 100%; }
+    .ev-prev { left: 6px; }
+    .ev-next { right: 6px; }
+    .ev-arrow { width: 38px; height: 38px; font-size: 13px; }
+    .event-body { padding: 16px 16px 20px; }
+    .event-title{ font-size: 16px; line-height: 1.5; }
+    .event-desc { font-size: 13px; line-height: 1.9; }
 
     .notice     { padding: 64px 20px; }
     .notice-item { grid-template-columns: 1fr; gap: 6px; }
@@ -1038,12 +1057,13 @@
     <h2 class="section-title-en">イベント・お知らせ</h2>
     <p style="margin-top:10px; font-size:13px; color:var(--text-mid); font-weight: 400;">HYGGEで開催されるイベント・出店情報をお届けします。</p>
   </div>
-  <div class="events-grid" id="eventsGrid">
-    <div class="event-placeholder reveal reveal-d2">
-      <div class="event-placeholder-icon">＋</div>
-      <p>次回イベント情報<br>近日公開予定</p>
-      <a href="https://www.instagram.com/hygge_kumamoto" target="_blank" class="event-ig-link">@hygge_kumamoto</a>
-    </div>
+  <div class="events-carousel reveal" id="eventsCarousel">
+    <button class="ev-arrow ev-prev hidden" id="evPrev" type="button" aria-label="過去のイベントを見る" title="過去のイベント">◀</button>
+    <div class="ev-viewport"><div class="ev-track" id="eventsTrack">
+      <div class="ev-slide"><div class="ev-empty">イベント情報は準備中です。</div></div>
+    </div></div>
+    <button class="ev-arrow ev-next hidden" id="evNext" type="button" aria-label="今後のイベントを見る" title="今後のイベント">▶</button>
+    <div class="ev-dots" id="evDots"></div>
   </div>
 </section>
 
@@ -1462,22 +1482,59 @@
     });
   }
 
+  // ===== イベント：1枚ずつ表示（過去◀ / 未来▶ で切替）=====
+  var evItems = [], evIndex = 0;
+
+  function parseEvDate(s){
+    var p = String(s||'').replace(/[^0-9]/g,' ').trim().split(/\s+/);
+    var y = +p[0]||2000, m = (+p[1]||1)-1, d = +p[2]||1;
+    return new Date(y, m, d).getTime();
+  }
+
+  function evSlide(ev){
+    var img  = ev.image ? '<div class="ev-img"><img src="'+esc(ev.image)+'" alt="'+esc(ev.title)+'" loading="lazy"></div>' : '';
+    var date = ev.date  ? '<div class="event-date">'+esc(ev.date)+'</div>' : '';
+    var tag  = ev.tag   ? '<span class="event-tag">'+esc(ev.tag)+'</span>' : '';
+    var desc = ev.desc  ? '<p class="event-desc">'+esc(ev.desc)+'</p>' : '';
+    return '<div class="ev-slide"><div class="ev-card">'+img+
+           '<div class="event-body">'+date+
+           '<h3 class="event-title">'+esc(ev.title)+'</h3>'+desc+tag+'</div></div></div>';
+  }
+
   function renderEvents(items){
-    var grid = document.getElementById('eventsGrid');
-    if (!grid) return;
-    var html = items.map(function(ev){
-      var img  = ev.image ? '<div class="event-img"><img src="'+esc(ev.image)+'" alt="'+esc(ev.title)+'" loading="lazy"></div>' : '';
-      var date = ev.date  ? '<div class="event-date">'+esc(ev.date)+'</div>' : '';
-      var tag  = ev.tag   ? '<span class="event-tag">'+esc(ev.tag)+'</span>' : '';
-      return '<div class="event-card reveal visible">'+img+
-             '<div class="event-body">'+date+
-             '<h3 class="event-title">'+esc(ev.title)+'</h3>'+
-             '<p class="event-desc">'+esc(ev.desc)+'</p>'+tag+'</div></div>';
-    }).join('');
-    html += '<div class="event-placeholder reveal visible"><div class="event-placeholder-icon">＋</div>'+
-            '<p>次回イベント情報<br>近日公開予定</p>'+
-            '<a href="https://www.instagram.com/hygge_kumamoto" target="_blank" class="event-ig-link">@hygge_kumamoto</a></div>';
-    grid.innerHTML = html;
+    var track = document.getElementById('eventsTrack');
+    if (!track) return;
+    var prev = document.getElementById('evPrev'), next = document.getElementById('evNext'), dots = document.getElementById('evDots');
+    items = (items||[]).filter(function(e){ return e && e.title; })
+                       .sort(function(a,b){ return parseEvDate(a.date) - parseEvDate(b.date); });
+    evItems = items;
+    if (!items.length){
+      track.innerHTML = '<div class="ev-slide"><div class="ev-empty">イベント情報は準備中です。</div></div>';
+      prev.classList.add('hidden'); next.classList.add('hidden'); if(dots) dots.innerHTML=''; return;
+    }
+    track.innerHTML = items.map(evSlide).join('');
+    if (dots){
+      dots.innerHTML = items.map(function(_,i){ return '<span class="ev-dot" data-i="'+i+'"></span>'; }).join('');
+      Array.prototype.forEach.call(dots.children, function(el){ el.onclick = function(){ goEv(+el.getAttribute('data-i')); }; });
+    }
+    var today = new Date(); today.setHours(0,0,0,0);
+    var idx = -1;
+    for (var i=0;i<items.length;i++){ if (parseEvDate(items[i].date) >= today.getTime()){ idx=i; break; } }
+    if (idx<0) idx = items.length-1;
+    prev.onclick = function(){ goEv(evIndex-1); };
+    next.onclick = function(){ goEv(evIndex+1); };
+    goEv(idx);
+  }
+
+  function goEv(i){
+    var n = evItems.length; if (!n) return;
+    i = Math.max(0, Math.min(i, n-1)); evIndex = i;
+    var track = document.getElementById('eventsTrack');
+    track.style.transform = 'translateX(-'+(i*100)+'%)';
+    document.getElementById('evPrev').classList.toggle('hidden', i<=0);
+    document.getElementById('evNext').classList.toggle('hidden', i>=n-1);
+    var dots = document.getElementById('evDots');
+    if (dots) Array.prototype.forEach.call(dots.children, function(el,d){ el.className = (d===i ? 'ev-dot active' : 'ev-dot'); });
   }
 
   function renderBlog(items){
