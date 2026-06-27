@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemap.org/schemas/sitemap/0.9">
+  <url><loc>https://example.com/</loc></url>
+  <url><loc>https://example.com/blog/</loc></url>
+  <url><loc>https://example.com/blog/post-1.html</loc></url>
+  <url><loc>https://example.com/blog/post-2.html</loc></url>
+  <url><loc>https://example.com/blog/post-3.html</loc></url>
+  <url><loc>https://example.com/blog/post-4.html</loc></url>
+  <url><loc>https://example.com/blog/post-5.html</loc></url>
+</urlset>
