@@ -1004,6 +1004,11 @@
 </style>
 </head>
 <body>
+<script>
+  /* リロード時は必ずページ先頭から表示する */
+  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  window.addEventListener('load', function(){ window.scrollTo(0, 0); });
+</script>
 
 <!-- ===== NAV ===== -->
 <nav class="nav" id="mainNav">
