@@ -1005,9 +1005,32 @@
 </head>
 <body>
 <script>
-  /* リロード時は必ずページ先頭から表示する */
-  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
-  window.addEventListener('load', function(){ window.scrollTo(0, 0); });
+  /* リロード時は必ずページ先頭から表示する（複数タイミングで補正） */
+  (function(){
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+    var nav = (performance.getEntriesByType && performance.getEntriesByType('navigation')[0]) || null;
+    var isReload = nav ? nav.type === 'reload'
+                       : (performance.navigation && performance.navigation.type === 1);
+    if (!isReload && location.hash) return; // 通常アクセスで#指定がある場合はそのまま
+
+    if (isReload && location.hash) {
+      history.replaceState(null, '', location.pathname + location.search);
+    }
+    var userMoved = false;
+    ['wheel','touchstart','keydown','mousedown'].forEach(function(ev){
+      window.addEventListener(ev, function(){ userMoved = true; }, { passive: true, once: true });
+    });
+    function top(){ if (!userMoved) window.scrollTo(0, 0); }
+    top();
+    document.addEventListener('DOMContentLoaded', top);
+    window.addEventListener('load', function(){
+      top();
+      requestAnimationFrame(top);
+      setTimeout(top, 150);
+      setTimeout(top, 500);
+    });
+    window.addEventListener('pageshow', function(e){ if (e.persisted) top(); });
+  })();
 </script>
 
 <!-- ===== NAV ===== -->
@@ -1518,6 +1541,7 @@
       prev.classList.add('hidden'); next.classList.add('hidden'); if(dots) dots.innerHTML=''; return;
     }
     track.innerHTML = items.map(evSlide).join('');
+    bindEvSwipe();
     if (dots){
       dots.innerHTML = items.map(function(_,i){ return '<span class="ev-dot" data-i="'+i+'"></span>'; }).join('');
       Array.prototype.forEach.call(dots.children, function(el){ el.onclick = function(){ goEv(+el.getAttribute('data-i')); }; });
@@ -1529,6 +1553,31 @@
     prev.onclick = function(){ goEv(evIndex-1); };
     next.onclick = function(){ goEv(evIndex+1); };
     goEv(idx);
+  }
+
+  var evSwipeBound = false;
+  function bindEvSwipe(){
+    if (evSwipeBound) return;
+    var vp = document.querySelector('#eventsCarousel .ev-viewport');
+    if (!vp) return;
+    evSwipeBound = true;
+    var startX = null, startY = null, dragging = false;
+    function start(x, y){ startX = x; startY = y; dragging = true; }
+    function end(x){
+      if (!dragging || startX == null) { dragging = false; return; }
+      var dx = x - startX; dragging = false; startX = null;
+      if (Math.abs(dx) > 40) goEv(evIndex + (dx < 0 ? 1 : -1));
+    }
+    vp.addEventListener('touchstart', function(e){ start(e.touches[0].clientX, e.touches[0].clientY); }, { passive: true });
+    vp.addEventListener('touchmove', function(e){
+      if (!dragging) return;
+      var dx = Math.abs(e.touches[0].clientX - startX), dy = Math.abs(e.touches[0].clientY - startY);
+      if (dx > dy && dx > 10 && e.cancelable) e.preventDefault(); // 横スワイプ時は縦スクロール抑制
+    }, { passive: false });
+    vp.addEventListener('touchend', function(e){ end(e.changedTouches[0].clientX); });
+    vp.addEventListener('mousedown', function(e){ start(e.clientX, e.clientY); e.preventDefault(); });
+    window.addEventListener('mouseup', function(e){ if (dragging) end(e.clientX); });
+    vp.style.cursor = 'grab';
   }
 
   function goEv(i){
