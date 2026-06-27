@@ -96,16 +96,16 @@
     height: 100svh;
     min-height: 560px;
     display: flex;
-    align-items: flex-end;
+    align-items: flex-start;
     overflow: hidden;
   }
   .hero-bg {
     position: absolute;
     inset: -14px;
-    background-image: url('16800D16-FC59-4E79-B590-6C435E828B26.PNG');
+    background-image: url('hero.jpg'), url('16800D16-FC59-4E79-B590-6C435E828B26.PNG');
     background-size: cover;
     background-position: center top;
-    filter: saturate(1.28) contrast(1.05) brightness(0.94) blur(3px);
+    filter: saturate(1.22) contrast(1.04) brightness(1.0) blur(1px);
     animation: kenBurns 14s ease-in-out infinite alternate;
   }
   @keyframes kenBurns {
@@ -116,19 +116,18 @@
     position: absolute;
     inset: 0;
     background:
-      linear-gradient(to top,
-        rgba(14,20,12,0.72) 0%,
-        rgba(14,20,12,0.34) 34%,
-        rgba(14,20,12,0.12) 68%,
-        rgba(14,20,12,0.06) 100%
-      ),
-      rgba(0,0,0,0.10);
+      linear-gradient(to bottom,
+        rgba(10,16,8,0.52) 0%,
+        rgba(10,16,8,0.26) 28%,
+        rgba(10,16,8,0.05) 52%,
+        rgba(10,16,8,0) 70%
+      );
   }
   .hero-content {
     position: relative;
     z-index: 2;
-    padding: 0 48px 72px;
-    max-width: 600px;
+    padding: 104px 48px 0;
+    max-width: 640px;
   }
   .hero-tag {
     display: inline-block;
@@ -146,10 +145,10 @@
   }
   .hero-title {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(44px, 9vw, 82px);
+    font-size: clamp(50px, 10.5vw, 98px);
     font-weight: 400;
-    line-height: 1.08;
-    letter-spacing: 0.03em;
+    line-height: 1.02;
+    letter-spacing: 0.02em;
     margin-bottom: 16px;
     color: #ffffff;
     text-shadow: 0 2px 20px rgba(0,0,0,0.5);
@@ -942,7 +941,7 @@
     .nav-links { display: none; }
     .nav-logo-text { font-size: 13px; }
 
-    .hero-content { padding: 0 24px 56px; }
+    .hero-content { padding: 92px 20px 0; }
     .open-badge { right: 20px; top: 72px; width: 68px; height: 68px; }
     .open-badge-date { font-size: 14px; }
 
