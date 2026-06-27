@@ -6,7 +6,10 @@
 //  ┌─ シート名「イベント」
 //  │   A:日付  B:タイトル  C:詳細  D:画像  E:タグ  F:表示
 //  └─ シート名「ブログ」
-//      A:日付  B:タイトル  C:抜粋  D:画像  E:リンク  F:表示
+//      A:日付  B:タイトル  C:抜粋  D:画像  E:本文  F:スラッグ  G:リンク  H:表示
+//      ・本文 … 記事の中身（改行で段落。詳細ページに表示）
+//      ・スラッグ … 記事URL用の半角英数（例: bikakushida-care）。空なら post-行番号
+//      ・リンク … 外部記事に飛ばしたい時だけURLを入れる（通常は空でOK）
 //
 //  ・画像 … 画像の直リンクURL、またはGoogleドライブの共有リンクでOK
 //           （ドライブ共有リンクは自動で表示用URLに変換します）
@@ -22,7 +25,7 @@ function doGet(e) {
   var ss = SpreadsheetApp.getActiveSpreadsheet();
   var payload = {
     events: readSheet(ss, EVENTS_SHEET, ['date', 'title', 'desc',    'image', 'tag',  'show']),
-    blog:   readSheet(ss, BLOG_SHEET,   ['date', 'title', 'excerpt', 'image', 'link', 'show'])
+    blog:   readSheet(ss, BLOG_SHEET,   ['date', 'title', 'excerpt', 'image', 'body', 'slug', 'link', 'show'])
   };
   return ContentService
     .createTextOutput(JSON.stringify(payload))
