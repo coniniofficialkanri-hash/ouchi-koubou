@@ -93,10 +93,14 @@
   /* ========== HERO ========== */
   .hero {
     margin-top: 66px;
+    height: calc(100svh - 66px);
     overflow: hidden;
     background: var(--ivory);
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
-  .hero-img { width: 100%; height: auto; display: block; }
+  .hero-img { width: 100%; height: 100%; object-fit: contain; display: block; }
   .hero-bg {
     position: absolute;
     inset: -14px;
@@ -939,7 +943,7 @@
     .nav-links { display: none; }
     .nav-logo-text { font-size: 13px; }
 
-    .hero { margin-top: 108px; }
+    .hero { margin-top: 108px; height: calc(100svh - 108px); }
     .open-badge { right: 20px; top: 72px; width: 68px; height: 68px; }
     .open-badge-date { font-size: 14px; }
 
