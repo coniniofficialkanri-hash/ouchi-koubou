@@ -1677,7 +1677,7 @@
     if (!items.length){ grid.innerHTML = '<p class="blog-empty">ブログは近日公開予定です。</p>'; return; }
     grid.innerHTML = items.map(function(b, i){
       var slug = (b.slug||'').toString().trim().toLowerCase().replace(/[^a-z0-9\-]+/g,'-').replace(/^-+|-+$/g,'') || ('post-'+(i+1));
-      var href = b.link ? esc(b.link) : ('blog/'+slug+'.html');
+      var href = (b.link && /^https?:\/\//i.test(b.link)) ? esc(b.link) : ('blog/'+slug+'.html');
       var img  = b.image ? '<div class="blog-thumb"><img src="'+esc(b.image)+'" alt="" loading="lazy"></div>' : '';
       var date = b.date  ? '<span class="blog-date">'+esc(b.date)+'</span>' : '';
       return '<a href="'+href+'" class="blog-card reveal visible">'+img+

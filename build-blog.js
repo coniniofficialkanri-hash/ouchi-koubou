@@ -78,7 +78,8 @@ function pageCSS(){
 }
 
 function navBar(){
-  return `<div class="a-nav"><a href="${SITE_URL}/"><img src="${SITE_URL}/logo.png" alt="${attr(SITE_NAME)}"></a></div>`;
+  // 表示用リンクは相対パス（ドメイン未設定でも動く）。blog/配下から見たルートは ../
+  return `<div class="a-nav"><a href="../index.html"><img src="../logo.png" alt="${attr(SITE_NAME)}"></a></div>`;
 }
 
 function articleHTML(b, slug){
@@ -125,7 +126,7 @@ ${navBar()}
   <div class="a-body">
       ${toParagraphs(b.body)}
   </div>
-  <a class="a-back" href="${SITE_URL}/blog/">← ブログ一覧へ</a>
+  <a class="a-back" href="index.html">← ブログ一覧へ</a>
 </article>
 <div class="a-foot">© 2026 ${esc(SITE_NAME)}</div>
 </body>
