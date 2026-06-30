@@ -1557,14 +1557,6 @@
   var GAS_URL = 'https://script.google.com/macros/s/AKfycbyWDymEg-5fa75qh0o-NYM8e3T667Qcugv1j27nITZHYDI3gPc1XJkZ0Bm9QdgeDOta/exec';
   if (GAS_URL.indexOf('script.google.com') < 0) return; // 未設定なら静的カードのまま
 
-  fetch(GAS_URL + (GAS_URL.indexOf('?') < 0 ? '?' : '&') + '_=' + Date.now(), { cache: 'no-store' })
-    .then(function(r){ return r.json(); })
-    .then(function(d){
-      renderEvents((d && d.events) || []);
-      renderBlog((d && d.blog) || []);
-    })
-    .catch(function(){ /* 失敗時は初期カードのまま */ });
-
   function esc(s){
     return String(s == null ? '' : s).replace(/[&<>"]/g, function(c){
       return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];
@@ -1668,6 +1660,22 @@
              '<span class="blog-more">続きを読む →</span></div></a>';
     }).join('');
   }
+
+  // ===== 即時表示＋裏で最新取得（stale-while-revalidate）=====
+  var CKEY = 'hygge_feed_v1';
+  try {
+    var cached = JSON.parse(localStorage.getItem(CKEY) || 'null');
+    if (cached) { renderEvents(cached.events || []); renderBlog(cached.blog || []); }
+  } catch (e) {}
+  fetch(GAS_URL + (GAS_URL.indexOf('?') < 0 ? '?' : '&') + '_=' + Date.now(), { cache: 'no-store' })
+    .then(function(r){ return r.json(); })
+    .then(function(d){
+      if (!d) return;
+      renderEvents(d.events || []);
+      renderBlog(d.blog || []);
+      try { localStorage.setItem(CKEY, JSON.stringify(d)); } catch (e) {}
+    })
+    .catch(function(){ /* 失敗時はキャッシュ/初期表示のまま */ });
 })();
 </script>
 <script>
