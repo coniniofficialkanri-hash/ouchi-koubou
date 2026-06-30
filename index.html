@@ -62,6 +62,16 @@
     width: auto;
     display: block;
   }
+  .nav-logo { margin-right: auto; }
+  .nav-ig {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-dark);
+    margin-left: 16px;
+    transition: color 0.2s;
+  }
+  .nav-ig:hover { color: var(--moss); }
   .nav-logo-text {
     font-family: 'Cormorant Garamond', serif;
     font-size: 15px;
@@ -1131,9 +1141,15 @@
     <li><a href="#cases">設置事例</a></li>
     <li><a href="#events">イベント</a></li>
     <li><a href="#blog">ブログ</a></li>
-    <li><a href="#atmosphere">店内</a></li>
     <li><a href="#shopinfo">店舗情報</a></li>
   </ul>
+  <a class="nav-ig" href="https://www.instagram.com/hygge_kumamoto" target="_blank" rel="noopener" aria-label="Instagram">
+    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="3" y="3" width="18" height="18" rx="5"></rect>
+      <circle cx="12" cy="12" r="4"></circle>
+      <circle cx="17.4" cy="6.6" r="1" fill="currentColor" stroke="none"></circle>
+    </svg>
+  </a>
   <button class="nav-toggle" id="navToggle" aria-label="メニュー"><span></span><span></span><span></span></button>
 </nav>
 <div class="mobile-menu" id="mobileMenu">
@@ -1141,7 +1157,6 @@
   <a href="#cases">設置事例</a>
   <a href="#events">イベント</a>
   <a href="#blog">ブログ</a>
-  <a href="#atmosphere">店内</a>
   <a href="#shopinfo">店舗情報</a>
 </div>
 
@@ -1411,40 +1426,6 @@
     </div>
   </div>
 </section>
-
-<!-- ===== FULLBLEED ===== -->
-<div class="fullbleed">
-  <img src="IMG_5748_2.JPG" alt="おうち工房 店内" loading="lazy">
-  <div class="fullbleed-overlay">
-    <div class="fullbleed-text">"A place where plants<br>and stories meet."</div>
-  </div>
-</div>
-
-<!-- ===== ATMOSPHERE ===== -->
-<section id="atmosphere" class="atmosphere">
-  <div class="atm-text reveal">
-    <p class="section-label">店内</p>
-    <h2 class="section-title-en">店内のご案内</h2>
-    <div class="atm-divider"></div>
-    <p class="section-body">ヒュッゲとはデンマーク語で「居心地の良さ」を意味する言葉。<br>木の温もり、植物の緑、ひとつひとつ選び抜かれた雑貨たち。訪れるたびに、すこし豊かな気持ちになれる場所をつくりたい。</p>
-  </div>
-  <div class="store-grid reveal">
-    <figure class="store-item store-item--lg">
-      <img src="16800D16-FC59-4E79-B590-6C435E828B26.PNG" alt="HYGGE 店内のようす" loading="lazy">
-      <figcaption>緑に囲まれた店内</figcaption>
-    </figure>
-    <figure class="store-item">
-      <img src="IMG_5747.JPG" alt="おうち工房 エントランス" loading="lazy">
-      <figcaption>エントランス</figcaption>
-    </figure>
-    <figure class="store-item">
-      <img src="IMG_5743.JPG" alt="店内のベンチコーナー" loading="lazy">
-      <figcaption>くつろぎのベンチ</figcaption>
-    </figure>
-  </div>
-</section>
-
-
 
 <!-- ===== BLOG ===== -->
 <section id="blog" class="blog">
