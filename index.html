@@ -111,6 +111,64 @@
     transition: opacity 1.3s ease, filter 1.4s ease, transform 1.6s ease;
   }
   .hero-img.in { opacity: 1; filter: blur(0); transform: scale(1); }
+
+  /* ヒーロー上のキャッチコピー / スクロール誘導（ヒーロー後にフェードイン） */
+  .hero-catch, .hero-scroll { opacity: 0; transition: opacity 1.1s ease; }
+  body.hero-ready .hero-catch, body.hero-ready .hero-scroll { opacity: 1; }
+
+  .hero-catch {
+    position: absolute;
+    z-index: 4;
+    left: 6%;
+    bottom: 13%;
+    max-width: 46%;
+  }
+  .hero-catch-main {
+    display: block;
+    font-family: 'Noto Serif JP', serif;
+    font-size: clamp(21px, 2.4vw, 31px);
+    font-weight: 600;
+    line-height: 1.6;
+    color: var(--text-dark);
+    text-shadow: 0 1px 14px rgba(255,255,255,0.6);
+  }
+  .hero-catch-sub {
+    display: block;
+    margin-top: 8px;
+    font-size: clamp(12px, 1.2vw, 14px);
+    font-weight: 500;
+    color: var(--text-mid);
+    text-shadow: 0 1px 12px rgba(255,255,255,0.6);
+  }
+  .hero-scroll {
+    position: absolute;
+    z-index: 4;
+    left: 50%;
+    bottom: 22px;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    color: #fff;
+  }
+  .hero-scroll-txt {
+    font-size: 10px;
+    letter-spacing: 0.24em;
+    text-shadow: 0 1px 6px rgba(0,0,0,0.55);
+  }
+  .hero-scroll-arrow {
+    width: 16px; height: 16px;
+    border-right: 2px solid #fff;
+    border-bottom: 2px solid #fff;
+    filter: drop-shadow(0 1px 4px rgba(0,0,0,0.5));
+    animation: scrollBounce 1.6s ease-in-out infinite;
+  }
+  @keyframes scrollBounce {
+    0%, 100% { transform: rotate(45deg) translate(0, 0); opacity: 0.55; }
+    50%      { transform: rotate(45deg) translate(3px, 3px); opacity: 1; }
+  }
   .hero-bg {
     position: absolute;
     inset: -14px;
@@ -959,6 +1017,16 @@
     .mobile-menu { transform: translateY(-160px); transition: transform .4s ease; }
     body.hdr-shown .nav { transform: translateY(0); }
     body.hdr-shown .mobile-menu { transform: translateY(0); }
+    .hero-catch {
+      left: 50%; right: auto; transform: translateX(-50%);
+      bottom: 78px; max-width: 88%; width: max-content; text-align: center;
+      background: rgba(18,24,16,0.34);
+      -webkit-backdrop-filter: blur(7px); backdrop-filter: blur(7px);
+      padding: 12px 20px; border-radius: 12px;
+    }
+    .hero-catch-main { color: #fff; font-size: 18px; text-shadow: 0 1px 8px rgba(0,0,0,0.45); }
+    .hero-catch-sub { color: rgba(255,255,255,0.92); font-size: 12px; text-shadow: 0 1px 8px rgba(0,0,0,0.45); }
+    .hero-scroll { bottom: 18px; }
     .open-badge { right: 20px; top: 72px; width: 68px; height: 68px; }
     .open-badge-date { font-size: 14px; }
 
@@ -1079,6 +1147,14 @@
     <source media="(max-width: 760px)" srcset="SP_main.png">
     <img class="hero-img" src="HYGGE_PC_main_1920x1080.png" alt="HYGGE PLANTS & ZAKKA｜植物と雑貨のお店" fetchpriority="high">
   </picture>
+  <div class="hero-catch">
+    <span class="hero-catch-main">暮らしに、ちいさなヒュッゲを。</span>
+    <span class="hero-catch-sub">植物と雑貨で、日々をすこし豊かに。</span>
+  </div>
+  <a class="hero-scroll" href="#events" aria-label="下へスクロール">
+    <span class="hero-scroll-txt">SCROLL</span>
+    <span class="hero-scroll-arrow"></span>
+  </a>
 </section>
 
 
@@ -1500,7 +1576,7 @@
   var GAS_URL = 'https://script.google.com/macros/s/AKfycbyWDymEg-5fa75qh0o-NYM8e3T667Qcugv1j27nITZHYDI3gPc1XJkZ0Bm9QdgeDOta/exec';
   if (GAS_URL.indexOf('script.google.com') < 0) return; // 未設定なら静的カードのまま
 
-  fetch(GAS_URL)
+  fetch(GAS_URL + (GAS_URL.indexOf('?') < 0 ? '?' : '&') + '_=' + Date.now(), { cache: 'no-store' })
     .then(function(r){ return r.json(); })
     .then(function(d){
       renderEvents((d && d.events) || []);
@@ -1617,10 +1693,14 @@
   /* ヒーロー画像のフェードイン（ぼかし→クリア） */
   (function(){
     var img = document.querySelector('.hero-img');
+    var readyTimer;
+    function heroReadyLater(){ clearTimeout(readyTimer); readyTimer = setTimeout(function(){ document.body.classList.add('hero-ready'); }, 1200); }
     if (img){
-      var show = function(){ requestAnimationFrame(function(){ img.classList.add('in'); }); };
+      var show = function(){ requestAnimationFrame(function(){ img.classList.add('in'); }); heroReadyLater(); };
       if (img.complete && img.naturalWidth) show();
       else img.addEventListener('load', show);
+      /* 念のためのフォールバック（読み込みが遅い/失敗時でも演出を出す） */
+      window.addEventListener('load', function(){ img.classList.add('in'); heroReadyLater(); });
     }
     /* SP: メインビジュアルのロゴが隠れる位置までスクロールしたらヘッダー出現→以後追従 */
     var hero = document.querySelector('.hero');
