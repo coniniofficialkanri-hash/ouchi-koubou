@@ -92,13 +92,11 @@
 
   /* ========== HERO ========== */
   .hero {
-    position: relative;
-    height: 100svh;
-    min-height: 560px;
-    display: flex;
-    align-items: flex-start;
+    margin-top: 66px;
     overflow: hidden;
+    background: var(--ivory);
   }
+  .hero-img { width: 100%; height: auto; display: block; }
   .hero-bg {
     position: absolute;
     inset: -14px;
@@ -941,7 +939,7 @@
     .nav-links { display: none; }
     .nav-logo-text { font-size: 13px; }
 
-    .hero-content { padding: 92px 20px 0; }
+    .hero { margin-top: 108px; }
     .open-badge { right: 20px; top: 72px; width: 68px; height: 68px; }
     .open-badge-date { font-size: 14px; }
 
@@ -1058,22 +1056,10 @@
 
 <!-- ===== HERO ===== -->
 <section class="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-overlay"></div>
-  <div class="hero-content">
-    <div class="hero-tag">熊本市南区 ・ おうち工房内</div>
-    <h1 class="hero-title">New Open<br><span class="hero-date">7/9 <em>thu</em></span></h1>
-    <p class="hero-sub">植物と、暮らしを彩るセレクト雑貨。<br>日常のなかに、小さな豊かさを。</p>
-    <div class="hero-meta">
-      <span>OPEN <b>10:00 – 17:00</b></span>
-      <span>CLOSED <b>水曜</b></span>
-      <span>TEL <b>096-285-9061</b></span>
-    </div>
-  </div>
-  <div class="hero-badge">
-    <span class="hero-badge-sub">お気に入りが見つかる</span>
-    <span class="hero-badge-main">植物と雑貨のお店</span>
-  </div>
+  <picture>
+    <source media="(max-width: 760px)" srcset="SP_main.png">
+    <img class="hero-img" src="PC_main.png" alt="HYGGE PLANTS & ZAKKA｜植物と雑貨のお店" fetchpriority="high">
+  </picture>
 </section>
 
 
