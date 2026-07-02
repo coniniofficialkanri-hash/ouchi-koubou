@@ -341,39 +341,46 @@
     line-height: 1.95;
   }
   .oneoff-note {
-    margin: 26px auto 0;
-    max-width: 760px;
-    background: var(--moss-pale);
-    border: 1px solid var(--moss-light);
-    border-radius: 12px;
-    padding: 22px 26px;
+    margin: 22px auto 0;
+    max-width: 640px;
     text-align: center;
   }
   .oneoff-note h3 {
     font-family: 'Noto Serif JP', serif;
-    font-size: 17px;
+    font-size: 15px;
     font-weight: 600;
     color: var(--moss);
-    letter-spacing: 0.04em;
+    letter-spacing: 0.08em;
     margin-bottom: 10px;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
   }
-  .oneoff-note h3 span {
-    display: inline-block;
-    background: var(--gold);
-    color: #fff;
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    padding: 3px 10px;
-    border-radius: 999px;
-    margin-right: 8px;
-    vertical-align: 2px;
+  .oneoff-note h3::before,
+  .oneoff-note h3::after {
+    content: "";
+    width: 24px;
+    height: 1px;
+    background: var(--moss-light);
   }
   .oneoff-note p {
+    font-size: 13.5px;
+    line-height: 1.95;
+    color: var(--text-mid);
+    font-weight: 400;
+  }
+  .prod-closing {
+    margin: 44px auto 0;
+    max-width: 620px;
+    text-align: center;
     font-size: 14px;
     line-height: 1.95;
     color: var(--text-mid);
     font-weight: 400;
+  }
+  .prod-closing strong {
+    color: var(--moss);
+    font-weight: 600;
   }
 
   /* Category Tabs */
@@ -1226,10 +1233,10 @@
   <div class="products-head reveal">
     <p class="section-label">商品</p>
     <h2 class="section-title-en">取り扱い商品</h2>
-    <p class="products-head-sub">HYGGEが取り扱う商品のラインナップです。<br>在庫状況は日によって変わります。気になる商品はお気軽にお問い合わせください。</p>
+    <p class="products-head-sub">HYGGEが取り扱う商品のラインナップです。<br>気になる商品があれば、お気軽にお問い合わせください。</p>
     <div class="oneoff-note">
-      <h3><span>ALL 1点もの</span>商品はすべて一点もの</h3>
-      <p>掲載している画像はあくまで一例です。同じ植物・雑貨でも一つひとつ表情が異なり、まったく同じ商品があるとは限りません。店主がこだわり抜いて選んだ植物や雑貨だからこそ、並ぶ顔ぶれは日々変化します。何度ご来店いただいても新しい出会いがある——それがHYGGEの楽しみ方です。</p>
+      <h3>どれも一点もの</h3>
+      <p>掲載している写真は一例です。植物も雑貨もひとつひとつ表情が違うので、店頭でじっくり見て、お気に入りを選んでいただけたら嬉しいです。</p>
     </div>
   </div>
 
@@ -1258,63 +1265,54 @@
         <div class="prod-cat-badge">ビカクシダ</div>
         <div class="prod-name">ビカクシダ<br>板付け</div>
         <div class="prod-name-en">Staghorn Fern</div>
-        <span class="prod-status in-stock">取扱中</span>
       </div>
       <div class="prod-item">
         <div class="prod-img"><img src="prod-staghorn.png" alt="ビカクシダ 各種" loading="lazy"></div>
         <div class="prod-cat-badge">ビカクシダ</div>
         <div class="prod-name">ビカクシダ<br>各種</div>
         <div class="prod-name-en">Staghorn Fern varieties</div>
-        <span class="prod-status in-stock">取扱中</span>
       </div>
       <div class="prod-item">
         <div class="prod-img"><img src="prod-alocasia.png" alt="アンスリウム・ミニプランツ" loading="lazy"></div>
         <div class="prod-cat-badge">アンスリウム</div>
         <div class="prod-name">アンスリウム<br>ミニポット</div>
         <div class="prod-name-en">Anthurium crystallinum</div>
-        <span class="prod-status in-stock">取扱中</span>
       </div>
       <div class="prod-item">
         <div class="prod-img"><img src="prod-kokedama.png" alt="苔玉 ハンギング" loading="lazy"></div>
         <div class="prod-cat-badge">苔玉</div>
         <div class="prod-name">苔玉<br>ハンギング</div>
         <div class="prod-name-en">Hanging Moss Ball</div>
-        <span class="prod-status in-stock">取扱中</span>
       </div>
       <div class="prod-item">
         <div class="prod-img"><img src="prod-gomu.png" alt="ゴムの木 フィカス" loading="lazy"></div>
         <div class="prod-cat-badge">フィカス</div>
         <div class="prod-name">ゴムの木<br>フィカス</div>
         <div class="prod-name-en">Ficus elastica</div>
-        <span class="prod-status in-stock">取扱中</span>
       </div>
       <div class="prod-item">
         <div class="prod-img"><img src="prod-monstera.png" alt="モンステラ" loading="lazy"></div>
         <div class="prod-cat-badge">モンステラ</div>
         <div class="prod-name">モンステラ<br>各種</div>
         <div class="prod-name-en">Monstera</div>
-        <span class="prod-status in-stock">取扱中</span>
       </div>
       <div class="prod-item">
         <div class="prod-img"><img src="prod-selloum.png" alt="フィロデンドロン セローム" loading="lazy"></div>
         <div class="prod-cat-badge">セローム</div>
         <div class="prod-name">フィロデンドロン<br>セローム</div>
         <div class="prod-name-en">Philodendron Selloum</div>
-        <span class="prod-status in-stock">取扱中</span>
       </div>
       <div class="prod-item">
         <div class="prod-img"><img src="prod-tanikubu.png" alt="多肉植物 寄せ植え" loading="lazy"></div>
         <div class="prod-cat-badge">多肉植物</div>
         <div class="prod-name">多肉植物<br>寄せ植え</div>
         <div class="prod-name-en">Succulents</div>
-        <span class="prod-status in-stock">取扱中</span>
       </div>
       <div class="prod-item">
         <div class="prod-img"><img src="prod-gajumaru.png" alt="ガジュマル 曲がり仕立て" loading="lazy"></div>
         <div class="prod-cat-badge">ガジュマル</div>
         <div class="prod-name">ガジュマル<br>曲がり仕立て</div>
         <div class="prod-name-en">Ficus microcarpa</div>
-        <span class="prod-status in-stock">取扱中</span>
       </div>
     </div>
   </div>
@@ -1336,7 +1334,6 @@
         <div class="prod-cat-badge">陶器</div>
         <div class="prod-name">陶器・器<br>セレクト</div>
         <div class="prod-name-en">Ceramic Goods</div>
-        <span class="prod-status in-stock">取扱中</span>
       </div>
       <div class="prod-item">
         <div class="prod-img" style="background:var(--gold-pale); display:flex; align-items:center; justify-content:center;">
@@ -1345,14 +1342,12 @@
         <div class="prod-cat-badge">キャンドル</div>
         <div class="prod-name">キャンドル<br>アロマ雑貨</div>
         <div class="prod-name-en">Candle & Aroma</div>
-        <span class="prod-status in-stock">取扱中</span>
       </div>
       <div class="prod-item">
         <div class="prod-img"><img src="prod-pot.png" alt="アーバンプランツポット 陶器鉢" loading="lazy"></div>
         <div class="prod-cat-badge">プランター</div>
         <div class="prod-name">プランター<br>鉢・カバー</div>
         <div class="prod-name-en">Planters & Pots</div>
-        <span class="prod-status in-stock">取扱中</span>
       </div>
       <div class="prod-item">
         <div class="prod-img" style="background:var(--gold-pale); display:flex; align-items:center; justify-content:center;">
@@ -1361,7 +1356,6 @@
         <div class="prod-cat-badge">バスケット</div>
         <div class="prod-name">かご・ストレージ<br>バスケット</div>
         <div class="prod-name-en">Basket & Storage</div>
-        <span class="prod-status in-stock">取扱中</span>
       </div>
     </div>
   </div>
@@ -1383,7 +1377,6 @@
         <div class="prod-cat-badge">ペンダント</div>
         <div class="prod-name">ペンダントライト<br>各種</div>
         <div class="prod-name-en">Pendant Light</div>
-        <span class="prod-status in-stock">取扱中</span>
       </div>
       <div class="prod-item">
         <div class="prod-img" style="background:#F5EED8; display:flex; align-items:center; justify-content:center;">
@@ -1392,7 +1385,6 @@
         <div class="prod-cat-badge">テーブル</div>
         <div class="prod-name">テーブルランプ</div>
         <div class="prod-name-en">Table Lamp</div>
-        <span class="prod-status in-stock">取扱中</span>
       </div>
       <div class="prod-item">
         <div class="prod-img" style="background:#F5EED8; display:flex; align-items:center; justify-content:center;">
@@ -1401,7 +1393,6 @@
         <div class="prod-cat-badge">電球</div>
         <div class="prod-name">フィラメント電球<br>エジソン球</div>
         <div class="prod-name-en">Filament Bulb</div>
-        <span class="prod-status in-stock">取扱中</span>
       </div>
     </div>
   </div>
@@ -1423,7 +1414,6 @@
         <div class="prod-cat-badge">塗料</div>
         <div class="prod-name">ペンキ・塗料<br>各種</div>
         <div class="prod-name-en">Paint & Coating</div>
-        <span class="prod-status in-stock">取扱中</span>
       </div>
       <div class="prod-item">
         <div class="prod-img" style="background:#EEE8E0; display:flex; align-items:center; justify-content:center;">
@@ -1432,7 +1422,6 @@
         <div class="prod-cat-badge">金具</div>
         <div class="prod-name">金具・ブラケット<br>フック類</div>
         <div class="prod-name-en">Hardware & Bracket</div>
-        <span class="prod-status in-stock">取扱中</span>
       </div>
       <div class="prod-item">
         <div class="prod-img" style="background:#EEE8E0; display:flex; align-items:center; justify-content:center;">
@@ -1441,7 +1430,6 @@
         <div class="prod-cat-badge">ガーデン</div>
         <div class="prod-name">ガーデニング<br>資材・土</div>
         <div class="prod-name-en">Garden Material</div>
-        <span class="prod-status in-stock">取扱中</span>
       </div>
       <div class="prod-item">
         <div class="prod-img" style="background:#EEE8E0; display:flex; align-items:center; justify-content:center;">
@@ -1450,10 +1438,11 @@
         <div class="prod-cat-badge">ウッド</div>
         <div class="prod-name">ウッド素材<br>端材・スリット材</div>
         <div class="prod-name-en">Wood Material</div>
-        <span class="prod-status sold-out">入荷待ち</span>
       </div>
     </div>
   </div>
+
+  <p class="prod-closing reveal">ここに載せているのは、ほんの一部。店内にはまだまだたくさんの植物や雑貨が並んでいます。<br><strong>あなただけのとっておき</strong>を、ぜひ見つけにきてください。</p>
 </section>
 
 <!-- ===== STORE ATMOSPHERE ===== -->
