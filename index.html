@@ -340,6 +340,41 @@
     margin-top: 12px;
     line-height: 1.95;
   }
+  .oneoff-note {
+    margin: 26px auto 0;
+    max-width: 760px;
+    background: var(--moss-pale);
+    border: 1px solid var(--moss-light);
+    border-radius: 12px;
+    padding: 22px 26px;
+    text-align: center;
+  }
+  .oneoff-note h3 {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--moss);
+    letter-spacing: 0.04em;
+    margin-bottom: 10px;
+  }
+  .oneoff-note h3 span {
+    display: inline-block;
+    background: var(--gold);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    padding: 3px 10px;
+    border-radius: 999px;
+    margin-right: 8px;
+    vertical-align: 2px;
+  }
+  .oneoff-note p {
+    font-size: 14px;
+    line-height: 1.95;
+    color: var(--text-mid);
+    font-weight: 400;
+  }
 
   /* Category Tabs */
   .cat-tabs {
@@ -550,63 +585,57 @@
     padding: 96px max(40px, calc((100% - 1200px) / 2));
     background: var(--ivory);
   }
-  .store-head {
-    text-align: center;
-    max-width: 640px;
-    margin: 0 auto 52px;
-  }
-  .store-lead {
-    margin-top: 18px;
-    font-size: 14px;
-    line-height: 2;
-    color: var(--text-mid);
-    font-weight: 400;
-  }
+  .store-head { text-align: center; max-width: 640px; margin: 0 auto 44px; }
+  .store-sub { margin-top: 16px; font-size: 14.5px; line-height: 1.95; color: var(--text-mid); font-weight: 400; }
   .store-grid {
     display: grid;
-    grid-template-columns: 1.5fr 1fr;
-    grid-template-rows: 1fr 1fr;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     gap: 12px;
     max-width: 1120px;
     margin: 0 auto;
-    height: 540px;
   }
   .store-item {
     position: relative;
+    aspect-ratio: 1 / 1;
     overflow: hidden;
-    border-radius: 4px;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.07);
   }
-  .store-item--lg { grid-row: 1 / 3; }
   .store-item img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
-    transition: transform 1.2s cubic-bezier(0.16,1,0.3,1);
+    transition: transform .6s cubic-bezier(0.16,1,0.3,1);
   }
-  .store-item:hover img { transform: scale(1.05); }
-  .store-item figcaption {
-    position: absolute;
-    left: 0; right: 0; bottom: 0;
-    padding: 16px 16px 14px;
-    font-size: 12px;
-    letter-spacing: 0.06em;
-    color: #fff;
-    font-weight: 400;
-    background: linear-gradient(to top, rgba(0,0,0,0.5), rgba(0,0,0,0));
+  .store-item:hover img { transform: scale(1.08); }
+  .store-item::after {
+    content: "";
+    position: absolute; inset: 0;
+    background: rgba(0,0,0,0);
+    transition: background .3s ease;
   }
+  .store-item:hover::after { background: rgba(0,0,0,0.12); }
+
+  /* Lightbox modal */
+  .lightbox { position: fixed; inset: 0; z-index: 3000; display: none; align-items: center; justify-content: center; background: rgba(20,18,14,0.92); padding: 24px; }
+  .lightbox.open { display: flex; }
+  .lightbox img { max-width: 92vw; max-height: 86vh; border-radius: 6px; box-shadow: 0 14px 50px rgba(0,0,0,0.55); }
+  .lb-btn { position: absolute; color: #fff; cursor: pointer; user-select: none; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.25); border-radius: 999px; transition: background .2s; line-height: 1; }
+  .lb-btn:hover { background: rgba(255,255,255,0.22); }
+  .lb-close { top: 20px; right: 22px; width: 44px; height: 44px; font-size: 22px; }
+  .lb-prev, .lb-next { top: 50%; transform: translateY(-50%); width: 48px; height: 48px; font-size: 24px; }
+  .lb-prev { left: 20px; }
+  .lb-next { right: 20px; }
+  .lb-counter { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); color: rgba(255,255,255,0.85); font-size: 13px; letter-spacing: 0.12em; }
   @media (max-width: 760px) {
-    .store { padding: 72px 20px; }
-    .store-grid {
-      grid-template-columns: 1fr 1fr;
-      grid-template-rows: auto;
-      height: auto;
-    }
-    .store-item { aspect-ratio: 4 / 3; }
-    .store-item--lg {
-      grid-column: 1 / 3;
-      aspect-ratio: 16 / 9;
-    }
+    .store { padding: 64px 16px; }
+    .store-grid { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .store-item { border-radius: 6px; }
+    .lb-prev, .lb-next { width: 40px; height: 40px; font-size: 20px; }
+    .lb-prev { left: 8px; } .lb-next { right: 8px; }
+    .lb-close { top: 12px; right: 12px; }
   }
 
   /* ========== EVENTS ========== */
@@ -961,15 +990,6 @@
   .cases-head { text-align: center; max-width: 640px; margin: 0 auto 36px; }
   .cases-sub { margin-top: 16px; font-size: 14.5px; line-height: 1.95; color: var(--text-mid); font-weight: 400; }
 
-  /* ========== STORE ATMOSPHERE ========== */
-  .store { padding: 88px max(40px, calc((100% - 1200px) / 2)); background: var(--ivory); }
-  .store-head { text-align: center; max-width: 640px; margin: 0 auto 40px; }
-  .store-sub { margin-top: 16px; font-size: 14.5px; line-height: 1.95; color: var(--text-mid); font-weight: 400; }
-  .store-grid { columns: 3; column-gap: 14px; }
-  .store-item { break-inside: avoid; margin: 0 0 14px; border-radius: 10px; overflow: hidden; position: relative; box-shadow: 0 4px 18px rgba(0,0,0,0.07); }
-  .store-item img { width: 100%; display: block; transition: transform .7s ease; }
-  .store-item:hover img { transform: scale(1.05); }
-
   /* ========== BLOG ========== */
   .blog { padding: 96px max(40px, calc((100% - 1200px) / 2)); background: var(--ivory); }
   .blog-head { text-align: center; max-width: 640px; margin: 0 auto 44px; }
@@ -1069,9 +1089,6 @@
     .cat-intro { flex-direction: column; gap: 14px; }
     .cat-note { align-self: flex-start; }
     .cases { padding: 56px 14px; }
-    .store { padding: 56px 14px; }
-    .store-grid { columns: 2; column-gap: 10px; }
-    .store-item { margin-bottom: 10px; border-radius: 8px; }
     .blog  { padding: 56px 16px; }
     .blog-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
     .blog-thumb { aspect-ratio: 4 / 5; }
@@ -1210,6 +1227,10 @@
     <p class="section-label">商品</p>
     <h2 class="section-title-en">取り扱い商品</h2>
     <p class="products-head-sub">HYGGEが取り扱う商品のラインナップです。<br>在庫状況は日によって変わります。気になる商品はお気軽にお問い合わせください。</p>
+    <div class="oneoff-note">
+      <h3><span>ALL 1点もの</span>商品はすべて一点もの</h3>
+      <p>掲載している画像はあくまで一例です。同じ植物・雑貨でも一つひとつ表情が異なり、まったく同じ商品があるとは限りません。店主がこだわり抜いて選んだ植物や雑貨だからこそ、並ぶ顔ぶれは日々変化します。何度ご来店いただいても新しい出会いがある——それがHYGGEの楽しみ方です。</p>
+    </div>
   </div>
 
   <!-- TABS -->
@@ -1442,18 +1463,30 @@
     <h2 class="section-title-en">グリーンに囲まれた店内</h2>
     <p class="store-sub">木のぬくもりと光にあふれた店内には、選びぬいた植物と雑貨がずらり。<br>ゆっくり見て回りながら、暮らしに寄り添う一鉢を見つけてください。</p>
   </div>
-  <div class="store-grid reveal">
-    <div class="store-item"><img src="store-01.jpg" alt="店内の様子" loading="lazy"></div>
-    <div class="store-item"><img src="store-02.jpg" alt="階段状のディスプレイ" loading="lazy"></div>
-    <div class="store-item"><img src="store-03.jpg" alt="窓辺のグリーン" loading="lazy"></div>
-    <div class="store-item"><img src="store-04.jpg" alt="ペンダントライトと棚" loading="lazy"></div>
-    <div class="store-item"><img src="store-05.jpg" alt="窓際の棚に並ぶ鉢植え" loading="lazy"></div>
-    <div class="store-item"><img src="store-06.jpg" alt="棚のディスプレイ" loading="lazy"></div>
-    <div class="store-item"><img src="store-07.jpg" alt="木棚のグリーン" loading="lazy"></div>
-    <div class="store-item"><img src="store-08.jpg" alt="窓辺の多肉植物" loading="lazy"></div>
-    <div class="store-item"><img src="store-09.jpg" alt="フィカスの株立ち" loading="lazy"></div>
+  <div class="store-grid reveal" id="storeGrid">
+    <div class="store-item"><img src="shop-01.png" alt="階段状ディスプレイと店内" loading="lazy"></div>
+    <div class="store-item"><img src="shop-02.png" alt="窓辺の棚に並ぶグリーン" loading="lazy"></div>
+    <div class="store-item"><img src="shop-03.png" alt="木製シェルフのディスプレイ" loading="lazy"></div>
+    <div class="store-item"><img src="shop-04.png" alt="窓際シェルフのアップ" loading="lazy"></div>
+    <div class="store-item"><img src="shop-05.png" alt="ペンダントライトと店内" loading="lazy"></div>
+    <div class="store-item"><img src="shop-06.png" alt="階段に並ぶ鉢植え" loading="lazy"></div>
+    <div class="store-item"><img src="shop-07.png" alt="イエローの什器と吊り下げグリーン" loading="lazy"></div>
+    <div class="store-item"><img src="shop-08.png" alt="フィカスのある一角" loading="lazy"></div>
+    <div class="store-item"><img src="shop-09.png" alt="テーブルのある店内全景" loading="lazy"></div>
+    <div class="store-item"><img src="shop-10.png" alt="ベンチと観葉植物" loading="lazy"></div>
+    <div class="store-item"><img src="shop-11.png" alt="テラス席" loading="lazy"></div>
+    <div class="store-item"><img src="shop-12.png" alt="シンボルツリーとベンチ" loading="lazy"></div>
   </div>
 </section>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <div class="lb-btn lb-close" id="lbClose" aria-label="閉じる">✕</div>
+  <div class="lb-btn lb-prev" id="lbPrev" aria-label="前へ">‹</div>
+  <img id="lbImg" src="" alt="店内写真">
+  <div class="lb-btn lb-next" id="lbNext" aria-label="次へ">›</div>
+  <div class="lb-counter" id="lbCounter"></div>
+</div>
 
 <!-- ===== CASES ===== -->
 <section id="cases" class="cases">
@@ -1588,6 +1621,36 @@
     });
   }, { threshold: 0.08, rootMargin: '0px 0px -36px 0px' });
   revealEls.forEach(el => observer.observe(el));
+
+  // ===== Store gallery lightbox =====
+  (function(){
+    const grid = document.getElementById('storeGrid');
+    if (!grid) return;
+    const imgs = Array.from(grid.querySelectorAll('img'));
+    const lb = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lbImg');
+    const counter = document.getElementById('lbCounter');
+    let idx = 0;
+    function show(i){
+      idx = (i + imgs.length) % imgs.length;
+      lbImg.src = imgs[idx].src;
+      lbImg.alt = imgs[idx].alt;
+      counter.textContent = (idx + 1) + ' / ' + imgs.length;
+    }
+    function open(i){ show(i); lb.classList.add('open'); lb.setAttribute('aria-hidden','false'); document.body.style.overflow = 'hidden'; }
+    function close(){ lb.classList.remove('open'); lb.setAttribute('aria-hidden','true'); document.body.style.overflow = ''; }
+    imgs.forEach((im, i) => im.parentElement.addEventListener('click', () => open(i)));
+    document.getElementById('lbClose').addEventListener('click', close);
+    document.getElementById('lbPrev').addEventListener('click', e => { e.stopPropagation(); show(idx - 1); });
+    document.getElementById('lbNext').addEventListener('click', e => { e.stopPropagation(); show(idx + 1); });
+    lb.addEventListener('click', e => { if (e.target === lb) close(); });
+    document.addEventListener('keydown', e => {
+      if (!lb.classList.contains('open')) return;
+      if (e.key === 'Escape') close();
+      else if (e.key === 'ArrowLeft') show(idx - 1);
+      else if (e.key === 'ArrowRight') show(idx + 1);
+    });
+  })();
 </script>
 <script>
 (function(){
