@@ -961,6 +961,15 @@
   .cases-head { text-align: center; max-width: 640px; margin: 0 auto 36px; }
   .cases-sub { margin-top: 16px; font-size: 14.5px; line-height: 1.95; color: var(--text-mid); font-weight: 400; }
 
+  /* ========== STORE ATMOSPHERE ========== */
+  .store { padding: 88px max(40px, calc((100% - 1200px) / 2)); background: var(--ivory); }
+  .store-head { text-align: center; max-width: 640px; margin: 0 auto 40px; }
+  .store-sub { margin-top: 16px; font-size: 14.5px; line-height: 1.95; color: var(--text-mid); font-weight: 400; }
+  .store-grid { columns: 3; column-gap: 14px; }
+  .store-item { break-inside: avoid; margin: 0 0 14px; border-radius: 10px; overflow: hidden; position: relative; box-shadow: 0 4px 18px rgba(0,0,0,0.07); }
+  .store-item img { width: 100%; display: block; transition: transform .7s ease; }
+  .store-item:hover img { transform: scale(1.05); }
+
   /* ========== BLOG ========== */
   .blog { padding: 96px max(40px, calc((100% - 1200px) / 2)); background: var(--ivory); }
   .blog-head { text-align: center; max-width: 640px; margin: 0 auto 44px; }
@@ -1060,6 +1069,9 @@
     .cat-intro { flex-direction: column; gap: 14px; }
     .cat-note { align-self: flex-start; }
     .cases { padding: 56px 14px; }
+    .store { padding: 56px 14px; }
+    .store-grid { columns: 2; column-gap: 10px; }
+    .store-item { margin-bottom: 10px; border-radius: 8px; }
     .blog  { padding: 56px 16px; }
     .blog-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
     .blog-thumb { aspect-ratio: 4 / 5; }
@@ -1138,6 +1150,7 @@
   </a>
   <ul class="nav-links">
     <li><a href="#products">商品</a></li>
+    <li><a href="#store">店内</a></li>
     <li><a href="#cases">設置事例</a></li>
     <li><a href="#events">イベント</a></li>
     <li><a href="#blog">ブログ</a></li>
@@ -1154,6 +1167,7 @@
 </nav>
 <div class="mobile-menu" id="mobileMenu">
   <a href="#products">商品</a>
+  <a href="#store">店内</a>
   <a href="#cases">設置事例</a>
   <a href="#events">イベント</a>
   <a href="#blog">ブログ</a>
@@ -1418,6 +1432,26 @@
         <span class="prod-status sold-out">入荷待ち</span>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ===== STORE ATMOSPHERE ===== -->
+<section id="store" class="store">
+  <div class="store-head reveal">
+    <p class="section-label">店内の雰囲気</p>
+    <h2 class="section-title-en">グリーンに囲まれた店内</h2>
+    <p class="store-sub">木のぬくもりと光にあふれた店内には、選びぬいた植物と雑貨がずらり。<br>ゆっくり見て回りながら、暮らしに寄り添う一鉢を見つけてください。</p>
+  </div>
+  <div class="store-grid reveal">
+    <div class="store-item"><img src="store-01.jpg" alt="店内の様子" loading="lazy"></div>
+    <div class="store-item"><img src="store-02.jpg" alt="階段状のディスプレイ" loading="lazy"></div>
+    <div class="store-item"><img src="store-03.jpg" alt="窓辺のグリーン" loading="lazy"></div>
+    <div class="store-item"><img src="store-04.jpg" alt="ペンダントライトと棚" loading="lazy"></div>
+    <div class="store-item"><img src="store-05.jpg" alt="窓際の棚に並ぶ鉢植え" loading="lazy"></div>
+    <div class="store-item"><img src="store-06.jpg" alt="棚のディスプレイ" loading="lazy"></div>
+    <div class="store-item"><img src="store-07.jpg" alt="木棚のグリーン" loading="lazy"></div>
+    <div class="store-item"><img src="store-08.jpg" alt="窓辺の多肉植物" loading="lazy"></div>
+    <div class="store-item"><img src="store-09.jpg" alt="フィカスの株立ち" loading="lazy"></div>
   </div>
 </section>
 
