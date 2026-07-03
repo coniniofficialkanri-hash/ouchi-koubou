@@ -909,6 +909,131 @@
   }
   .sns-link:hover { background: var(--moss); color: white; border-color: var(--moss); }
 
+  /* ========== FAQ ========== */
+  .faq {
+    padding: 96px max(40px, calc((100% - 1200px) / 2));
+    background: #ffffff;
+  }
+  .faq-inner { max-width: 780px; margin: 0 auto; }
+  .faq-list { margin-top: 48px; }
+  .faq-item {
+    border-bottom: 1px solid var(--line);
+  }
+  .faq-item summary {
+    list-style: none;
+    cursor: pointer;
+    padding: 22px 44px 22px 4px;
+    position: relative;
+    font-family: 'Noto Serif JP', serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--text-dark);
+    letter-spacing: 0.02em;
+    line-height: 1.5;
+    transition: color 0.25s;
+  }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::before {
+    content: "Q";
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--moss);
+    margin-right: 14px;
+  }
+  .faq-item summary:hover { color: var(--moss); }
+  .faq-item summary::after {
+    content: "";
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    width: 9px;
+    height: 9px;
+    border-right: 1.5px solid var(--moss);
+    border-bottom: 1.5px solid var(--moss);
+    transform: translateY(-70%) rotate(45deg);
+    transition: transform 0.3s;
+  }
+  .faq-item[open] summary::after { transform: translateY(-30%) rotate(-135deg); }
+  .faq-answer {
+    padding: 0 4px 26px 34px;
+    font-size: 14px;
+    line-height: 1.9;
+    color: var(--text-mid);
+    font-weight: 400;
+  }
+  .faq-answer a { color: var(--moss); border-bottom: 1px solid var(--moss); }
+
+  .faq-contact {
+    margin-top: 64px;
+    text-align: center;
+    padding: 48px 32px;
+    background: var(--moss-pale);
+    border-radius: 6px;
+  }
+  .faq-contact h3 {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 19px;
+    font-weight: 600;
+    color: var(--text-dark);
+    letter-spacing: 0.03em;
+  }
+  .faq-contact p {
+    margin-top: 12px;
+    font-size: 13px;
+    line-height: 1.9;
+    color: var(--text-mid);
+  }
+  .faq-btns {
+    margin-top: 28px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    justify-content: center;
+    align-items: center;
+  }
+  .btn-line {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: #06C755;
+    color: #fff;
+    padding: 15px 34px;
+    border-radius: 999px;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    box-shadow: 0 6px 18px rgba(6,199,85,0.28);
+    transition: transform 0.25s, box-shadow 0.25s, background 0.25s;
+  }
+  .btn-line:hover { background: #05b34c; transform: translateY(-2px); box-shadow: 0 10px 24px rgba(6,199,85,0.34); }
+  .btn-line svg { width: 22px; height: 22px; }
+  .faq-sub-links {
+    display: flex;
+    gap: 22px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 22px;
+    flex-wrap: wrap;
+  }
+  .faq-sub-links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 13px;
+    color: var(--text-mid);
+    letter-spacing: 0.03em;
+    transition: color 0.25s;
+  }
+  .faq-sub-links a:hover { color: var(--moss); }
+  .faq-sub-links svg { width: 15px; height: 15px; }
+  @media (max-width: 760px) {
+    .faq { padding: 64px 20px; }
+    .faq-item summary { font-size: 15px; padding-right: 40px; }
+    .faq-contact { padding: 38px 22px; }
+    .btn-line { width: 100%; justify-content: center; }
+  }
+
   /* ========== FOOTER ========== */
   footer {
     background: #ffffff;
@@ -1179,6 +1304,7 @@
     <li><a href="#events">イベント</a></li>
     <li><a href="#blog">ブログ</a></li>
     <li><a href="#shopinfo">店舗情報</a></li>
+    <li><a href="#faq">Q&A</a></li>
   </ul>
   <a class="nav-ig" href="https://www.instagram.com/hygge_kumamoto" target="_blank" rel="noopener" aria-label="Instagram">
     <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
@@ -1196,6 +1322,7 @@
   <a href="#events">イベント</a>
   <a href="#blog">ブログ</a>
   <a href="#shopinfo">店舗情報</a>
+  <a href="#faq">よくあるご質問</a>
 </div>
 
 <!-- ===== HERO ===== -->
@@ -1551,6 +1678,86 @@
         allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
         title="HYGGE PLANTS & ZAKKA アクセスマップ">
       </iframe>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section id="faq" class="faq">
+  <div class="faq-inner">
+    <div class="reveal" style="text-align:center;">
+      <p class="section-label" style="text-align:center;">FAQ</p>
+      <h2 class="section-title-en" style="text-align:center;">よくあるご質問</h2>
+    </div>
+
+    <div class="faq-list reveal reveal-d1">
+      <details class="faq-item">
+        <summary>営業時間・定休日を教えてください</summary>
+        <div class="faq-answer">営業時間は 10:00〜17:00、定休日は毎週水曜日です。</div>
+      </details>
+
+      <details class="faq-item">
+        <summary>駐車場はありますか？</summary>
+        <div class="faq-answer">はい、5台ほど駐車スペースがございます（おうち工房と共用です）。</div>
+      </details>
+
+      <details class="faq-item">
+        <summary>気になる植物の在庫確認や、お取り置きはできますか？</summary>
+        <div class="faq-answer">どの植物も一点もののため在庫は入れ替わりますが、LINE または <a href="https://www.instagram.com/hygge_kumamoto" target="_blank" rel="noopener">Instagram</a> のメッセージで在庫確認・お取り置きを承っています。気になる株の様子もお写真でお送りできますので、お気軽にどうぞ。</div>
+      </details>
+
+      <details class="faq-item">
+        <summary>オンラインでも購入できますか？</summary>
+        <div class="faq-answer">オンラインショップは現在準備中です。当面は店頭でのご購入となりますが、気になる商品は LINE や <a href="https://www.instagram.com/hygge_kumamoto" target="_blank" rel="noopener">Instagram</a> からお問い合わせいただけます。</div>
+      </details>
+
+      <details class="faq-item">
+        <summary>支払い方法は何が使えますか？</summary>
+        <div class="faq-answer">当面は現金のみでのお取り扱いとなります。あらかじめご了承ください。</div>
+      </details>
+
+      <details class="faq-item">
+        <summary>プレゼント用のラッピングはできますか？</summary>
+        <div class="faq-answer">はい、ギフト対応が可能です。贈り物の際はスタッフまでお気軽にお声がけください。</div>
+      </details>
+
+      <details class="faq-item">
+        <summary>大きな植物は配送してもらえますか？</summary>
+        <div class="faq-answer">申し訳ございませんが、配送は行っておりません。店頭でのお渡しのみとなります。</div>
+      </details>
+
+      <details class="faq-item">
+        <summary>ワークショップは開催していますか？</summary>
+        <div class="faq-answer">はい、ワークショップを開催しています。開催日程や内容は LINE・当ホームページのイベント情報でお知らせしていきます。</div>
+      </details>
+
+      <details class="faq-item">
+        <summary>初心者でも育てやすい植物はありますか？</summary>
+        <div class="faq-answer">もちろんございます。お部屋の環境やライフスタイルに合わせてスタッフがおすすめの一鉢をお選びしますので、気軽にご相談ください。育て方は<a href="blog/index.html">読みもの（ブログ）</a>でもご紹介しています。</div>
+      </details>
+    </div>
+
+    <!-- お問い合わせ / LINE 導線 -->
+    <div class="faq-contact reveal reveal-d1">
+      <h3>その他のご質問・ご相談は</h3>
+      <p>在庫確認やご相談は、LINEでのお問い合わせが便利です。<br>友だち追加後、そのままメッセージを送ってください。</p>
+      <div class="faq-btns">
+        <!-- ▼▼▼ LINE友だち追加URLをここに設定してください（例: https://lin.ee/xxxxxx） ▼▼▼ -->
+        <a class="btn-line" href="#LINE_URL_HERE" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 5.64 2 10.13c0 4.02 3.55 7.39 8.35 8.03.32.07.77.21.88.49.1.25.06.64.03.9l-.14.85c-.04.25-.2.99.87.54 1.07-.45 5.76-3.39 7.86-5.81C21.35 13.5 22 11.9 22 10.13 22 5.64 17.52 2 12 2zM8.13 12.7H6.14c-.29 0-.52-.24-.52-.52V8.2c0-.29.24-.52.52-.52.29 0 .52.24.52.52v3.45h1.47c.29 0 .52.24.52.52 0 .29-.23.53-.52.53zm2.03-.52c0 .29-.24.52-.52.52-.29 0-.52-.24-.52-.52V8.2c0-.29.24-.52.52-.52.29 0 .52.24.52.52v3.98zm4.76 0c0 .22-.15.42-.36.5-.06.02-.11.03-.17.03-.16 0-.31-.08-.41-.21l-2.04-2.78v2.46c0 .29-.24.52-.52.52-.29 0-.52-.24-.52-.52V8.2c0-.22.14-.42.36-.5.05-.02.11-.03.16-.03.16 0 .31.08.41.21l2.04 2.78V8.2c0-.29.24-.52.52-.52.29 0 .53.24.53.52v3.98zm3.2-2.51c.29 0 .52.24.52.52 0 .29-.24.52-.52.52h-1.47v.95h1.47c.29 0 .52.24.52.52 0 .29-.24.53-.52.53h-1.99c-.29 0-.52-.24-.52-.52V8.2c0-.29.24-.52.52-.52h1.99c.29 0 .52.24.52.52 0 .29-.24.53-.52.53h-1.47v.94h1.47z"/></svg>
+          LINEで友だち追加してお問い合わせ
+        </a>
+      </div>
+      <div class="faq-sub-links">
+        <a href="https://www.instagram.com/hygge_kumamoto" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.4" cy="6.6" r="1" fill="currentColor" stroke="none"></circle></svg>
+          Instagram DM
+        </a>
+        <a href="tel:0962859061">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.98.36 1.94.7 2.86a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.22-1.22a2 2 0 0 1 2.11-.45c.92.34 1.88.57 2.86.7A2 2 0 0 1 22 16.92z"></path></svg>
+          096-285-9061
+        </a>
+      </div>
     </div>
   </div>
 </section>
