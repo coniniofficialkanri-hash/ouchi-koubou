@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>読みもの｜HYGGE PLANTS &amp; ZAKKA</title>
+<meta name="description" content="観葉植物・多肉・雑貨のお店 HYGGE PLANTS & ZAKKA（熊本）の読みもの。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Noto+Serif+JP:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.2/marked.min.js"></script>
+<style>
+  :root{
+    --ivory:#EFE8D7;--warm-white:#FBF7EF;--moss:#4A6741;--moss-light:#6B8A61;
+    --moss-pale:#EBF0E8;--gold:#D4A629;--brown:#8A6F55;
+    --text-dark:#2C2C2C;--text-mid:#5A5A5A;--text-light:#9A9A9A;--line:#E0DAD0;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Noto Sans JP',sans-serif;background:var(--warm-white);color:var(--text-dark);line-height:1.9;-webkit-font-smoothing:antialiased;}
+  a{color:inherit;}
+
+  .b-nav{position:sticky;top:0;z-index:20;background:rgba(251,247,239,.94);backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--line);padding:12px 20px;display:flex;align-items:center;justify-content:space-between;}
+  .b-nav .logo img{height:40px;width:auto;display:block;}
+  .b-nav .back{font-size:12px;letter-spacing:.06em;color:var(--text-mid);text-decoration:none;transition:color .25s;}
+  .b-nav .back:hover{color:var(--moss);}
+
+  .art{max-width:720px;margin:0 auto;padding:36px 20px 30px;}
+  .art .cat{display:inline-block;font-size:11px;letter-spacing:.06em;font-weight:700;color:#fff;background:var(--moss);padding:4px 12px;border-radius:999px;}
+  .art .cat.c-sodate{background:var(--moss);} .art .cat.c-kazari{background:var(--gold);}
+  .art .cat.c-diy{background:var(--brown);} .art .cat.c-zakka{background:var(--moss-light);}
+  .art .date{font-family:'Cormorant Garamond',serif;font-size:14px;letter-spacing:.08em;color:var(--gold);font-weight:600;margin-left:12px;}
+  .art h1{font-family:'Noto Serif JP',serif;font-size:clamp(23px,4.6vw,32px);font-weight:700;line-height:1.55;margin:16px 0 24px;letter-spacing:.01em;}
+  .art .hero{width:100%;height:auto;border-radius:10px;display:block;margin-bottom:34px;background:var(--ivory);}
+
+  /* markdown body */
+  .body{font-size:16px;color:var(--text-mid);line-height:1.95;}
+  .body h2{font-family:'Noto Serif JP',serif;font-size:21px;font-weight:600;color:var(--text-dark);
+    margin:44px 0 16px;padding-left:14px;border-left:4px solid var(--moss);line-height:1.5;}
+  .body h3{font-family:'Noto Serif JP',serif;font-size:17px;font-weight:600;color:var(--moss);margin:32px 0 12px;line-height:1.5;}
+  .body p{margin:0 0 1.5em;}
+  .body ul,.body ol{margin:0 0 1.5em 1.4em;}
+  .body li{margin-bottom:.5em;}
+  .body strong{color:var(--text-dark);font-weight:700;}
+  .body a{color:var(--moss);border-bottom:1px solid var(--moss);text-decoration:none;}
+  .body blockquote{border-left:3px solid var(--line);padding:4px 0 4px 18px;margin:0 0 1.5em;color:var(--text-light);}
+  .body img{max-width:100%;height:auto;border-radius:8px;margin:1em 0;}
+
+  /* cta */
+  .cta{margin:56px auto 0;max-width:720px;text-align:center;background:var(--moss-pale);border-radius:12px;padding:44px 28px;}
+  .cta h3{font-family:'Noto Serif JP',serif;font-size:18px;font-weight:600;letter-spacing:.02em;}
+  .cta p{font-size:13px;color:var(--text-mid);margin-top:10px;line-height:1.9;}
+  .cta .line-btn{display:inline-flex;align-items:center;gap:10px;margin-top:22px;background:#06C755;color:#fff;
+    padding:14px 32px;border-radius:999px;font-size:15px;font-weight:700;letter-spacing:.04em;text-decoration:none;
+    box-shadow:0 6px 18px rgba(6,199,85,.28);transition:transform .25s,box-shadow .25s,background .25s;}
+  .cta .line-btn:hover{background:#05b34c;transform:translateY(-2px);box-shadow:0 10px 24px rgba(6,199,85,.34);}
+  .cta .line-btn svg{width:21px;height:21px;}
+  .cta .to-list{display:inline-block;margin-top:20px;font-size:13px;color:var(--moss);text-decoration:none;border-bottom:1px solid var(--moss);}
+
+  .loading,.err{text-align:center;padding:80px 20px;color:var(--text-light);}
+  .err a{color:var(--moss);}
+  .spinner{width:34px;height:34px;border:3px solid var(--line);border-top-color:var(--moss);border-radius:50%;margin:0 auto 16px;animation:spin .8s linear infinite;}
+  @keyframes spin{to{transform:rotate(360deg);}}
+
+  .b-foot{background:#fff;border-top:1px solid var(--line);text-align:center;padding:36px 20px;color:var(--text-light);font-size:11px;letter-spacing:.08em;margin-top:60px;}
+</style>
+</head>
+<body>
+
+<div class="b-nav">
+  <a class="logo" href="../index.html"><img src="../logo.png" alt="HYGGE PLANTS & ZAKKA"></a>
+  <a class="back" href="index.html">&larr; 一覧に戻る</a>
+</div>
+
+<main id="app">
+  <div class="loading"><div class="spinner"></div>読み込み中...</div>
+</main>
+
+<footer class="b-foot">© 2026 HYGGE PLANTS &amp; ZAKKA</footer>
+
+<script>
+  /* ▼▼▼ GAS WebAppのデプロイURLをここに設定してください（index.htmlと同じURL） ▼▼▼ */
+  const GAS_API_URL = '【デプロイ後に記入】';
+  /* ▼▼▼ LINE友だち追加URL ▼▼▼ */
+  const LINE_URL = '#LINE_URL_HERE';
+
+  const CAT_CLASS = { '育て方':'c-sodate', '飾り方':'c-kazari', 'DIY':'c-diy', '雑貨':'c-zakka' };
+
+  function toImgUrl(url){
+    if(!url) return '';
+    if(url.includes('drive.google.com/uc')) return url;
+    const match = url.match(/\/d\/([a-zA-Z0-9_-]+)/);
+    if(match) return 'https://drive.google.com/uc?export=view&id=' + match[1];
+    return url;
+  }
+  function esc(s){ return String(s==null?'':s).replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+  function getId(){ const p = new URLSearchParams(location.search); return p.get('id'); }
+
+  const LINE_SVG = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 5.64 2 10.13c0 4.02 3.55 7.39 8.35 8.03.32.07.77.21.88.49.1.25.06.64.03.9l-.14.85c-.04.25-.2.99.87.54 1.07-.45 5.76-3.39 7.86-5.81C21.35 13.5 22 11.9 22 10.13 22 5.64 17.52 2 12 2zM8.13 12.7H6.14c-.29 0-.52-.24-.52-.52V8.2c0-.29.24-.52.52-.52.29 0 .52.24.52.52v3.45h1.47c.29 0 .52.24.52.52 0 .29-.23.53-.52.53zm2.03-.52c0 .29-.24.52-.52.52-.29 0-.52-.24-.52-.52V8.2c0-.29.24-.52.52-.52.29 0 .52.24.52.52v3.98zm4.76 0c0 .22-.15.42-.36.5-.06.02-.11.03-.17.03-.16 0-.31-.08-.41-.21l-2.04-2.78v2.46c0 .29-.24.52-.52.52-.29 0-.52-.24-.52-.52V8.2c0-.22.14-.42.36-.5.05-.02.11-.03.16-.03.16 0 .31.08.41.21l2.04 2.78V8.2c0-.29.24-.52.52-.52.29 0 .53.24.53.52v3.98zm3.2-2.51c.29 0 .52.24.52.52 0 .29-.24.52-.52.52h-1.47v.95h1.47c.29 0 .52.24.52.52 0 .29-.24.53-.52.53h-1.99c-.29 0-.52-.24-.52-.52V8.2c0-.29.24-.52.52-.52h1.99c.29 0 .52.24.52.52 0 .29-.24.53-.52.53h-1.47v.94h1.47z"/></svg>';
+
+  function renderError(){
+    document.getElementById('app').innerHTML =
+      '<div class="err"><p>記事が見つかりませんでした。</p><p style="margin-top:14px;"><a href="index.html">← 一覧に戻る</a></p></div>';
+  }
+
+  function renderArticle(a){
+    const catClass = CAT_CLASS[a.category] || 'c-sodate';
+    const catLabel = a.category ? '<span class="cat '+catClass+'">'+esc(a.category)+'</span>' : '';
+    const img = toImgUrl(a.imageUrl);
+    const hero = img ? '<img class="hero" src="'+esc(img)+'" alt="'+esc(a.title)+'">' : '';
+    let bodyHtml = '';
+    try { bodyHtml = marked.parse(a.body || ''); } catch(e){ bodyHtml = '<p>'+esc(a.body||'')+'</p>'; }
+
+    document.title = a.title + '｜HYGGE PLANTS & ZAKKA';
+    document.getElementById('app').innerHTML =
+      '<article class="art">'
+      + '<div>'+catLabel+'<span class="date">'+esc(a.date)+'</span></div>'
+      + '<h1>'+esc(a.title)+'</h1>'
+      + hero
+      + '<div class="body">'+bodyHtml+'</div>'
+      + '</article>'
+      + '<section class="cta"><h3>気になる植物があれば</h3>'
+      + '<p>在庫確認やご相談は、LINEでお気軽にどうぞ。<br>友だち追加後、そのままメッセージを送ってください。</p>'
+      + '<a class="line-btn" href="'+esc(LINE_URL)+'" target="_blank" rel="noopener">'+LINE_SVG+'LINEで友だち追加</a>'
+      + '<br><a class="to-list" href="index.html">← 一覧に戻る</a></section>';
+  }
+
+  async function load(){
+    const id = getId();
+    if(!id || !GAS_API_URL || GAS_API_URL.indexOf('http')!==0){ renderError(); return; }
+    try{
+      const res = await fetch(GAS_API_URL + '?action=detail&id=' + encodeURIComponent(id), { redirect:'follow' });
+      const data = await res.json();
+      if(!data || data.error){ renderError(); return; }
+      renderArticle(data);
+    }catch(err){ renderError(); }
+  }
+  load();
+</script>
+</body>
+</html>
