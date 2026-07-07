@@ -469,6 +469,22 @@
     flex-direction: column;
     cursor: default;
   }
+  .prod-preparing {
+    border: 1px dashed var(--line);
+    background: var(--ivory);
+    padding: 48px 24px;
+    text-align: center;
+  }
+  .prod-preparing-main {
+    font-size: 15px;
+    letter-spacing: 0.08em;
+    margin-bottom: 8px;
+  }
+  .prod-preparing-sub {
+    font-size: 12.5px;
+    color: var(--text-light);
+  }
+  .prod-grid + .prod-preparing { margin-top: 20px; padding: 28px 24px; }
   .prod-img {
     width: 100%;
     aspect-ratio: 1;
@@ -1455,35 +1471,15 @@
     </div>
     <div class="prod-grid">
       <div class="prod-item">
-        <div class="prod-img" style="background:var(--gold-pale); display:flex; align-items:center; justify-content:center;">
-          <span style="font-size:28px; opacity:0.4;">🏺</span>
-        </div>
-        <div class="prod-cat-badge">陶器</div>
-        <div class="prod-name">陶器・器<br>セレクト</div>
-        <div class="prod-name-en">Ceramic Goods</div>
-      </div>
-      <div class="prod-item">
-        <div class="prod-img" style="background:var(--gold-pale); display:flex; align-items:center; justify-content:center;">
-          <span style="font-size:28px; opacity:0.4;">🕯️</span>
-        </div>
-        <div class="prod-cat-badge">キャンドル</div>
-        <div class="prod-name">キャンドル<br>アロマ雑貨</div>
-        <div class="prod-name-en">Candle & Aroma</div>
-      </div>
-      <div class="prod-item">
         <div class="prod-img"><img src="prod-pot.webp" alt="アーバンプランツポット 陶器鉢" loading="lazy"></div>
         <div class="prod-cat-badge">プランター</div>
         <div class="prod-name">プランター<br>鉢・カバー</div>
         <div class="prod-name-en">Planters & Pots</div>
       </div>
-      <div class="prod-item">
-        <div class="prod-img" style="background:var(--gold-pale); display:flex; align-items:center; justify-content:center;">
-          <span style="font-size:28px; opacity:0.4;">🧺</span>
-        </div>
-        <div class="prod-cat-badge">バスケット</div>
-        <div class="prod-name">かご・ストレージ<br>バスケット</div>
-        <div class="prod-name-en">Basket & Storage</div>
-      </div>
+    </div>
+    <div class="prod-preparing">
+      <p class="prod-preparing-main">その他の商品写真は準備中です</p>
+      <p class="prod-preparing-sub">入荷状況に合わせて、随時更新していきます。</p>
     </div>
   </div>
 
@@ -1496,31 +1492,9 @@
       </div>
       <div class="cat-note">⚠ 在庫は日により変動します</div>
     </div>
-    <div class="prod-grid">
-      <div class="prod-item">
-        <div class="prod-img" style="background:#F5EED8; display:flex; align-items:center; justify-content:center;">
-          <span style="font-size:28px; opacity:0.4;">💡</span>
-        </div>
-        <div class="prod-cat-badge">ペンダント</div>
-        <div class="prod-name">ペンダントライト<br>各種</div>
-        <div class="prod-name-en">Pendant Light</div>
-      </div>
-      <div class="prod-item">
-        <div class="prod-img" style="background:#F5EED8; display:flex; align-items:center; justify-content:center;">
-          <span style="font-size:28px; opacity:0.4;">🕯</span>
-        </div>
-        <div class="prod-cat-badge">テーブル</div>
-        <div class="prod-name">テーブルランプ</div>
-        <div class="prod-name-en">Table Lamp</div>
-      </div>
-      <div class="prod-item">
-        <div class="prod-img" style="background:#F5EED8; display:flex; align-items:center; justify-content:center;">
-          <span style="font-size:28px; opacity:0.4;">✨</span>
-        </div>
-        <div class="prod-cat-badge">電球</div>
-        <div class="prod-name">フィラメント電球<br>エジソン球</div>
-        <div class="prod-name-en">Filament Bulb</div>
-      </div>
+    <div class="prod-preparing">
+      <p class="prod-preparing-main">商品写真は準備中です</p>
+      <p class="prod-preparing-sub">入荷状況に合わせて、随時更新していきます。</p>
     </div>
   </div>
 
@@ -1533,39 +1507,9 @@
       </div>
       <div class="cat-note">⚠ 在庫は日により変動します</div>
     </div>
-    <div class="prod-grid">
-      <div class="prod-item">
-        <div class="prod-img" style="background:#EEE8E0; display:flex; align-items:center; justify-content:center;">
-          <span style="font-size:28px; opacity:0.4;">🪣</span>
-        </div>
-        <div class="prod-cat-badge">塗料</div>
-        <div class="prod-name">ペンキ・塗料<br>各種</div>
-        <div class="prod-name-en">Paint & Coating</div>
-      </div>
-      <div class="prod-item">
-        <div class="prod-img" style="background:#EEE8E0; display:flex; align-items:center; justify-content:center;">
-          <span style="font-size:28px; opacity:0.4;">🔩</span>
-        </div>
-        <div class="prod-cat-badge">金具</div>
-        <div class="prod-name">金具・ブラケット<br>フック類</div>
-        <div class="prod-name-en">Hardware & Bracket</div>
-      </div>
-      <div class="prod-item">
-        <div class="prod-img" style="background:#EEE8E0; display:flex; align-items:center; justify-content:center;">
-          <span style="font-size:28px; opacity:0.4;">🌱</span>
-        </div>
-        <div class="prod-cat-badge">ガーデン</div>
-        <div class="prod-name">ガーデニング<br>資材・土</div>
-        <div class="prod-name-en">Garden Material</div>
-      </div>
-      <div class="prod-item">
-        <div class="prod-img" style="background:#EEE8E0; display:flex; align-items:center; justify-content:center;">
-          <span style="font-size:28px; opacity:0.4;">🪵</span>
-        </div>
-        <div class="prod-cat-badge">ウッド</div>
-        <div class="prod-name">ウッド素材<br>端材・スリット材</div>
-        <div class="prod-name-en">Wood Material</div>
-      </div>
+    <div class="prod-preparing">
+      <p class="prod-preparing-main">商品写真は準備中です</p>
+      <p class="prod-preparing-sub">入荷状況に合わせて、随時更新していきます。</p>
     </div>
   </div>
 
