@@ -3,187 +3,68 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>緑やDIYのお役立ち情報｜HYGGE PLANTS &amp; ZAKKA</title>
-<meta name="description" content="観葉植物・多肉・雑貨のお店 HYGGE PLANTS & ZAKKA（熊本）がお届けする、植物の育て方・飾り方・DIYのお役立ち情報。">
+<title>ブログ｜HYGGE PLANTS &amp; ZAKKA</title>
+<meta name="description" content="HYGGE PLANTS &amp; ZAKKAのブログ。植物の育て方や暮らしのヒントをお届けします。">
+<link rel="canonical" href="https://example.com/blog/">
 <meta property="og:type" content="website">
-<meta property="og:title" content="緑やDIYのお役立ち情報｜HYGGE PLANTS & ZAKKA">
-<meta property="og:image" content="../logo.png">
+<meta property="og:title" content="ブログ｜HYGGE PLANTS &amp; ZAKKA">
+<meta property="og:image" content="https://example.com/logo.png">
+<meta property="og:url" content="https://example.com/blog/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Noto+Serif+JP:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --ivory:#EFE8D7;--warm-white:#FBF7EF;--moss:#4A6741;--moss-light:#6B8A61;
-    --moss-pale:#EBF0E8;--gold:#D4A629;--brown:#8A6F55;
-    --text-dark:#2C2C2C;--text-mid:#5A5A5A;--text-light:#9A9A9A;--line:#E0DAD0;
-  }
-  *{margin:0;padding:0;box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{font-family:'Noto Sans JP',sans-serif;background:var(--warm-white);color:var(--text-dark);line-height:1.9;-webkit-font-smoothing:antialiased;}
-  a{color:inherit;text-decoration:none;}
-
-  /* nav */
-  .b-nav{position:sticky;top:0;z-index:20;background:rgba(251,247,239,.94);backdrop-filter:blur(12px);
-    border-bottom:1px solid var(--line);padding:12px 20px;display:flex;align-items:center;justify-content:space-between;}
-  .b-nav .logo img{height:40px;width:auto;display:block;}
-  .b-nav .back{font-size:12px;letter-spacing:.06em;color:var(--text-mid);display:inline-flex;align-items:center;gap:6px;transition:color .25s;}
-  .b-nav .back:hover{color:var(--moss);}
-
-  /* header */
-  .b-head{text-align:center;max-width:680px;margin:0 auto;padding:56px 20px 8px;}
-  .b-head .en{font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:.28em;color:var(--moss);text-transform:uppercase;}
-  .b-head h1{font-family:'Noto Serif JP',serif;font-size:clamp(24px,4.4vw,34px);font-weight:600;margin-top:10px;letter-spacing:.02em;}
-  .b-head p{font-size:13px;color:var(--text-mid);margin-top:14px;line-height:1.9;}
-
-  /* grid */
-  .b-wrap{max-width:1080px;margin:0 auto;padding:40px 20px 64px;}
-  .b-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:24px;}
-  .b-card{display:block;background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden;
-    transition:transform .35s cubic-bezier(.16,1,.3,1),box-shadow .35s;}
-  .b-card:hover{transform:translateY(-5px);box-shadow:0 14px 34px rgba(74,103,65,.14);}
-  .b-thumb{aspect-ratio:16/10;overflow:hidden;background:var(--ivory);position:relative;}
-  .b-thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .7s;}
-  .b-card:hover .b-thumb img{transform:scale(1.05);}
-  .b-cat{position:absolute;top:12px;left:12px;font-size:11px;letter-spacing:.06em;font-weight:700;
-    color:#fff;background:var(--moss);padding:4px 11px;border-radius:999px;}
-  .b-cat.c-sodate{background:var(--moss);}
-  .b-cat.c-kazari{background:var(--gold);}
-  .b-cat.c-diy{background:var(--brown);}
-  .b-cat.c-zakka{background:var(--moss-light);}
-  .b-cbody{padding:16px 18px 20px;}
-  .b-cbody .date{font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:.06em;color:var(--gold);font-weight:600;}
-  .b-cbody h3{font-family:'Noto Serif JP',serif;font-size:16px;font-weight:600;line-height:1.55;margin:6px 0 8px;color:var(--text-dark);}
-  .b-cbody p{font-size:12.5px;color:var(--text-mid);line-height:1.85;}
-
-  /* skeleton */
-  .sk-card{border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#fff;}
-  .sk-thumb{aspect-ratio:16/10;background:linear-gradient(100deg,#efeae0 30%,#f6f2ea 50%,#efeae0 70%);background-size:200% 100%;animation:sk 1.3s infinite;}
-  .sk-line{height:12px;margin:14px 18px;border-radius:6px;background:linear-gradient(100deg,#efeae0 30%,#f6f2ea 50%,#efeae0 70%);background-size:200% 100%;animation:sk 1.3s infinite;}
-  .sk-line.s{width:40%;}
-  @keyframes sk{0%{background-position:200% 0;}100%{background-position:-200% 0;}}
-
-  /* empty / error */
-  .b-empty{text-align:center;padding:70px 20px;color:var(--text-light);}
-  .b-empty .ico{font-size:34px;}
-  .b-empty p{margin-top:14px;font-size:14px;letter-spacing:.04em;}
-
-  /* instagram */
-  .b-ig{background:var(--moss-pale);text-align:center;padding:56px 24px;}
-  .b-ig h2{font-family:'Noto Serif JP',serif;font-size:19px;font-weight:600;letter-spacing:.03em;}
-  .b-ig p{font-size:13px;color:var(--text-mid);margin-top:10px;line-height:1.9;}
-  .b-ig .ig-btn{display:inline-flex;align-items:center;gap:9px;margin-top:22px;border:1.5px solid var(--moss);
-    color:var(--moss);padding:12px 28px;border-radius:999px;font-size:14px;font-weight:500;letter-spacing:.04em;transition:all .25s;}
-  .b-ig .ig-btn:hover{background:var(--moss);color:#fff;}
-  .b-ig .ig-btn svg{width:17px;height:17px;}
-
-  /* footer */
-  .b-foot{background:#fff;border-top:1px solid var(--line);text-align:center;padding:50px 24px 40px;}
-  .b-foot .line-btn{display:inline-flex;align-items:center;gap:10px;background:#06C755;color:#fff;
-    padding:14px 32px;border-radius:999px;font-size:15px;font-weight:700;letter-spacing:.04em;
-    box-shadow:0 6px 18px rgba(6,199,85,.28);transition:transform .25s,box-shadow .25s,background .25s;}
-  .b-foot .line-btn:hover{background:#05b34c;transform:translateY(-2px);box-shadow:0 10px 24px rgba(6,199,85,.34);}
-  .b-foot .line-btn svg{width:21px;height:21px;}
-  .b-foot .links{margin-top:24px;display:flex;gap:20px;justify-content:center;flex-wrap:wrap;font-size:13px;color:var(--text-mid);}
-  .b-foot .links a{transition:color .25s;}
-  .b-foot .links a:hover{color:var(--moss);}
-  .b-foot .copy{margin-top:26px;font-size:11px;letter-spacing:.08em;color:var(--text-light);}
-
-  @media(max-width:600px){
-    .b-grid{grid-template-columns:1fr;gap:18px;}
-    .b-head{padding-top:40px;}
-  }
-</style>
+    :root{--ivory:#EFE8D7;--warm-white:#FBF7EF;--moss:#4A6741;--gold:#D4A629;
+      --text-dark:#2C2C2C;--text-mid:#5A5A5A;--text-light:#9A9A9A;--line:#E0DAD0;}
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{font-family:'Noto Sans JP',sans-serif;background:var(--warm-white);color:var(--text-dark);line-height:1.9;}
+    .a-nav{position:sticky;top:0;background:rgba(251,247,239,.95);backdrop-filter:blur(12px);
+      border-bottom:1px solid var(--line);padding:12px 20px;}
+    .a-nav a{display:inline-flex;align-items:center;gap:8px;text-decoration:none;color:var(--text-dark);}
+    .a-nav img{height:42px;width:auto;display:block;}
+    .a-wrap{max-width:720px;margin:0 auto;padding:40px 20px 80px;}
+    .a-date{font-size:13px;letter-spacing:.08em;color:var(--gold);font-weight:600;}
+    .a-title{font-family:'Noto Serif JP',serif;font-size:clamp(24px,4.5vw,34px);font-weight:700;
+      line-height:1.5;margin:10px 0 22px;color:var(--text-dark);}
+    .a-hero{width:100%;height:auto;border-radius:8px;display:block;margin-bottom:30px;}
+    .a-body p{font-size:16px;color:var(--text-mid);margin-bottom:1.4em;}
+    .a-back{display:inline-block;margin-top:40px;font-size:14px;color:var(--moss);text-decoration:none;font-weight:500;}
+    .a-foot{border-top:1px solid var(--line);text-align:center;padding:30px 20px;color:var(--text-light);font-size:12px;}
+    .bl-head{text-align:center;max-width:640px;margin:0 auto 40px;}
+    .bl-label{font-size:12px;letter-spacing:.22em;color:var(--moss);font-weight:500;}
+    .bl-title{font-family:'Noto Serif JP',serif;font-size:clamp(26px,4.4vw,40px);font-weight:600;margin-top:10px;}
+    .bl-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:24px;max-width:1100px;margin:0 auto;}
+    .bl-card{display:block;text-decoration:none;color:inherit;background:var(--warm-white);
+      border:1px solid var(--line);border-radius:8px;overflow:hidden;transition:transform .3s,box-shadow .3s;}
+    .bl-card:hover{transform:translateY(-4px);box-shadow:0 12px 30px rgba(74,103,65,.12);}
+    .bl-thumb{aspect-ratio:16/10;overflow:hidden;background:var(--ivory);}
+    .bl-thumb img{width:100%;height:100%;object-fit:cover;display:block;}
+    .bl-body{padding:18px 20px 22px;}
+    .bl-card .d{font-size:12px;color:var(--gold);font-weight:600;letter-spacing:.08em;}
+    .bl-card h3{font-family:'Noto Serif JP',serif;font-size:16px;font-weight:600;line-height:1.5;margin:7px 0 8px;}
+    .bl-card p{font-size:13px;color:var(--text-mid);line-height:1.8;}</style>
 </head>
 <body>
-
-<div class="b-nav">
-  <a class="logo" href="../index.html"><img src="../logo.png" alt="HYGGE PLANTS & ZAKKA"></a>
-  <a class="back" href="../index.html">&larr; トップへ戻る</a>
-</div>
-
-<header class="b-head">
-  <p class="en">Green &amp; DIY Tips</p>
-  <h1>緑やDIYのお役立ち情報</h1>
-  <p>植物の育て方・飾り方から、暮らしを楽しむDIYのヒントまで。<br>HYGGEが日々の"ちょっといいこと"をお届けします。</p>
-</header>
-
-<main class="b-wrap">
-  <div class="b-grid" id="grid">
-    <!-- skeleton -->
-    <div class="sk-card"><div class="sk-thumb"></div><div class="sk-line"></div><div class="sk-line s"></div></div>
-    <div class="sk-card"><div class="sk-thumb"></div><div class="sk-line"></div><div class="sk-line s"></div></div>
-    <div class="sk-card"><div class="sk-thumb"></div><div class="sk-line"></div><div class="sk-line s"></div></div>
+<div class="a-nav"><a href="../index.html"><img src="../logo.png" alt="HYGGE PLANTS &amp; ZAKKA"></a></div>
+<main class="a-wrap" style="max-width:1140px;">
+  <div class="bl-head"><p class="bl-label">ブログ</p><h1 class="bl-title">読みもの</h1></div>
+  <div class="bl-grid">
+    <a class="bl-card" href="https://example.com/blog/bikakushida-care.html"><div class="bl-thumb"><img src="https://lh3.googleusercontent.com/d/18gkIXIqdW8HvbaMA2Hd7zl9kfwdjYO0Y" alt="ビカクシダの育て方｜水やりと置き場所の基本"></div>
+      <div class="bl-body"><span class="d">2026.06.25</span>
+        <h3>ビカクシダの育て方｜水やりと置き場所の基本</h3><p>板付けビカクシダを元気に育てる水やり頻度や置き場所のコツを、初めての方にもわかりやすく解説します。</p></div></a>
+    <a class="bl-card" href="https://example.com/blog/green-life.html"><div class="bl-thumb"><img src="https://lh3.googleusercontent.com/d/1tDDjGTfO6aLw2qyAzHdMEYT89zQ6gTYE" alt="観葉植物のある暮らし｜お部屋に緑を取り入れるコツ"></div>
+      <div class="bl-body"><span class="d">2026.06.18</span>
+        <h3>観葉植物のある暮らし｜お部屋に緑を取り入れるコツ</h3><p>インテリアになじむ植物の選び方や飾り方を、実例を交えてご紹介。はじめの一鉢にもおすすめです。</p></div></a>
+    <a class="bl-card" href="https://example.com/blog/kokedama-guide.html"><div class="bl-thumb"><img src="https://lh3.googleusercontent.com/d/1Ey2u74oSk-q6rBAQMgQv_reRnMz7M41y" alt="苔玉の楽しみ方｜飾り方と日々のお手入れ"></div>
+      <div class="bl-body"><span class="d">2026.06.10</span>
+        <h3>苔玉の楽しみ方｜飾り方と日々のお手入れ</h3><p>吊るす・置くなど苔玉の飾り方のバリエーションと、長く楽しむための水やり・管理のポイントを紹介します。</p></div></a>
+    <a class="bl-card" href="https://example.com/blog/beginner-plants-5.html"><div class="bl-thumb"><img src="https://lh3.googleusercontent.com/d/1z6TK3NPMwv774gffiyoG_MvJgyBuURHe" alt="初心者さんにおすすめの観葉植物5選"></div>
+      <div class="bl-body"><span class="d">2026.05.30</span>
+        <h3>初心者さんにおすすめの観葉植物5選</h3><p>枯らしにくく育てやすい、最初の一鉢にぴったりの観葉植物を厳選してご紹介します。</p></div></a>
+    <a class="bl-card" href="https://example.com/blog/about-hygge.html"><div class="bl-thumb"><img src="https://lh3.googleusercontent.com/d/1H1TB45ptuW5Tx7hBf53Pflo-q4460M_X" alt="HYGGEのこだわり｜植物と雑貨のセレクトについて"></div>
+      <div class="bl-body"><span class="d">2026.05.20</span>
+        <h3>HYGGEのこだわり｜植物と雑貨のセレクトについて</h3><p>バイヤーが全国から選び抜いた植物と雑貨たち。お店づくりに込めた想いをお話しします。</p></div></a>
   </div>
 </main>
-
-<section class="b-ig">
-  <h2>日々の入荷や飾り方は Instagram で</h2>
-  <p>新しく入荷した植物や、店内のディスプレイを毎日更新中。<br>気になる子はDMでお気軽にどうぞ。</p>
-  <a class="ig-btn" href="https://www.instagram.com/hygge_kumamoto" target="_blank" rel="noopener">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.4" cy="6.6" r="1" fill="currentColor" stroke="none"></circle></svg>
-    @hygge_kumamoto
-  </a>
-</section>
-
-<footer class="b-foot">
-  <!-- ▼▼▼ LINE友だち追加URLをここに設定してください（例: https://lin.ee/xxxxxx） ▼▼▼ -->
-  <a class="line-btn" href="#LINE_URL_HERE" target="_blank" rel="noopener">
-    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 5.64 2 10.13c0 4.02 3.55 7.39 8.35 8.03.32.07.77.21.88.49.1.25.06.64.03.9l-.14.85c-.04.25-.2.99.87.54 1.07-.45 5.76-3.39 7.86-5.81C21.35 13.5 22 11.9 22 10.13 22 5.64 17.52 2 12 2zM8.13 12.7H6.14c-.29 0-.52-.24-.52-.52V8.2c0-.29.24-.52.52-.52.29 0 .52.24.52.52v3.45h1.47c.29 0 .52.24.52.52 0 .29-.23.53-.52.53zm2.03-.52c0 .29-.24.52-.52.52-.29 0-.52-.24-.52-.52V8.2c0-.29.24-.52.52-.52.29 0 .52.24.52.52v3.98zm4.76 0c0 .22-.15.42-.36.5-.06.02-.11.03-.17.03-.16 0-.31-.08-.41-.21l-2.04-2.78v2.46c0 .29-.24.52-.52.52-.29 0-.52-.24-.52-.52V8.2c0-.22.14-.42.36-.5.05-.02.11-.03.16-.03.16 0 .31.08.41.21l2.04 2.78V8.2c0-.29.24-.52.52-.52.29 0 .53.24.53.52v3.98zm3.2-2.51c.29 0 .52.24.52.52 0 .29-.24.52-.52.52h-1.47v.95h1.47c.29 0 .52.24.52.52 0 .29-.24.53-.52.53h-1.99c-.29 0-.52-.24-.52-.52V8.2c0-.29.24-.52.52-.52h1.99c.29 0 .52.24.52.52 0 .29-.24.53-.52.53h-1.47v.94h1.47z"/></svg>
-    LINEで友だち追加
-  </a>
-  <div class="links">
-    <a href="../index.html#shopinfo">店舗情報・アクセス</a>
-    <a href="../index.html#faq">よくあるご質問</a>
-    <a href="https://www.instagram.com/hygge_kumamoto" target="_blank" rel="noopener">Instagram</a>
-  </div>
-  <p class="copy">© 2026 HYGGE PLANTS &amp; ZAKKA</p>
-</footer>
-
-<script>
-  /* ▼▼▼ GAS WebAppのデプロイURLをここに設定してください ▼▼▼ */
-  const GAS_API_URL = '【デプロイ後に記入】';
-
-  const CAT_CLASS = { '育て方':'c-sodate', '飾り方':'c-kazari', 'DIY':'c-diy', '雑貨':'c-zakka' };
-
-  function toImgUrl(url){
-    if(!url) return '';
-    if(url.includes('drive.google.com/uc')) return url;
-    const match = url.match(/\/d\/([a-zA-Z0-9_-]+)/);
-    if(match) return 'https://drive.google.com/uc?export=view&id=' + match[1];
-    return url;
-  }
-
-  function esc(s){ return String(s==null?'':s).replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
-
-  function cardHtml(a){
-    const catClass = CAT_CLASS[a.category] || 'c-sodate';
-    const catLabel = a.category ? '<span class="b-cat '+catClass+'">'+esc(a.category)+'</span>' : '';
-    const img = toImgUrl(a.imageUrl);
-    const thumb = img ? '<img src="'+esc(img)+'" alt="'+esc(a.title)+'" loading="lazy">' : '';
-    return '<a class="b-card" href="detail.html?id='+encodeURIComponent(a.id)+'">'
-      + '<div class="b-thumb">'+thumb+catLabel+'</div>'
-      + '<div class="b-cbody"><span class="date">'+esc(a.date)+'</span>'
-      + '<h3>'+esc(a.title)+'</h3><p>'+esc(a.excerpt)+'</p></div></a>';
-  }
-
-  function renderEmpty(msg){
-    document.getElementById('grid').outerHTML =
-      '<div class="b-empty"><div class="ico">🌱</div><p>'+esc(msg)+'</p></div>';
-  }
-
-  async function loadList(){
-    if(!GAS_API_URL || GAS_API_URL.indexOf('http')!==0){
-      renderEmpty('記事を準備中です'); return;
-    }
-    try{
-      const res = await fetch(GAS_API_URL + '?action=list', { redirect:'follow' });
-      const data = await res.json();
-      if(!Array.isArray(data) || data.length===0){ renderEmpty('記事を準備中です'); return; }
-      document.getElementById('grid').innerHTML = data.map(cardHtml).join('');
-    }catch(err){
-      renderEmpty('記事を準備中です');
-    }
-  }
-  loadList();
-</script>
+<div class="a-foot">© 2026 HYGGE PLANTS &amp; ZAKKA</div>
 </body>
 </html>
