@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>HYGGE 投稿画像メーカー</title>
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-title" content="HYGGE">
+<meta name="theme-color" content="#56774a">
+<style>
+  :root {
+    --bg: #f6f1e7;
+    --card: #fffdf8;
+    --green: #56774a;
+    --green-deep: #435c39;
+    --yellow: #e9b83d;
+    --text: #3d3629;
+    --cream: #f2ece4;
+    --border: #e5dcc8;
+    --muted: #9c8f77;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  body {
+    font-family: "Hiragino Sans", "Noto Sans JP", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    padding-bottom: 60px;
+  }
+  /* ===== 上部固定バー（ヘッダー＋プレビュー） ===== */
+  .topbar {
+    position: sticky; top: 0; z-index: 20;
+    box-shadow: 0 2px 10px rgba(40, 30, 10, .25);
+  }
+  header {
+    background: var(--green);
+    color: var(--cream);
+    padding: 11px 16px 9px;
+    text-align: center;
+    position: relative;
+  }
+  .reload-btn {
+    position: absolute; top: 50%; right: 10px;
+    transform: translateY(-50%);
+    background: rgba(242, 236, 228, .16);
+    border: 1.5px solid rgba(242, 236, 228, .65);
+    border-radius: 50%;
+    width: 42px; height: 42px;
+    cursor: pointer;
+    color: var(--cream); font-size: 26px; line-height: 1;
+    font-family: inherit;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .reload-btn:active { opacity: .6; transform: translateY(-50%) rotate(180deg); }
+  header h1 {
+    font-family: "Hiragino Mincho ProN", "Noto Serif JP", serif;
+    font-size: 16px;
+    letter-spacing: 3px;
+    font-weight: 600;
+  }
+  header p { font-size: 10px; opacity: .8; margin-top: 2px; letter-spacing: 1.5px; }
+  .stage {
+    background: var(--green-deep);
+    padding: 8px 12px 8px;
+    text-align: center;
+    display: none;
+  }
+  .stage.show { display: block; }
+  #preview {
+    max-width: 100%;
+    max-height: 25vh;
+    border-radius: 8px;
+    touch-action: none;
+    cursor: grab;
+    display: block;
+    margin: 0 auto;
+  }
+  .stage-thumbs {
+    display: flex; gap: 7px; justify-content: center;
+    margin-top: 7px;
+  }
+  .stage-thumbs img {
+    width: 38px; height: 38px; object-fit: cover; border-radius: 7px;
+    border: 2px solid transparent; cursor: pointer; opacity: .65;
+  }
+  .stage-thumbs img.sel { border-color: var(--yellow); opacity: 1; }
+  .zoom-row {
+    display: flex; align-items: center; gap: 8px;
+    max-width: 420px; margin: 7px auto 0;
+    font-size: 10.5px; color: rgba(242,236,228,.75);
+  }
+  .zoom-row input[type=range] { flex: 1; accent-color: var(--yellow); }
+  .stage-hint { font-size: 10px; color: rgba(242,236,228,.6); margin-top: 4px; }
+  main { max-width: 520px; margin: 0 auto; padding: 16px; }
+  .step-label {
+    font-size: 12px; font-weight: 700; color: var(--green);
+    letter-spacing: 1.5px; margin: 20px 0 8px;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .step-label span {
+    background: var(--yellow); color: #4d3d12; border-radius: 50%;
+    width: 20px; height: 20px; line-height: 20px; text-align: center;
+    font-size: 11px; flex: none;
+  }
+  .drop {
+    background: var(--card); border: 2px dashed var(--border); border-radius: 14px;
+    padding: 22px 16px; text-align: center; cursor: pointer;
+  }
+  .drop .big { font-size: 30px; }
+  .drop .msg { font-size: 14px; margin-top: 6px; font-weight: 700; }
+  .drop .sub { font-size: 11px; color: var(--muted); margin-top: 4px; }
+  #fileInput { display: none; }
+  .ratios { display: flex; gap: 8px; flex-wrap: wrap; }
+  .ratio-btn {
+    flex: 1 1 21%; min-width: 100px;
+    background: var(--card); border: 1.5px solid var(--border); border-radius: 12px;
+    padding: 10px 4px; text-align: center; cursor: pointer;
+    font-family: inherit; color: var(--text);
+  }
+  .ratio-btn .name { font-size: 12px; font-weight: 700; }
+  .ratio-btn .size { font-size: 10px; color: var(--muted); }
+  .ratio-btn.sel { border-color: var(--green); background: var(--green); color: var(--cream); }
+  .ratio-btn.sel .size { color: var(--cream); opacity: .75; }
+  .filters { display: flex; gap: 10px; overflow-x: auto; padding: 4px 2px 8px; -webkit-overflow-scrolling: touch; }
+  .filter-btn { flex: 0 0 auto; text-align: center; cursor: pointer; background: none; border: none; font-family: inherit; }
+  .filter-btn canvas {
+    width: 68px; height: 68px; border-radius: 10px; display: block;
+    border: 2.5px solid transparent; background: var(--border);
+  }
+  .filter-btn.sel canvas { border-color: var(--yellow); }
+  .filter-btn .fname { font-size: 10.5px; margin-top: 4px; color: var(--muted); font-weight: 600; }
+  .filter-btn.sel .fname { color: var(--text); }
+  .text-panel { background: var(--card); border: 1.5px solid var(--border); border-radius: 12px; padding: 12px 14px; }
+  .text-panel input[type=text] {
+    width: 100%; border: 1.5px solid var(--border); border-radius: 8px;
+    padding: 9px 12px; font-size: 14px; font-family: inherit;
+    background: var(--bg); color: var(--text); margin-bottom: 10px;
+  }
+  .chip-row { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 6px; }
+  .chip-row .lbl { font-size: 11px; color: var(--muted); width: 100%; font-weight: 700; }
+  .chip {
+    border: 1.5px solid var(--border); background: var(--bg); border-radius: 999px;
+    font-size: 12px; padding: 5px 13px; cursor: pointer; font-family: inherit; color: var(--text);
+  }
+  .chip.sel { background: var(--green); border-color: var(--green); color: var(--cream); }
+  .save-btn {
+    display: block; width: 100%; border: none; border-radius: 14px;
+    padding: 16px; font-size: 16px; font-weight: 700; font-family: inherit;
+    letter-spacing: 2px; cursor: pointer; margin-top: 14px;
+    background: var(--green); color: var(--cream);
+    box-shadow: 0 3px 0 rgba(0,0,0,.15);
+  }
+  .save-btn:active { transform: translateY(2px); box-shadow: none; }
+  .save-btn.secondary {
+    background: transparent; color: var(--green-deep);
+    border: 1.5px solid var(--green); box-shadow: none;
+    padding: 12px; font-size: 13px; margin-top: 8px;
+  }
+  .toast {
+    position: fixed; left: 50%; bottom: 24px;
+    transform: translateX(-50%) translateY(90px);
+    background: var(--green-deep); color: var(--cream);
+    padding: 10px 22px; border-radius: 999px; font-size: 13px;
+    transition: transform .25s; z-index: 30; white-space: nowrap;
+  }
+  .toast.show { transform: translateX(-50%) translateY(0); }
+</style>
+</head>
+<body>
+<!-- 上部固定：ヘッダー＋プレビュー＋写真切り替え -->
+<div class="topbar">
+  <header>
+    <h1>HYGGE 投稿画像メーカー</h1>
+    <p>Instagram サポートツール</p>
+    <button class="reload-btn" id="reloadBtn" aria-label="リロード">&#x21bb;</button>
+  </header>
+  <div class="stage" id="stage">
+    <canvas id="preview"></canvas>
+    <div class="stage-thumbs" id="thumbs"></div>
+    <div class="zoom-row">
+      <span>ズーム</span>
+      <input type="range" id="zoom" min="100" max="250" value="100">
+    </div>
+    <div class="stage-hint">プレビューを指でドラッグすると位置調整できます</div>
+  </div>
+</div>
+
+<main>
+  <div class="step-label"><span>1</span>写真を選ぶ</div>
+  <div class="drop" id="drop">
+    <div class="big">🪴</div>
+    <div class="msg">タップして写真を選ぶ</div>
+    <div class="sub">5枚まで・カメラロールから選べます</div>
+  </div>
+  <input type="file" id="fileInput" accept="image/*" multiple>
+
+  <div class="step-label"><span>2</span>サイズを選ぶ</div>
+  <div class="ratios">
+    <button class="ratio-btn sel" data-ratio="feed"><span class="name">フィード</span><br><span class="size">4:5</span></button>
+    <button class="ratio-btn" data-ratio="story"><span class="name">ストーリーズ</span><br><span class="size">9:16</span></button>
+    <button class="ratio-btn" data-ratio="gbp"><span class="name">Google用</span><br><span class="size">4:3</span></button>
+    <button class="ratio-btn" data-ratio="blog"><span class="name">ブログ</span><br><span class="size">16:9</span></button>
+  </div>
+
+  <div class="step-label"><span>3</span>フィルターを選ぶ</div>
+  <div class="filters" id="filterStrip"></div>
+
+  <div class="step-label"><span>4</span>文字入れ（お試し）</div>
+  <div class="text-panel">
+    <input type="text" id="overlayText" placeholder="例：New Arrival ／ 入荷しました" maxlength="24">
+    <div class="chip-row">
+      <span class="lbl">スタイル</span>
+      <button class="chip sel" data-tstyle="none">なし</button>
+      <button class="chip" data-tstyle="band">クリーム帯</button>
+      <button class="chip" data-tstyle="shadow">影つき白文字</button>
+    </div>
+    <div class="chip-row">
+      <span class="lbl">位置</span>
+      <button class="chip" data-tpos="top">上</button>
+      <button class="chip" data-tpos="center">中央</button>
+      <button class="chip sel" data-tpos="bottom">下</button>
+    </div>
+  </div>
+
+  <div class="step-label"><span>5</span>保存する</div>
+  <button class="save-btn" id="save">📷 写真に保存</button>
+  <button class="save-btn secondary" id="saveAll">選んだ写真を全部まとめて保存（自動配置）</button>
+</main>
+<div class="toast" id="toast"></div>
+
+<script>
+// ============ HYGGEフィルター（フィード実写真の色味基準） ============
+// br=明るさ ct=コントラスト sat=彩度 warm=暖色シフト lift=マット(黒浮かせ)
+const FILTERS = [
+  { id: 'none',     name: 'そのまま',   p: null },
+  { id: 'hygge',    name: 'ヒュッゲ',   p: { br: 1.07, ct: 0.98, sat: 0.97, warm: 7,  lift: 0 } },
+  { id: 'akarui',   name: 'あかるい',   p: { br: 1.17, ct: 0.96, sat: 0.94, warm: 3,  lift: 0 } },
+  { id: 'funwari',  name: 'ふんわり',   p: { br: 1.11, ct: 0.86, sat: 0.90, warm: 5,  lift: 14 } },
+  { id: 'attaka',   name: 'あたたか',   p: { br: 1.06, ct: 1.00, sat: 1.03, warm: 14, lift: 0 } },
+  { id: 'kongari',  name: 'こんがり',   p: { br: 1.03, ct: 1.07, sat: 1.06, warm: 21, lift: 0 } },
+  { id: 'green',    name: 'グリーン',   p: { br: 1.07, ct: 1.03, sat: 1.15, warm: -3, lift: 0 } },
+  { id: 'kukkiri',  name: 'くっきり',   p: { br: 1.02, ct: 1.15, sat: 1.06, warm: 0,  lift: 0 } },
+  { id: 'shittori', name: 'しっとり',   p: { br: 0.98, ct: 0.93, sat: 0.90, warm: 2,  lift: 16 } },
+  { id: 'film',     name: 'フィルム',   p: { br: 1.05, ct: 0.90, sat: 0.85, warm: 11, lift: 22 } },
+];
+const RATIOS = {
+  feed:  { w: 1080, h: 1350, label: 'feed' },
+  story: { w: 1080, h: 1920, label: 'story' },
+  gbp:   { w: 1200, h: 900,  label: 'gbp' },
+  blog:  { w: 1600, h: 900,  label: 'blog' },
+};
+const MAX_SRC = 2400;
+const MAX_IMAGES = 5; // 読み込み速度対策
+
+const state = {
+  images: [],          // { name, raw, cache, view: {zoom, ox, oy} } ← 調整値は写真ごとに独立
+  cur: -1,
+  ratio: 'feed',
+  filter: 'hygge',
+  tstyle: 'none', tpos: 'bottom',
+};
+const curItem = () => state.images[state.cur];
+
+const $ = id => document.getElementById(id);
+const preview = $('preview');
+
+$('reloadBtn').addEventListener('click', () => {
+  if (!state.images.length || confirm('最初からやり直しますか？（読み込んだ写真はリセットされます）')) {
+    location.reload();
+  }
+});
+
+// ============ 画像読み込み ============
+$('drop').addEventListener('click', () => {
+  if (state.images.length >= MAX_IMAGES) return toast(`写真は${MAX_IMAGES}枚までです`);
+  $('fileInput').click();
+});
+$('fileInput').addEventListener('change', e => {
+  loadFiles(e.target.files);
+  e.target.value = ''; // 同じ写真を選び直せるようにリセット
+});
+function loadFiles(fileList) {
+  const remaining = MAX_IMAGES - state.images.length;
+  const files = [...fileList];
+  if (files.length > remaining) {
+    toast(`写真は${MAX_IMAGES}枚までです（先頭${remaining}枚だけ読み込みます）`);
+  }
+  files.slice(0, remaining).forEach(file => {
+    const img = new Image();
+    img.onload = () => { URL.revokeObjectURL(img.src); addImage(img, file.name.replace(/\.[^.]+$/, '')); };
+    img.src = URL.createObjectURL(file);
+  });
+}
+function addImage(img, name) {
+  const scale = Math.min(1, MAX_SRC / Math.max(img.width, img.height));
+  const raw = document.createElement('canvas');
+  raw.width = Math.round(img.width * scale);
+  raw.height = Math.round(img.height * scale);
+  raw.getContext('2d').drawImage(img, 0, 0, raw.width, raw.height);
+  state.images.push({ name, raw, cache: new Map(), view: { zoom: 1, ox: 0, oy: 0 } });
+  state.cur = state.images.length - 1;
+  syncControls();
+  renderThumbs();
+  buildFilterStrip();
+  render();
+}
+window.appLoadImage = addImage; // テスト用
+
+// ============ フィルター処理 ============
+function applyParams(imgData, p) {
+  const d = imgData.data;
+  const { br, ct, sat, warm, lift } = p;
+  const k = (255 - lift) / 255;
+  for (let i = 0; i < d.length; i += 4) {
+    let r = d[i] * br, g = d[i+1] * br, b = d[i+2] * br;
+    r = (r - 128) * ct + 128; g = (g - 128) * ct + 128; b = (b - 128) * ct + 128;
+    const l = 0.2126 * r + 0.7152 * g + 0.0722 * b;
+    r = l + (r - l) * sat; g = l + (g - l) * sat; b = l + (b - l) * sat;
+    r += warm; b -= warm;
+    if (lift) { r = lift + r * k; g = lift + g * k; b = lift + b * k; }
+    d[i]   = r < 0 ? 0 : r > 255 ? 255 : r;
+    d[i+1] = g < 0 ? 0 : g > 255 ? 255 : g;
+    d[i+2] = b < 0 ? 0 : b > 255 ? 255 : b;
+  }
+  return imgData;
+}
+function getFiltered(item, filterId) {
+  if (filterId === 'none') return item.raw;
+  if (item.cache.has(filterId)) return item.cache.get(filterId);
+  const f = FILTERS.find(f => f.id === filterId);
+  const c = document.createElement('canvas');
+  c.width = item.raw.width; c.height = item.raw.height;
+  const cx = c.getContext('2d');
+  cx.drawImage(item.raw, 0, 0);
+  cx.putImageData(applyParams(cx.getImageData(0, 0, c.width, c.height), f.p), 0, 0);
+  item.cache.set(filterId, c);
+  return c;
+}
+
+// ============ フィルター選択ストリップ（現在の写真でプレビュー） ============
+function buildFilterStrip() {
+  const strip = $('filterStrip');
+  strip.innerHTML = '';
+  const item = state.images[state.cur];
+  FILTERS.forEach(f => {
+    const btn = document.createElement('button');
+    btn.className = 'filter-btn' + (f.id === state.filter ? ' sel' : '');
+    const c = document.createElement('canvas');
+    c.width = 136; c.height = 136;
+    if (item) {
+      const s = Math.max(136 / item.raw.width, 136 / item.raw.height);
+      const cx = c.getContext('2d');
+      cx.drawImage(item.raw, (136 - item.raw.width * s) / 2, (136 - item.raw.height * s) / 2,
+                   item.raw.width * s, item.raw.height * s);
+      if (f.p) cx.putImageData(applyParams(cx.getImageData(0, 0, 136, 136), f.p), 0, 0);
+    }
+    const label = document.createElement('div');
+    label.className = 'fname';
+    label.textContent = f.name;
+    btn.append(c, label);
+    btn.onclick = () => {
+      state.filter = f.id;
+      strip.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('sel'));
+      btn.classList.add('sel');
+      render();
+    };
+    strip.appendChild(btn);
+  });
+}
+buildFilterStrip();
+
+// ============ 文字入れ ============
+function drawOverlayText(c, W, H) {
+  const text = $('overlayText').value.trim();
+  if (!text || state.tstyle === 'none') return;
+  const fontSize = Math.round(W * 0.058);
+  c.font = `600 ${fontSize}px "Hiragino Mincho ProN", "Yu Mincho", serif`;
+  c.textAlign = 'center';
+  c.textBaseline = 'middle';
+  const yMap = { top: H * 0.12, center: H * 0.5, bottom: H * 0.88 };
+  const y = yMap[state.tpos];
+  if (state.tstyle === 'band') {
+    const bandH = fontSize * 2.4;
+    c.fillStyle = 'rgba(242, 236, 228, 0.92)';
+    c.fillRect(0, y - bandH / 2, W, bandH);
+    c.fillStyle = '#5a4632';
+    c.fillText(text, W / 2, y + fontSize * 0.06);
+  } else { // shadow
+    c.save();
+    c.shadowColor = 'rgba(50, 35, 15, 0.6)';
+    c.shadowBlur = fontSize * 0.35;
+    c.shadowOffsetY = fontSize * 0.06;
+    c.fillStyle = '#f7f3ec';
+    c.fillText(text, W / 2, y);
+    c.restore();
+  }
+}
+
+// ============ 描画 ============
+function drawTo(canvas, src, ratio, zoom, ox, oy) {
+  const { w: W, h: H } = RATIOS[ratio];
+  canvas.width = W; canvas.height = H;
+  const c = canvas.getContext('2d');
+  const cover = Math.max(W / src.width, H / src.height) * zoom;
+  const dw = src.width * cover, dh = src.height * cover;
+  const maxX = Math.max(0, (dw - W) / 2), maxY = Math.max(0, (dh - H) / 2);
+  const cx = Math.min(maxX, Math.max(-maxX, ox));
+  const cy = Math.min(maxY, Math.max(-maxY, oy));
+  c.fillStyle = '#fff';
+  c.fillRect(0, 0, W, H);
+  c.drawImage(src, (W - dw) / 2 + cx, (H - dh) / 2 + cy, dw, dh);
+  drawOverlayText(c, W, H);
+  return { cx, cy };
+}
+function render() {
+  const item = curItem();
+  if (!item) return;
+  $('stage').classList.add('show');
+  const src = getFiltered(item, state.filter);
+  const v = item.view;
+  const clamped = drawTo(preview, src, state.ratio, v.zoom, v.ox, v.oy);
+  v.ox = clamped.cx; v.oy = clamped.cy;
+}
+// 写真切り替え時にその写真の調整値をスライダーへ反映
+function syncControls() {
+  const item = curItem();
+  $('zoom').value = item ? Math.round(item.view.zoom * 100) : 100;
+}
+
+function renderThumbs() {
+  const box = $('thumbs');
+  box.innerHTML = '';
+  state.images.forEach((item, i) => {
+    const t = document.createElement('img');
+    t.src = item.raw.toDataURL('image/jpeg', 0.4);
+    if (i === state.cur) t.classList.add('sel');
+    t.onclick = () => { state.cur = i; syncControls(); renderThumbs(); buildFilterStrip(); render(); };
+    box.appendChild(t);
+  });
+}
+
+// ============ UIイベント ============
+document.querySelectorAll('.ratio-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.ratio-btn').forEach(b => b.classList.remove('sel'));
+    btn.classList.add('sel');
+    state.ratio = btn.dataset.ratio;
+    state.images.forEach(item => { item.view.ox = 0; item.view.oy = 0; }); // 縦横比が変わるので位置はリセット（ズームは維持）
+    render();
+  });
+});
+document.querySelectorAll('[data-tstyle]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('[data-tstyle]').forEach(b => b.classList.remove('sel'));
+    btn.classList.add('sel');
+    state.tstyle = btn.dataset.tstyle;
+    render();
+  });
+});
+document.querySelectorAll('[data-tpos]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('[data-tpos]').forEach(b => b.classList.remove('sel'));
+    btn.classList.add('sel');
+    state.tpos = btn.dataset.tpos;
+    render();
+  });
+});
+$('overlayText').addEventListener('input', render);
+$('zoom').addEventListener('input', e => {
+  const item = curItem();
+  if (!item) return;
+  item.view.zoom = e.target.value / 100;
+  render();
+});
+
+let dragging = false, lastX = 0, lastY = 0;
+preview.addEventListener('pointerdown', e => {
+  dragging = true; lastX = e.clientX; lastY = e.clientY;
+  preview.setPointerCapture(e.pointerId);
+});
+preview.addEventListener('pointermove', e => {
+  if (!dragging) return;
+  const item = curItem();
+  if (!item) return;
+  const rect = preview.getBoundingClientRect();
+  const scaleX = preview.width / rect.width;
+  item.view.ox += (e.clientX - lastX) * scaleX;
+  item.view.oy += (e.clientY - lastY) * scaleX;
+  lastX = e.clientX; lastY = e.clientY;
+  render();
+});
+preview.addEventListener('pointerup', () => dragging = false);
+preview.addEventListener('pointercancel', () => dragging = false);
+
+// ============ 写真に保存（iPhone対応：共有シート経由） ============
+function canvasBlob(canvas, q = 0.92) {
+  return new Promise(res => canvas.toBlob(res, 'image/jpeg', q));
+}
+async function saveBlobToPhotos(blob, filename) {
+  const file = new File([blob], filename, { type: 'image/jpeg' });
+  if (navigator.canShare && navigator.canShare({ files: [file] })) {
+    try {
+      await navigator.share({ files: [file] });
+      toast('共有シートの「画像を保存」で写真に入ります');
+      return;
+    } catch (e) {
+      if (e.name === 'AbortError') return; // ユーザーがキャンセル
+    }
+  }
+  // フォールバック（PC等）：ダウンロード
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = filename;
+  a.click();
+  setTimeout(() => URL.revokeObjectURL(a.href), 500);
+  toast('ダウンロードしました 📥');
+}
+
+$('save').addEventListener('click', async () => {
+  const item = curItem();
+  if (!item) return toast('先に写真を選んでください');
+  const src = getFiltered(item, state.filter);
+  const out = document.createElement('canvas');
+  drawTo(out, src, state.ratio, item.view.zoom, item.view.ox, item.view.oy);
+  const blob = await canvasBlob(out);
+  await saveBlobToPhotos(blob, `hygge_${RATIOS[state.ratio].label}_${item.name}.jpg`);
+});
+
+$('saveAll').addEventListener('click', async () => {
+  if (!state.images.length) return toast('先に写真を選んでください');
+  toast(`${state.images.length}枚を書き出し中…`);
+  const files = [];
+  for (const item of state.images) {
+    const src = getFiltered(item, state.filter);
+    const out = document.createElement('canvas');
+    drawTo(out, src, state.ratio, 1, 0, 0);
+    const blob = await canvasBlob(out);
+    files.push(new File([blob], `hygge_${RATIOS[state.ratio].label}_${item.name}.jpg`, { type: 'image/jpeg' }));
+  }
+  if (navigator.canShare && navigator.canShare({ files })) {
+    try {
+      await navigator.share({ files });
+      toast('共有シートの「画像を保存」で写真に入ります');
+      return;
+    } catch (e) { if (e.name === 'AbortError') return; }
+  }
+  for (const f of files) {
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(f);
+    a.download = f.name;
+    a.click();
+    await new Promise(r => setTimeout(r, 400));
+  }
+  toast('全部保存しました 📥');
+});
+
+let toastTimer;
+function toast(msg) {
+  const t = $('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('show'), 2600);
+}
+</script>
+</body>
+</html>
