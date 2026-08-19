@@ -468,6 +468,7 @@
     display: flex;
     flex-direction: column;
     cursor: default;
+    min-width: 0;
   }
   .prod-preparing {
     border: 1px dashed var(--line);
@@ -516,6 +517,7 @@
     line-height: 1.55;
     margin-bottom: 4px;
     word-break: keep-all;
+    overflow-wrap: anywhere;
   }
   .prod-name-en {
     font-family: 'Cormorant Garamond', serif;
@@ -1229,7 +1231,7 @@
     .hero-badge-main { font-size: 18px; }
     .hero-badge-sub { font-size: 11px; }
     .products  { padding: 48px 12px; }
-    .prod-grid { grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
+    .prod-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
     .prod-name { font-size: 12px; line-height: 1.45; }
     .prod-cat-badge { font-size: 10px; margin-bottom: 3px; }
     .prod-name-en { display: none; }
@@ -1404,58 +1406,299 @@
     </div>
     <div class="prod-grid">
       <div class="prod-item">
-        <div class="prod-img"><img src="prod-bikaku.webp" alt="ビカクシダ 板付け" loading="lazy"></div>
-        <div class="prod-cat-badge">ビカクシダ</div>
-        <div class="prod-name">ビカクシダ<br>板付け</div>
-        <div class="prod-name-en">Staghorn Fern</div>
+        <div class="prod-img"><img src="items/item-059.webp" alt="アロカシア・ニンジャ" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">アロカシア</div>
+        <div class="prod-name">アロカシア・ニンジャ</div>
       </div>
       <div class="prod-item">
-        <div class="prod-img"><img src="prod-staghorn.webp" alt="ビカクシダ 各種" loading="lazy"></div>
-        <div class="prod-cat-badge">ビカクシダ</div>
-        <div class="prod-name">ビカクシダ<br>各種</div>
-        <div class="prod-name-en">Staghorn Fern varieties</div>
-      </div>
-      <div class="prod-item">
-        <div class="prod-img"><img src="prod-alocasia.webp" alt="アンスリウム・ミニプランツ" loading="lazy"></div>
+        <div class="prod-img"><img src="items/item-060.webp" alt="アンスリウム" loading="lazy" decoding="async"></div>
         <div class="prod-cat-badge">アンスリウム</div>
-        <div class="prod-name">アンスリウム<br>ミニポット</div>
-        <div class="prod-name-en">Anthurium crystallinum</div>
+        <div class="prod-name">アンスリウム</div>
       </div>
       <div class="prod-item">
-        <div class="prod-img"><img src="prod-kokedama.webp" alt="苔玉 ハンギング" loading="lazy"></div>
-        <div class="prod-cat-badge">苔玉</div>
-        <div class="prod-name">苔玉<br>ハンギング</div>
-        <div class="prod-name-en">Hanging Moss Ball</div>
+        <div class="prod-img"><img src="items/item-061.webp" alt="アンスリウム・エクリプス" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">アンスリウム</div>
+        <div class="prod-name">アンスリウム<br>エクリプス</div>
       </div>
       <div class="prod-item">
-        <div class="prod-img"><img src="prod-gomu.webp" alt="ゴムの木 フィカス" loading="lazy"></div>
-        <div class="prod-cat-badge">フィカス</div>
-        <div class="prod-name">ゴムの木<br>フィカス</div>
-        <div class="prod-name-en">Ficus elastica</div>
+        <div class="prod-img"><img src="items/item-062.webp" alt="アンスリウム・クラリネルビウム" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">アンスリウム</div>
+        <div class="prod-name">アンスリウム<br>クラリネルビウム</div>
       </div>
       <div class="prod-item">
-        <div class="prod-img"><img src="prod-monstera.webp" alt="モンステラ" loading="lazy"></div>
-        <div class="prod-cat-badge">モンステラ</div>
-        <div class="prod-name">モンステラ<br>各種</div>
-        <div class="prod-name-en">Monstera</div>
+        <div class="prod-img"><img src="items/item-063.webp" alt="アンスリウム・シエラホワイト" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">アンスリウム</div>
+        <div class="prod-name">アンスリウム<br>シエラホワイト</div>
       </div>
       <div class="prod-item">
-        <div class="prod-img"><img src="prod-selloum.webp" alt="フィロデンドロン セローム" loading="lazy"></div>
-        <div class="prod-cat-badge">セローム</div>
-        <div class="prod-name">フィロデンドロン<br>セローム</div>
-        <div class="prod-name-en">Philodendron Selloum</div>
+        <div class="prod-img"><img src="items/item-064.webp" alt="アンスリウム・ドラヤキ・シルバーボール" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">アンスリウム</div>
+        <div class="prod-name">アンスリウム・ドラヤキ<br>シルバーボール</div>
       </div>
       <div class="prod-item">
-        <div class="prod-img"><img src="prod-tanikubu.webp" alt="多肉植物 寄せ植え" loading="lazy"></div>
-        <div class="prod-cat-badge">多肉植物</div>
-        <div class="prod-name">多肉植物<br>寄せ植え</div>
-        <div class="prod-name-en">Succulents</div>
+        <div class="prod-img"><img src="items/item-065.webp" alt="アンスリウム・フォルゲッティ" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">アンスリウム</div>
+        <div class="prod-name">アンスリウム<br>フォルゲッティ</div>
       </div>
       <div class="prod-item">
-        <div class="prod-img"><img src="prod-gajumaru.webp" alt="ガジュマル 曲がり仕立て" loading="lazy"></div>
+        <div class="prod-img"><img src="items/item-066.webp" alt="アンスリウム・ベイチー" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">アンスリウム</div>
+        <div class="prod-name">アンスリウム<br>ベイチー</div>
+      </div>
+      <div class="prod-item">
+        <div class="prod-img"><img src="items/item-067.webp" alt="カラテア・マコヤナ" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">カラテア</div>
+        <div class="prod-name">カラテア・マコヤナ</div>
+      </div>
+      <div class="prod-item">
+        <div class="prod-img"><img src="items/item-068.webp" alt="ガジュマル" loading="lazy" decoding="async"></div>
         <div class="prod-cat-badge">ガジュマル</div>
-        <div class="prod-name">ガジュマル<br>曲がり仕立て</div>
-        <div class="prod-name-en">Ficus microcarpa</div>
+        <div class="prod-name">ガジュマル</div>
+      </div>
+      <div class="prod-item">
+        <div class="prod-img"><img src="items/item-069.webp" alt="キサントソーマ・リンデニー" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">観葉植物</div>
+        <div class="prod-name">キサントソーマ<br>リンデニー</div>
+      </div>
+      <div class="prod-item">
+        <div class="prod-img"><img src="items/item-071.webp" alt="コウモリラン・ネザーランド" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">ビカクシダ</div>
+        <div class="prod-name">コウモリラン<br>ネザーランド</div>
+      </div>
+      <div class="prod-item">
+        <div class="prod-img"><img src="items/item-072.webp" alt="コニオグランメ・エメイエンシス" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">観葉植物</div>
+        <div class="prod-name">コニオグランメ<br>エメイエンシス</div>
+      </div>
+      <div class="prod-item">
+        <div class="prod-img"><img src="items/item-073.webp" alt="サボテン各種" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">多肉植物</div>
+        <div class="prod-name">サボテン各種</div>
+      </div>
+      <div class="prod-item">
+        <div class="prod-img"><img src="items/item-074.webp" alt="サンスベリア・エレンベルギー" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">サンスベリア</div>
+        <div class="prod-name">サンスベリア<br>エレンベルギー</div>
+      </div>
+      <div class="prod-item">
+        <div class="prod-img"><img src="items/item-075.webp" alt="サンスベリア・ハニーグリーン" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">サンスベリア</div>
+        <div class="prod-name">サンスベリア<br>ハニーグリーン</div>
+      </div>
+      <div class="prod-item">
+        <div class="prod-img"><img src="items/item-077.webp" alt="ストレリチア・レギネ" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">観葉植物</div>
+        <div class="prod-name">ストレリチア・レギネ</div>
+      </div>
+      <div class="prod-item">
+        <div class="prod-img"><img src="items/item-078.webp" alt="チランジア・ウスネオイデス" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">エアプランツ</div>
+        <div class="prod-name">チランジア<br>ウスネオイデス</div>
+      </div>
+      <div class="prod-item">
+        <div class="prod-img"><img src="items/item-079.webp" alt="チランジア・エーレルシアナ" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">エアプランツ</div>
+        <div class="prod-name">チランジア<br>エーレルシアナ</div>
+      </div>
+      <div class="prod-item">
+        <div class="prod-img"><img src="items/item-080.webp" alt="チランジア・オアハカーナ・スカポーサ" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">エアプランツ</div>
+        <div class="prod-name">チランジア<br>オアハカーナ・スカポーサ</div>
+      </div>
+      <div class="prod-item">
+        <div class="prod-img"><img src="items/item-081.webp" alt="チランジア・カプトメデューサ" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">エアプランツ</div>
+        <div class="prod-name">チランジア<br>カプトメデューサ</div>
+      </div>
+      <div class="prod-item">
+        <div class="prod-img"><img src="items/item-082.webp" alt="チランジア・ジュンシフォーリア" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">エアプランツ</div>
+        <div class="prod-name">チランジア<br>ジュンシフォーリア</div>
+      </div>
+      <div class="prod-item">
+        <div class="prod-img"><img src="items/item-083.webp" alt="チランジア・ハリシー" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">エアプランツ</div>
+        <div class="prod-name">チランジア・ハリシー</div>
+      </div>
+      <div class="prod-item">
+        <div class="prod-img"><img src="items/item-084.webp" alt="チランジア・ブラキカウロス" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">エアプランツ</div>
+        <div class="prod-name">チランジア<br>ブラキカウロス</div>
+      </div>
+      <div class="prod-item">
+        <div class="prod-img"><img src="items/item-085.webp" alt="チランジア各種" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">エアプランツ</div>
+        <div class="prod-name">チランジア各種</div>
+      </div>
+      <div class="prod-item">
+        <div class="prod-img"><img src="items/item-086.webp" alt="テーブルヤシ" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">観葉植物</div>
+        <div class="prod-name">テーブルヤシ</div>
+      </div>
+      <div class="prod-item">
+        <div class="prod-img"><img src="items/item-087.webp" alt="デンドロリュウム ジェキンシ" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">観葉植物</div>
+        <div class="prod-name">デンドロリュウム<br>ジェキンシ</div>
+      </div>
+      <div class="prod-item">
+        <div class="prod-img"><img src="items/item-090.webp" alt="ドラセナ・コンシンネ" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">ドラセナ</div>
+        <div class="prod-name">ドラセナ・コンシンネ</div>
+      </div>
+      <div class="prod-item">
+        <div class="prod-img"><img src="items/item-091.webp" alt="ドラセナ・ゴールディアナ" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">ドラセナ</div>
+        <div class="prod-name">ドラセナ<br>ゴールディアナ</div>
+      </div>
+      <div class="prod-item">
+        <div class="prod-img"><img src="items/item-092.webp" alt="ドラセナ・サンデリアーナ・ゴールド" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">ドラセナ</div>
+        <div class="prod-name">ドラセナ<br>サンデリアーナ・ゴールド</div>
+      </div>
+      <div class="prod-item">
+        <div class="prod-img"><img src="items/item-093.webp" alt="ドラセナ・サンデリアーナ・ホワイト" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">ドラセナ</div>
+        <div class="prod-name">ドラセナ<br>サンデリアーナ・ホワイト</div>
+      </div>
+      <div class="prod-item">
+        <div class="prod-img"><img src="items/item-094.webp" alt="ハオルチア" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">多肉植物</div>
+        <div class="prod-name">ハオルチア</div>
+      </div>
+      <div class="prod-item">
+        <div class="prod-img"><img src="items/item-095.webp" alt="パキラ（カラーサンド）" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">観葉植物</div>
+        <div class="prod-name">パキラ（カ<br>ラーサンド）</div>
+      </div>
+      <div class="prod-item">
+        <div class="prod-img"><img src="items/item-096.webp" alt="ビカクシダ アルシコルネ" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">ビカクシダ</div>
+        <div class="prod-name">ビカクシダ<br>アルシコルネ</div>
+      </div>
+      <div class="prod-item">
+        <div class="prod-img"><img src="items/item-097.webp" alt="ビカクシダ ウィリンキーOMG" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">ビカクシダ</div>
+        <div class="prod-name">ビカクシダ<br>ウィリンキーOMG</div>
+      </div>
+      <div class="prod-item">
+        <div class="prod-img"><img src="items/item-098.webp" alt="ビカクシダ ウィリンキーナノ" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">ビカクシダ</div>
+        <div class="prod-name">ビカクシダ<br>ウィリンキーナノ</div>
+      </div>
+      <div class="prod-item">
+        <div class="prod-img"><img src="items/item-099.webp" alt="ビカクシダ コロナリウム" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">ビカクシダ</div>
+        <div class="prod-name">ビカクシダ<br>コロナリウム</div>
+      </div>
+      <div class="prod-item">
+        <div class="prod-img"><img src="items/item-100.webp" alt="ビカクシダ バーナンド 苔玉" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">ビカクシダ</div>
+        <div class="prod-name">ビカクシダ<br>バーナンド 苔玉</div>
+      </div>
+      <div class="prod-item">
+        <div class="prod-img"><img src="items/item-101.webp" alt="ビカクシダ マウントルイス" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">ビカクシダ</div>
+        <div class="prod-name">ビカクシダ<br>マウントルイス</div>
+      </div>
+      <div class="prod-item">
+        <div class="prod-img"><img src="items/item-102.webp" alt="ビカクシダ各種" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">ビカクシダ</div>
+        <div class="prod-name">ビカクシダ各種</div>
+      </div>
+      <div class="prod-item">
+        <div class="prod-img"><img src="items/item-103.webp" alt="ビカクシダ苔玉（吊り）" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">ビカクシダ</div>
+        <div class="prod-name">ビカクシダ<br>苔玉（吊り）</div>
+      </div>
+      <div class="prod-item">
+        <div class="prod-img"><img src="items/item-104.webp" alt="フィカス・ウンベラータ" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">フィカス</div>
+        <div class="prod-name">フィカス<br>ウンベラータ</div>
+      </div>
+      <div class="prod-item">
+        <div class="prod-img"><img src="items/item-105.webp" alt="フィカス・ソフィア" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">フィカス</div>
+        <div class="prod-name">フィカス・ソフィア</div>
+      </div>
+      <div class="prod-item">
+        <div class="prod-img"><img src="items/item-106.webp" alt="フィカス・バーガンディ" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">フィカス</div>
+        <div class="prod-name">フィカス<br>バーガンディ</div>
+      </div>
+      <div class="prod-item">
+        <div class="prod-img"><img src="items/item-107.webp" alt="フィカス・ベンガレンシス" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">フィカス</div>
+        <div class="prod-name">フィカス<br>ベンガレンシス</div>
+      </div>
+      <div class="prod-item">
+        <div class="prod-img"><img src="items/item-108.webp" alt="フィカス・ペティオラリス" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">フィカス</div>
+        <div class="prod-name">フィカス<br>ペティオラリス</div>
+      </div>
+      <div class="prod-item">
+        <div class="prod-img"><img src="items/item-109.webp" alt="フィカス・ルビギノーサ" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">フィカス</div>
+        <div class="prod-name">フィカス<br>ルビギノーサ</div>
+      </div>
+      <div class="prod-item">
+        <div class="prod-img"><img src="items/item-110.webp" alt="フィカス・ルビー" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">フィカス</div>
+        <div class="prod-name">フィカス・ルビー</div>
+      </div>
+      <div class="prod-item">
+        <div class="prod-img"><img src="items/item-111.webp" alt="フィロデンドロン・バーキン" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">フィロデンドロン</div>
+        <div class="prod-name">フィロデンドロン<br>バーキン</div>
+      </div>
+      <div class="prod-item">
+        <div class="prod-img"><img src="items/item-112.webp" alt="フィロデンドロン・ピンクプリンセス" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">フィロデンドロン</div>
+        <div class="prod-name">フィロデンドロン<br>ピンクプリンセス</div>
+      </div>
+      <div class="prod-item">
+        <div class="prod-img"><img src="items/item-113.webp" alt="フィロデンドロン（斑入り）" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">フィロデンドロン</div>
+        <div class="prod-name">フィロデンド<br>ロン（斑入り）</div>
+      </div>
+      <div class="prod-item">
+        <div class="prod-img"><img src="items/item-116.webp" alt="ベンジャミン（斑入り）" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">フィカス</div>
+        <div class="prod-name">ベンジャミ<br>ン（斑入り）</div>
+      </div>
+      <div class="prod-item">
+        <div class="prod-img"><img src="items/item-117.webp" alt="ポトス・ライム" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">ポトス</div>
+        <div class="prod-name">ポトス・ライム</div>
+      </div>
+      <div class="prod-item">
+        <div class="prod-img"><img src="items/item-118.webp" alt="ポリシャス・ファビアン" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">観葉植物</div>
+        <div class="prod-name">ポリシャス<br>ファビアン</div>
+      </div>
+      <div class="prod-item">
+        <div class="prod-img"><img src="items/item-121.webp" alt="モンステラ・オブリクア" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">モンステラ</div>
+        <div class="prod-name">モンステラ<br>オブリクア</div>
+      </div>
+      <div class="prod-item">
+        <div class="prod-img"><img src="items/item-122.webp" alt="モンステラ・タイコンステレーション" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">モンステラ</div>
+        <div class="prod-name">モンステラ<br>タイコンステレーション</div>
+      </div>
+      <div class="prod-item">
+        <div class="prod-img"><img src="items/item-123.webp" alt="モンステラ・デリシオーサ" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">モンステラ</div>
+        <div class="prod-name">モンステラ<br>デリシオーサ</div>
+      </div>
+      <div class="prod-item">
+        <div class="prod-img"><img src="items/item-125.webp" alt="多肉植物（エケベリア各種）" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">多肉植物</div>
+        <div class="prod-name">多肉植物（エ<br>ケベリア各種）</div>
+      </div>
+      <div class="prod-item">
+        <div class="prod-img"><img src="items/item-126.webp" alt="苔玉（コニオグランメ・エメイエンシス他）" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">苔玉</div>
+        <div class="prod-name">苔玉（コニオグランメ<br>エメイエンシス他）</div>
       </div>
     </div>
   </div>
@@ -1471,15 +1714,315 @@
     </div>
     <div class="prod-grid">
       <div class="prod-item">
-        <div class="prod-img"><img src="prod-pot.webp" alt="アーバンプランツポット 陶器鉢" loading="lazy"></div>
-        <div class="prod-cat-badge">プランター</div>
-        <div class="prod-name">プランター<br>鉢・カバー</div>
-        <div class="prod-name-en">Planters & Pots</div>
+        <div class="prod-img"><img src="items/item-001.webp" alt="ANGLE SLASH HAND MUG" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">雑貨</div>
+        <div class="prod-name">ANGLE SLASH<br>HAND MUG</div>
       </div>
-    </div>
-    <div class="prod-preparing">
-      <p class="prod-preparing-main">その他の商品写真は準備中です</p>
-      <p class="prod-preparing-sub">入荷状況に合わせて、随時更新していきます。</p>
+      <div class="prod-item">
+        <div class="prod-img"><img src="items/item-002.webp" alt="BOTANY ガルバナイズド ラウンドトレイ" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">インテリア雑貨</div>
+        <div class="prod-name">BOTANY ガルバナイズド<br>ラウンドトレイ</div>
+      </div>
+      <div class="prod-item">
+        <div class="prod-img"><img src="items/item-003.webp" alt="BRID GENERAL ダクトレールファン" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">インテリア雑貨</div>
+        <div class="prod-name">BRID GENERAL<br>ダクトレールファン</div>
+      </div>
+      <div class="prod-item">
+        <div class="prod-img"><img src="items/item-004.webp" alt="Charles muguet ソラフラワー アレンジ" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">フラワー</div>
+        <div class="prod-name">Charles muguet<br>ソラフラワー アレンジ</div>
+      </div>
+      <div class="prod-item">
+        <div class="prod-img"><img src="items/item-005.webp" alt="Creer Dusaule ハンギングポットカバー" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">プランター</div>
+        <div class="prod-name">Creer Dusaule<br>ハンギングポットカバー</div>
+      </div>
+      <div class="prod-item">
+        <div class="prod-img"><img src="items/item-006.webp" alt="Creer Dusaule ラウンドバスケット ロー" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">インテリア雑貨</div>
+        <div class="prod-name">Creer Dusaule<br>ラウンドバスケット ロー</div>
+      </div>
+      <div class="prod-item">
+        <div class="prod-img"><img src="items/item-007.webp" alt="Creer Dusaule レクトバスケット" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">インテリア雑貨</div>
+        <div class="prod-name">Creer Dusaule<br>レクトバスケット</div>
+      </div>
+      <div class="prod-item">
+        <div class="prod-img"><img src="items/item-008.webp" alt="Creer alten Key Stand" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">インテリア雑貨</div>
+        <div class="prod-name">Creer alten<br>Key Stand</div>
+      </div>
+      <div class="prod-item">
+        <div class="prod-img"><img src="items/item-009.webp" alt="Creer alten アクセサリースタンド ハイ" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">インテリア雑貨</div>
+        <div class="prod-name">Creer alten<br>アクセサリースタンド ハイ</div>
+      </div>
+      <div class="prod-item">
+        <div class="prod-img"><img src="items/item-010.webp" alt="Creer インダストリアル フックスタンダード(2個セット)" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">インテリア雑貨</div>
+        <div class="prod-name">Creer インダストリアル<br>フックスタンダード(2個セット)</div>
+      </div>
+      <div class="prod-item">
+        <div class="prod-img"><img src="items/item-011.webp" alt="DULTON 12パーテーション ウッデンボックス" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">インテリア雑貨</div>
+        <div class="prod-name">DULTON 12パーテーション<br>ウッデンボックス</div>
+      </div>
+      <div class="prod-item">
+        <div class="prod-img"><img src="items/item-012.webp" alt="DULTON アラームクロック（各色）" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">インテリア雑貨</div>
+        <div class="prod-name">DULTON<br>アラームクロック（各色）</div>
+      </div>
+      <div class="prod-item">
+        <div class="prod-img"><img src="items/item-013.webp" alt="DULTON シリンダー型ポット M" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">インテリア雑貨</div>
+        <div class="prod-name">DULTON<br>シリンダー型ポット M</div>
+      </div>
+      <div class="prod-item">
+        <div class="prod-img"><img src="items/item-014.webp" alt="DULTON シリンダー型ポット XS" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">インテリア雑貨</div>
+        <div class="prod-name">DULTON<br>シリンダー型ポット XS</div>
+      </div>
+      <div class="prod-item">
+        <div class="prod-img"><img src="items/item-015.webp" alt="DULTON ソリッドプランター キューブS プレーン" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">インテリア雑貨</div>
+        <div class="prod-name">DULTON ソリッドプランター<br>キューブS プレーン</div>
+      </div>
+      <div class="prod-item">
+        <div class="prod-img"><img src="items/item-016.webp" alt="DULTON ソリッドプランター レクタングルS プレーン" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">インテリア雑貨</div>
+        <div class="prod-name">DULTON ソリッドプランター<br>レクタングルS プレーン</div>
+      </div>
+      <div class="prod-item">
+        <div class="prod-img"><img src="items/item-017.webp" alt="DULTON ソリッドプランター レクタングル" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">インテリア雑貨</div>
+        <div class="prod-name">DULTON<br>ソリッドプランター レクタングル</div>
+      </div>
+      <div class="prod-item">
+        <div class="prod-img"><img src="items/item-018.webp" alt="DULTON テーブルトップミラー ラウンド" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">インテリア雑貨</div>
+        <div class="prod-name">DULTON<br>テーブルトップミラー ラウンド</div>
+      </div>
+      <div class="prod-item">
+        <div class="prod-img"><img src="items/item-019.webp" alt="DULTON(BONOX) ウォールクロック" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">インテリア雑貨</div>
+        <div class="prod-name">DULTON(BONOX)<br>ウォールクロック</div>
+      </div>
+      <div class="prod-item">
+        <div class="prod-img"><img src="items/item-020.webp" alt="GONESH SENKO ¥880・POST GENERAL ブラスインセンスホルダー ¥3,960" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">フレグランス</div>
+        <div class="prod-name">GONESH SENKO ¥880<br>POST GENERAL ブラスインセンスホルダー ¥3,960</div>
+      </div>
+      <div class="prod-item">
+        <div class="prod-img"><img src="items/item-021.webp" alt="GONESH SENKO お香（各種）" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">フレグランス</div>
+        <div class="prod-name">GONESH<br>SENKO お香（各種）</div>
+      </div>
+      <div class="prod-item">
+        <div class="prod-img"><img src="items/item-022.webp" alt="KINTO SCS コーヒーキャニスター 600ml" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">コーヒー用品</div>
+        <div class="prod-name">KINTO SCS<br>コーヒーキャニスター 600ml</div>
+      </div>
+      <div class="prod-item">
+        <div class="prod-img"><img src="items/item-023.webp" alt="KINTO ウォーターボトル" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">コーヒー用品</div>
+        <div class="prod-name">KINTO<br>ウォーターボトル</div>
+      </div>
+      <div class="prod-item">
+        <div class="prod-img"><img src="items/item-024.webp" alt="KINTO エスプレッソカップ" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">コーヒー用品</div>
+        <div class="prod-name">KINTO<br>エスプレッソカップ</div>
+      </div>
+      <div class="prod-item">
+        <div class="prod-img"><img src="items/item-025.webp" alt="KINTO ケトル 900ml" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">コーヒー用品</div>
+        <div class="prod-name">KINTO<br>ケトル 900ml</div>
+      </div>
+      <div class="prod-item">
+        <div class="prod-img"><img src="items/item-026.webp" alt="KINTO コットンペーパーフィルター" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">コーヒー用品</div>
+        <div class="prod-name">KINTO<br>コットンペーパーフィルター</div>
+      </div>
+      <div class="prod-item">
+        <div class="prod-img"><img src="items/item-027.webp" alt="KINTO コーヒーカップ" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">コーヒー用品</div>
+        <div class="prod-name">KINTO<br>コーヒーカップ</div>
+      </div>
+      <div class="prod-item">
+        <div class="prod-img"><img src="items/item-028.webp" alt="KINTO コーヒーカラフェセット" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">コーヒー用品</div>
+        <div class="prod-name">KINTO<br>コーヒーカラフェセット</div>
+      </div>
+      <div class="prod-item">
+        <div class="prod-img"><img src="items/item-029.webp" alt="KINTO コーヒージャグ ¥1,210・コーヒーサーバー ¥5,940" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">コーヒー用品</div>
+        <div class="prod-name">KINTO コーヒージャグ ¥1,210<br>コーヒーサーバー ¥5,940</div>
+      </div>
+      <div class="prod-item">
+        <div class="prod-img"><img src="items/item-030.webp" alt="KINTO コーヒーメジャースプーン" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">コーヒー用品</div>
+        <div class="prod-name">KINTO<br>コーヒーメジャースプーン</div>
+      </div>
+      <div class="prod-item">
+        <div class="prod-img"><img src="items/item-031.webp" alt="KINTO トラベルタンブラー 500ml" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">コーヒー用品</div>
+        <div class="prod-name">KINTO<br>トラベルタンブラー 500ml</div>
+      </div>
+      <div class="prod-item">
+        <div class="prod-img"><img src="items/item-032.webp" alt="KINTO ブリューワー" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">コーヒー用品</div>
+        <div class="prod-name">KINTO<br>ブリューワー</div>
+      </div>
+      <div class="prod-item">
+        <div class="prod-img"><img src="items/item-033.webp" alt="KINTO ブリューワースタンドセット" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">コーヒー用品</div>
+        <div class="prod-name">KINTO<br>ブリューワースタンドセット</div>
+      </div>
+      <div class="prod-item">
+        <div class="prod-img"><img src="items/item-034.webp" alt="KINTO ペーパーフィルタースタンド" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">コーヒー用品</div>
+        <div class="prod-name">KINTO<br>ペーパーフィルタースタンド</div>
+      </div>
+      <div class="prod-item">
+        <div class="prod-img"><img src="items/item-035.webp" alt="KINTO ホルダー" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">コーヒー用品</div>
+        <div class="prod-name">KINTO ホルダー</div>
+      </div>
+      <div class="prod-item">
+        <div class="prod-img"><img src="items/item-036.webp" alt="KINTO マグ" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">コーヒー用品</div>
+        <div class="prod-name">KINTO マグ</div>
+      </div>
+      <div class="prod-item">
+        <div class="prod-img"><img src="items/item-037.webp" alt="Kontex MOKU ライトタオル" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">タオル</div>
+        <div class="prod-name">Kontex<br>MOKU ライトタオル</div>
+      </div>
+      <div class="prod-item">
+        <div class="prod-img"><img src="items/item-038.webp" alt="POSH LIVING アーバンプランツポット（各種）" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">プランター</div>
+        <div class="prod-name">POSH LIVING<br>アーバンプランツポット（各種）</div>
+      </div>
+      <div class="prod-item">
+        <div class="prod-img"><img src="items/item-039.webp" alt="POSH LIVING ダルミーポット" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">プランター</div>
+        <div class="prod-name">POSH LIVING<br>ダルミーポット</div>
+      </div>
+      <div class="prod-item">
+        <div class="prod-img"><img src="items/item-040.webp" alt="POSH LIVING ハンギングボックス" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">プランター</div>
+        <div class="prod-name">POSH LIVING<br>ハンギングボックス</div>
+      </div>
+      <div class="prod-item">
+        <div class="prod-img"><img src="items/item-041.webp" alt="THE SCENTED HOME センテッドサシェ" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">フレグランス</div>
+        <div class="prod-name">THE SCENTED<br>HOME センテッドサシェ</div>
+      </div>
+      <div class="prod-item">
+        <div class="prod-img"><img src="items/item-042.webp" alt="THE SCENTED HOME センテッドサシェ（全6種）" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">フレグランス</div>
+        <div class="prod-name">THE SCENTED HOME<br>センテッドサシェ（全6種）</div>
+      </div>
+      <div class="prod-item">
+        <div class="prod-img"><img src="items/item-043.webp" alt="THE SCENTED HOME センテッドサシェ（各香り）" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">フレグランス</div>
+        <div class="prod-name">THE SCENTED HOME<br>センテッドサシェ（各香り）</div>
+      </div>
+      <div class="prod-item">
+        <div class="prod-img"><img src="items/item-044.webp" alt="The Velvet Tray" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">インテリア雑貨</div>
+        <div class="prod-name">The Velvet<br>Tray</div>
+      </div>
+      <div class="prod-item">
+        <div class="prod-img"><img src="items/item-045.webp" alt="aito なっとうボウル" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">食器</div>
+        <div class="prod-name">aito<br>なっとうボウル</div>
+      </div>
+      <div class="prod-item">
+        <div class="prod-img"><img src="items/item-046.webp" alt="aito グレインプレート L BR" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">食器</div>
+        <div class="prod-name">aito<br>グレインプレート L BR</div>
+      </div>
+      <div class="prod-item">
+        <div class="prod-img"><img src="items/item-047.webp" alt="artipur COTTAGE シェルキャニスター" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">インテリア雑貨</div>
+        <div class="prod-name">artipur COTTAGE<br>シェルキャニスター</div>
+      </div>
+      <div class="prod-item">
+        <div class="prod-img"><img src="items/item-048.webp" alt="charles muguet お盆に咲く花（メモリアルフォトフレーム他）" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">フラワー</div>
+        <div class="prod-name">charles muguet<br>お盆に咲く花（メモリアルフォトフレーム他）</div>
+      </div>
+      <div class="prod-item">
+        <div class="prod-img"><img src="items/item-049.webp" alt="charles muguet グラスフラワー リフレッシュオイルセット" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">フラワー</div>
+        <div class="prod-name">charles muguet<br>グラスフラワー リフレッシュオイルセット</div>
+      </div>
+      <div class="prod-item">
+        <div class="prod-img"><img src="items/item-050.webp" alt="charles muguet ディフューザー液 香り&amp;カラー30ml" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">フラワー</div>
+        <div class="prod-name">charles muguet<br>ディフューザー液 香り&amp;カラー30ml</div>
+      </div>
+      <div class="prod-item">
+        <div class="prod-img"><img src="items/item-051.webp" alt="charles muguet ディフューザー液・フラワーローブセット" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">フラワー</div>
+        <div class="prod-name">charles muguet ディフューザー液<br>フラワーローブセット</div>
+      </div>
+      <div class="prod-item">
+        <div class="prod-img"><img src="items/item-052.webp" alt="charles muguet フラワー・ローブ" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">フラワー</div>
+        <div class="prod-name">charles muguet フラワー<br>ローブ</div>
+      </div>
+      <div class="prod-item">
+        <div class="prod-img"><img src="items/item-053.webp" alt="charles muguet 暮らしに咲く一輪 POP" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">フラワー</div>
+        <div class="prod-name">charles muguet<br>暮らしに咲く一輪 POP</div>
+      </div>
+      <div class="prod-item">
+        <div class="prod-img"><img src="items/item-054.webp" alt="charles muguet 暮らしに咲く一輪 ソラフラワー花器セット" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">フラワー</div>
+        <div class="prod-name">charles muguet<br>暮らしに咲く一輪 ソラフラワー花器セット</div>
+      </div>
+      <div class="prod-item">
+        <div class="prod-img"><img src="items/item-055.webp" alt="charles muguet 暮らしに咲く一輪 ソラフラワー花瓶セット" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">フラワー</div>
+        <div class="prod-name">charles muguet<br>暮らしに咲く一輪 ソラフラワー花瓶セット</div>
+      </div>
+      <div class="prod-item">
+        <div class="prod-img"><img src="items/item-056.webp" alt="charles muguet 食卓に咲く花 ミニアレンジ" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">フラワー</div>
+        <div class="prod-name">charles muguet<br>食卓に咲く花 ミニアレンジ</div>
+      </div>
+      <div class="prod-item">
+        <div class="prod-img"><img src="items/item-057.webp" alt="petit coeur 鼻ぺちゃ Food bowl" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">ペット用品</div>
+        <div class="prod-name">petit coeur<br>鼻ぺちゃ Food bowl</div>
+      </div>
+      <div class="prod-item">
+        <div class="prod-img"><img src="items/item-058.webp" alt="お香立て・蚊遣りセット" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">フレグランス</div>
+        <div class="prod-name">お香立て<br>蚊遣りセット</div>
+      </div>
+      <div class="prod-item">
+        <div class="prod-img"><img src="items/item-070.webp" alt="クリエ シナリー モチーフトレイ" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">食器</div>
+        <div class="prod-name">クリエ シナリー<br>モチーフトレイ</div>
+      </div>
+      <div class="prod-item">
+        <div class="prod-img"><img src="items/item-089.webp" alt="ドライフラワーリース" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">フラワー</div>
+        <div class="prod-name">ドライフラワーリース</div>
+      </div>
+      <div class="prod-item">
+        <div class="prod-img"><img src="items/item-115.webp" alt="ブリキ ハンドル付バスケット M" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">かご・バスケット</div>
+        <div class="prod-name">ブリキ<br>ハンドル付バスケット M</div>
+      </div>
+      <div class="prod-item">
+        <div class="prod-img"><img src="items/item-119.webp" alt="マグ" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">食器</div>
+        <div class="prod-name">マグ</div>
+      </div>
     </div>
   </div>
 
@@ -1507,9 +2050,32 @@
       </div>
       <div class="cat-note">⚠ 在庫は日により変動します</div>
     </div>
-    <div class="prod-preparing">
-      <p class="prod-preparing-main">商品写真は準備中です</p>
-      <p class="prod-preparing-sub">入荷状況に合わせて、随時更新していきます。</p>
+    <div class="prod-grid">
+      <div class="prod-item">
+        <div class="prod-img"><img src="items/item-076.webp" alt="シェルフ" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">雑貨</div>
+        <div class="prod-name">シェルフ</div>
+      </div>
+      <div class="prod-item">
+        <div class="prod-img"><img src="items/item-088.webp" alt="トイレットペーパーホルダー（真鍮）" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">雑貨</div>
+        <div class="prod-name">トイレットペーパ<br>ーホルダー（真鍮）</div>
+      </div>
+      <div class="prod-item">
+        <div class="prod-img"><img src="items/item-114.webp" alt="ブラケット M" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">雑貨</div>
+        <div class="prod-name">ブラケット M</div>
+      </div>
+      <div class="prod-item">
+        <div class="prod-img"><img src="items/item-120.webp" alt="マルチバー" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">雑貨</div>
+        <div class="prod-name">マルチバー</div>
+      </div>
+      <div class="prod-item">
+        <div class="prod-img"><img src="items/item-124.webp" alt="ルームバー" loading="lazy" decoding="async"></div>
+        <div class="prod-cat-badge">雑貨</div>
+        <div class="prod-name">ルームバー</div>
+      </div>
     </div>
   </div>
 
@@ -1536,6 +2102,13 @@
     <div class="store-item"><img src="shop-10.webp" alt="ベンチと観葉植物" loading="lazy"></div>
     <div class="store-item"><img src="shop-11.webp" alt="テラス席" loading="lazy"></div>
     <div class="store-item"><img src="shop-12.webp" alt="シンボルツリーとベンチ" loading="lazy"></div>
+    <div class="store-item"><img src="shop-13.webp" alt="店内の様子" loading="lazy" decoding="async"></div>
+    <div class="store-item"><img src="shop-14.webp" alt="店内の様子" loading="lazy" decoding="async"></div>
+    <div class="store-item"><img src="shop-15.webp" alt="店内の様子" loading="lazy" decoding="async"></div>
+    <div class="store-item"><img src="shop-16.webp" alt="店内の様子" loading="lazy" decoding="async"></div>
+    <div class="store-item"><img src="shop-17.webp" alt="店内の様子" loading="lazy" decoding="async"></div>
+    <div class="store-item"><img src="shop-18.webp" alt="店内の様子" loading="lazy" decoding="async"></div>
+    <div class="store-item"><img src="shop-19.webp" alt="店内の様子" loading="lazy" decoding="async"></div>
   </div>
 </section>
 
