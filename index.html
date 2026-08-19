@@ -419,6 +419,66 @@
     font-weight: 600;
   }
 
+  /* ---- 商品の段階表示（もっと見る） ---- */
+  .prod-item.is-hidden { display: none; }
+  .cat-tab-count {
+    display: inline-block;
+    margin-left: 7px;
+    font-size: 11.5px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--text-light);
+    vertical-align: 1px;
+  }
+  .cat-tab.active .cat-tab-count { color: var(--moss); }
+  .prod-more-wrap {
+    position: relative;
+    margin-top: -18px;
+    padding-top: 44px;
+    text-align: center;
+    pointer-events: none;
+    background: linear-gradient(to bottom,
+      rgba(251,247,239,0) 0%, var(--warm-white) 38%);
+  }
+  .prod-more {
+    pointer-events: auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 17px 42px;
+    border: none;
+    border-radius: 999px;
+    background: var(--yellow);
+    color: var(--text-dark);
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 15.5px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    cursor: pointer;
+    box-shadow: 0 6px 20px rgba(180,150,20,0.28);
+    transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+  }
+  .prod-more:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 26px rgba(180,150,20,0.36);
+  }
+  .prod-more:active { transform: translateY(0); }
+  .prod-more-rest {
+    font-size: 13px;
+    font-weight: 600;
+    padding: 3px 11px;
+    border-radius: 999px;
+    background: rgba(44,44,44,0.13);
+    letter-spacing: 0.02em;
+  }
+  .prod-more-arrow { font-size: 12px; line-height: 1; }
+  .prod-more-wrap.is-done { display: none; }
+  @media (max-width: 767px) {
+    .prod-more-wrap { margin-top: -14px; padding-top: 34px; }
+    .prod-more { padding: 15px 26px; font-size: 14px; gap: 9px; }
+    .prod-more-rest { font-size: 12px; padding: 2px 9px; }
+  }
+
   /* Category Panel */
   .cat-panel { display: none; }
   .cat-panel.active { display: block; }
@@ -1387,10 +1447,10 @@
 
   <!-- TABS -->
   <div class="cat-tabs reveal">
-    <button class="cat-tab active" data-tab="plants">植物</button>
-    <button class="cat-tab" data-tab="zakka">雑貨</button>
+    <button class="cat-tab active" data-tab="plants">植物<span class="cat-tab-count">59</span></button>
+    <button class="cat-tab" data-tab="zakka">雑貨<span class="cat-tab-count">62</span></button>
     <button class="cat-tab" data-tab="light">照明</button>
-    <button class="cat-tab" data-tab="diy">DIY用品</button>
+    <button class="cat-tab" data-tab="diy">DIY用品<span class="cat-tab-count">5</span></button>
   </div>
 
   <!-- PANEL: PLANTS -->
@@ -2302,6 +2362,42 @@
       document.querySelectorAll('.cat-panel').forEach(p => p.classList.remove('active'));
       tab.classList.add('active');
       document.getElementById('panel-' + tab.dataset.tab).classList.add('active');
+    });
+  });
+
+  // 商品グリッドの段階表示（初期12点 → 「もっと見る」で12点ずつ）
+  const PROD_STEP = 12;
+  document.querySelectorAll('.cat-panel').forEach(panel => {
+    const grid = panel.querySelector('.prod-grid');
+    if (!grid) return;
+    const items = [...grid.querySelectorAll('.prod-item')];
+    if (items.length <= PROD_STEP) return;
+
+    let shown = PROD_STEP;
+    items.slice(shown).forEach(el => el.classList.add('is-hidden'));
+
+    const wrap = document.createElement('div');
+    wrap.className = 'prod-more-wrap';
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'prod-more';
+    wrap.appendChild(btn);
+    grid.insertAdjacentElement('afterend', wrap);
+
+    const render = () => {
+      const rest = items.length - shown;
+      btn.innerHTML = rest > PROD_STEP
+        ? 'もっと見る <span class="prod-more-rest">あと' + rest + '点</span> <span class="prod-more-arrow">▼</span>'
+        : '残り' + rest + '点をすべて見る <span class="prod-more-arrow">▼</span>';
+    };
+    render();
+
+    btn.addEventListener('click', () => {
+      const next = items.slice(shown, shown + PROD_STEP);
+      next.forEach(el => el.classList.remove('is-hidden'));
+      shown += next.length;
+      if (shown >= items.length) { wrap.classList.add('is-done'); return; }
+      render();
     });
   });
 
