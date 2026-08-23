@@ -955,6 +955,24 @@
   }
   .info-val { color: var(--text-dark); font-weight: 400; }
   .info-val a { color: inherit; text-decoration: none; }
+  /* 決済ブランド */
+  .pay-block { margin-top: 26px; }
+  .pay-head {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 10px; letter-spacing: 0.16em; color: var(--moss);
+    font-weight: 600; margin: 0 0 10px;
+  }
+  .pay-group { margin-bottom: 14px; }
+  .pay-group-label { font-size: 11px; color: var(--text-light); letter-spacing: 0.04em; margin-bottom: 7px; }
+  .pay-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+  .pay-chip {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: #fff; border: 1px solid var(--line); border-radius: 6px;
+    padding: 6px 10px; font-size: 11.5px; letter-spacing: 0.02em;
+    color: var(--text-mid); line-height: 1; white-space: nowrap;
+  }
+  .pay-chip i { width: 7px; height: 7px; border-radius: 50%; flex: none; display: block; }
+  .pay-note { font-size: 11px; color: var(--text-light); margin: 4px 0 0; line-height: 1.8; }
   .map-wrap { overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.07); }
   .map-wrap iframe { width: 100%; height: 300px; border: none; display: block; }
   .sns-links {
@@ -2222,8 +2240,21 @@
         <div class="info-row"><div class="info-label">TEL</div><div class="info-val"><a href="tel:0962859061">096-285-9061</a></div></div>
         <div class="info-row"><div class="info-label">HOURS</div><div class="info-val">11:00 – 17:00</div></div>
         <div class="info-row"><div class="info-label">CLOSED</div><div class="info-val">水曜日・土曜日</div></div>
-        <div class="info-row"><div class="info-label">PAYMENT</div><div class="info-val">現金 / クレジットカード / QRコード決済</div></div>
-        <div class="info-row"><div class="info-label">OPEN</div><div class="info-val" style="color:var(--gold);font-weight:400;">2026年7月9日（木）オープン</div></div>
+      </div>
+      <div class="pay-block reveal">
+        <p class="pay-head">PAYMENT</p>
+        <div class="pay-group">
+          <div class="pay-group-label">現金</div>
+          <div class="pay-chips"><span class="pay-chip"><i style="background:var(--moss)"></i>現金</span></div>
+        </div>
+        <div class="pay-group">
+          <div class="pay-group-label">クレジットカード</div>
+          <div class="pay-chips"><span class="pay-chip"><i style="background:#1A1F71"></i>VISA</span><span class="pay-chip"><i style="background:#EB001B"></i>Mastercard</span><span class="pay-chip"><i style="background:#006FCF"></i>American Express</span><span class="pay-chip"><i style="background:#0B4EA2"></i>JCB</span><span class="pay-chip"><i style="background:#0079BE"></i>Diners Club</span><span class="pay-chip"><i style="background:#FF6000"></i>DISCOVER</span></div>
+        </div>
+        <div class="pay-group">
+          <div class="pay-group-label">QRコード決済</div>
+          <div class="pay-chips"><span class="pay-chip"><i style="background:#FF0033"></i>PayPay</span><span class="pay-chip"><i style="background:#BF0000"></i>楽天ペイ</span><span class="pay-chip"><i style="background:#EB5505"></i>au PAY</span><span class="pay-chip"><i style="background:#CC0033"></i>d払い</span><span class="pay-chip"><i style="background:#FF0211"></i>メルペイ</span><span class="pay-chip"><i style="background:#07C160"></i>WeChat Pay</span><span class="pay-chip"><i style="background:#1677FF"></i>Alipay+</span></div>
+        </div>
       </div>
       <div class="sns-links reveal reveal-d1">
         <a href="https://www.instagram.com/hygge_kumamoto" target="_blank" class="sns-link">
