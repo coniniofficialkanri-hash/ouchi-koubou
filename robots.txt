@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /blog/index_static_backup.html
+
+Sitemap: https://hygge-kumamoto.com/sitemap.xml

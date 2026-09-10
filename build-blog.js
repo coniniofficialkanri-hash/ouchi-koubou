@@ -14,7 +14,7 @@ const path = require('path');
 
 // ---- 設定 ----------------------------------------------------
 const GAS_URL  = 'https://script.google.com/macros/s/AKfycbyWDymEg-5fa75qh0o-NYM8e3T667Qcugv1j27nITZHYDI3gPc1XJkZ0Bm9QdgeDOta/exec';
-const SITE_URL = 'https://example.com';            // ★本番URLに変更（末尾スラッシュなし）
+const SITE_URL = 'https://hygge-kumamoto.com';     // 本番ドメイン（2026-09-10 取得・末尾スラッシュなし）
 const SITE_NAME = 'HYGGE PLANTS & ZAKKA';
 const OUT_DIR  = path.join(__dirname, 'blog');
 // -------------------------------------------------------------
@@ -174,7 +174,7 @@ function sitemap(posts){
   const urls = [`${SITE_URL}/`, `${SITE_URL}/blog/`]
     .concat(posts.map(p => `${SITE_URL}/blog/${p._slug}.html`));
   return `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemap.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${urls.map(u => `  <url><loc>${u}</loc></url>`).join('\n')}
 </urlset>`;
 }
