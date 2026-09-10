@@ -17,6 +17,7 @@ const GAS_URL  = 'https://script.google.com/macros/s/AKfycbyWDymEg-5fa75qh0o-NYM
 const SITE_URL = 'https://hygge-kumamoto.com';     // 本番ドメイン（2026-09-10 取得・末尾スラッシュなし）
 const SITE_NAME = 'HYGGE PLANTS & ZAKKA';
 const OUT_DIR  = path.join(__dirname, 'blog');
+const POSTS_DIR = path.join(__dirname, 'blog-posts'); // 自動生成の記事（1記事1JSON）
 // -------------------------------------------------------------
 
 function esc(s){
@@ -26,9 +27,43 @@ function attr(s){ return esc(s).replace(/'/g, '&#39;'); }
 
 async function getData(){
   if (process.env.MOCK) return JSON.parse(fs.readFileSync(process.env.MOCK, 'utf8'));
-  const res = await fetch(GAS_URL);
-  if (!res.ok) throw new Error('GAS fetch failed: ' + res.status);
-  return await res.json();
+  // GASのウェブアプリは一時的に404/500を返すことがある（実際に発生）。3回まで待って試す。
+  let lastErr;
+  for (let i = 0; i < 3; i++) {
+    try {
+      const res = await fetch(GAS_URL, { redirect: 'follow' });
+      if (!res.ok) throw new Error('GAS fetch failed: ' + res.status);
+      return await res.json();
+    } catch (e) {
+      lastErr = e;
+      if (i < 2) await new Promise(r => setTimeout(r, 3000 * (i + 1)));
+    }
+  }
+  throw lastErr;
+}
+
+// blog-posts/*.json を読む（_ で始まるファイルは設定用なので読み飛ばす）
+function readLocalPosts(){
+  if (!fs.existsSync(POSTS_DIR)) return [];
+  return fs.readdirSync(POSTS_DIR)
+    .filter(f => f.endsWith('.json') && !f.startsWith('_'))
+    .map(f => {
+      try { return JSON.parse(fs.readFileSync(path.join(POSTS_DIR, f), 'utf8')); }
+      catch (e) { console.error('読み込み失敗: blog-posts/' + f + ' — ' + e.message); return null; }
+    })
+    .filter(b => b && b.title && b.body);
+}
+
+// 画像がサイト内の相対パス（/shop-05.webp）なら本番URLを補う
+function absImage(b){
+  if (b.image && b.image.startsWith('/')) b.image = SITE_URL + b.image;
+  return b;
+}
+
+// 「2026/09/10」「2026.09.10」「2026-09-10」を比較できる数値にする
+function dateKey(b){
+  const m = String(b.date || '').replace(/[.\/]/g, '-').match(/(\d{4})-(\d{1,2})-(\d{1,2})/);
+  return m ? Number(m[1]) * 10000 + Number(m[2]) * 100 + Number(m[3]) : 0;
 }
 
 function slugOf(b, i){
@@ -181,8 +216,16 @@ ${urls.map(u => `  <url><loc>${u}</loc></url>`).join('\n')}
 
 async function main(){
   const data = await getData();
-  const posts = (data.blog || []).filter(b => b && b.title);
-  posts.forEach((b, i) => { b._slug = slugOf(b, i); });
+  const fromSheet = (data.blog || []).filter(b => b && b.title);
+  const fromFiles = readLocalPosts();
+
+  // スラッグが重なったら blog-posts/ 側を採用（あとから直せるのはこちらなので）
+  const bySlug = new Map();
+  fromSheet.forEach((b, i) => { b._slug = slugOf(b, i); bySlug.set(b._slug, absImage(b)); });
+  fromFiles.forEach((b, i) => { b._slug = slugOf(b, i); bySlug.set(b._slug, absImage(b)); });
+
+  const posts = Array.from(bySlug.values()).sort((a, b) => dateKey(b) - dateKey(a));
+  console.log(`記事の内訳: スプレッドシート ${fromSheet.length} 件 / blog-posts ${fromFiles.length} 件`);
 
   if (!fs.existsSync(OUT_DIR)) fs.mkdirSync(OUT_DIR, { recursive: true });
 

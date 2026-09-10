@@ -1,0 +1,62 @@
+{
+  "note": "HYGGEブログの自動更新用。次に書く記事のネタ帳。上から順に消化し、書いたら done に移す。",
+  "cadence": "火・金（その日の最初の巡回で1本）",
+  "rules": [
+    "1本1,000〜1,500字。段落は2〜4文で改行、空行で区切る",
+    "熊本 / 観葉植物 / 雑貨 のどれかで検索する人を想定し、タイトルに検索語を素直に入れる",
+    "店の情報は index.html と clients.md にある事実だけ書く（住所: 熊本市南区幸田1丁目7-15、営業 11:00〜17:00、水・土定休、駐車スペースあり）",
+    "在庫・価格・入荷は断定しない（変わるため）。「お問い合わせください」に寄せる",
+    "画像はリポジトリ内の既存写真から選ぶ（/prod-*.webp, /shop-*.webp, /case-*.webp）",
+    "スラッグは英小文字とハイフンのみ。既存と重複させない"
+  ],
+  "next": [
+    {
+      "slug": "monstera-care-kumamoto",
+      "title": "モンステラの育て方｜熊本の気候に合わせた水やりと置き場所",
+      "keyword": "モンステラ 育て方",
+      "image": "/prod-monstera.webp"
+    },
+    {
+      "slug": "gift-plants-kumamoto",
+      "title": "開店祝い・新築祝いに贈る観葉植物｜熊本で選ぶときの目安",
+      "keyword": "開店祝い 観葉植物 熊本",
+      "image": "/prod-gomu.webp"
+    },
+    {
+      "slug": "hokuo-zakka-select",
+      "title": "北欧雑貨の選び方｜暮らしになじむ道具の見つけ方",
+      "keyword": "北欧雑貨 熊本",
+      "image": "/case-2.webp"
+    },
+    {
+      "slug": "winter-plants-care",
+      "title": "冬の観葉植物の管理｜水やりを減らす時期と置き場所",
+      "keyword": "観葉植物 冬 管理",
+      "image": "/prod-alocasia.webp"
+    },
+    {
+      "slug": "gajumaru-care",
+      "title": "ガジュマルの育て方｜枯らさないための3つのポイント",
+      "keyword": "ガジュマル 育て方",
+      "image": "/prod-gajumaru.webp"
+    },
+    {
+      "slug": "kokedama-hajimete",
+      "title": "苔玉をはじめる｜置き場所と水やりの基本",
+      "keyword": "苔玉 育て方",
+      "image": "/prod-kokedama.webp"
+    },
+    {
+      "slug": "pot-cover-select",
+      "title": "鉢カバーの選び方｜サイズ合わせと部屋になじませるコツ",
+      "keyword": "鉢カバー 選び方",
+      "image": "/prod-pot.webp"
+    }
+  ],
+  "done": [
+    {
+      "slug": "kumamoto-kanyoshokubutsu-shop",
+      "date": "2026/09/10"
+    }
+  ]
+}
