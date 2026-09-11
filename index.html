@@ -28,6 +28,9 @@
     --line: #E0DAD0;
   }
 
+  .visually-hidden { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0;
+    overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; scroll-padding-top: 84px; }
   body {
@@ -1354,6 +1357,8 @@
     footer      { padding: 44px 20px 28px; }
   }
 </style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Store", "@id": "https://hygge-kumamoto.com/#store", "name": "HYGGE PLANTS & ZAKKA", "alternateName": "ヒュッゲ プランツ アンド ザッカ", "description": "熊本市南区幸田の植物と雑貨のセレクトショップ。観葉植物・苔玉・北欧雑貨を扱い、暮らしに合う一鉢をご提案します。", "url": "https://hygge-kumamoto.com/", "telephone": "+81-96-285-9061", "image": ["https://hygge-kumamoto.com/HYGGE_PC_main_1920x1080.webp"], "logo": "https://hygge-kumamoto.com/logo.png", "address": {"@type": "PostalAddress", "streetAddress": "幸田1丁目7-15", "addressLocality": "熊本市南区", "addressRegion": "熊本県", "postalCode": "861-4108", "addressCountry": "JP"}, "openingHoursSpecification": [{"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Thursday", "Friday", "Sunday"], "opens": "11:00", "closes": "17:00"}], "paymentAccepted": "現金, クレジットカード, QRコード決済", "currenciesAccepted": "JPY", "sameAs": ["https://www.instagram.com/hygge_kumamoto"], "hasMap": "https://www.google.com/maps/search/?api=1&query=HYGGE+PLANTS+%26+ZAKKA+熊本市南区幸田1-7-15"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "営業時間・定休日を教えてください", "acceptedAnswer": {"@type": "Answer", "text": "営業時間は11:00〜17:00、定休日は毎週水曜日・土曜日です。"}}, {"@type": "Question", "name": "駐車場はありますか？", "acceptedAnswer": {"@type": "Answer", "text": "はい、駐車スペースがございます（おうち工房と共用です）。お車でお越しいただけます。"}}, {"@type": "Question", "name": "商品の取り置きはできますか？", "acceptedAnswer": {"@type": "Answer", "text": "申し訳ございませんが、取り置きは行っておりません。気になる商品はお早めにご来店ください。"}}, {"@type": "Question", "name": "オンラインでも購入できますか？", "acceptedAnswer": {"@type": "Answer", "text": "オンラインショップは現在準備中です。当面は店頭でのご購入となります。"}}, {"@type": "Question", "name": "支払い方法は何が使えますか？", "acceptedAnswer": {"@type": "Answer", "text": "現金のほか、各種クレジットカード（VISA / Mastercard / American Express / JCB / Diners Club / DISCOVER）と、QRコード決済（PayPay / 楽天ペイ / au PAY / d払い / メルペイ / WeChat Pay / Alipay+）がご利用いただけます。"}}, {"@type": "Question", "name": "大きな植物は配送してもらえますか？", "acceptedAnswer": {"@type": "Answer", "text": "申し訳ございませんが、配送は行っておりません。店頭でのお渡しのみとなります。"}}, {"@type": "Question", "name": "ワークショップは開催していますか？", "acceptedAnswer": {"@type": "Answer", "text": "はい、ワークショップを開催しています。開催日程や内容はLINE・当ホームページのイベント情報でお知らせしていきます。"}}, {"@type": "Question", "name": "初心者でも育てやすい植物はありますか？", "acceptedAnswer": {"@type": "Answer", "text": "もちろんございます。お部屋の環境やライフスタイルに合わせてスタッフがおすすめの一鉢をお選びしますので、気軽にご相談ください。育て方は読みもの（ブログ）でもご紹介しています。"}}]}</script>
 </head>
 <body>
 <script>
@@ -1420,6 +1425,7 @@
 
 <!-- ===== HERO ===== -->
 <section class="hero">
+  <h1 class="visually-hidden">HYGGE PLANTS &amp; ZAKKA｜熊本市南区の観葉植物と北欧雑貨のセレクトショップ</h1>
   <picture>
     <source media="(max-width: 760px)" srcset="SP_main.webp">
     <img class="hero-img" src="HYGGE_PC_main_1920x1080.webp" alt="HYGGE PLANTS & ZAKKA｜植物と雑貨のお店" fetchpriority="high">
