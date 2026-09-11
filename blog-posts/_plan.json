@@ -11,12 +11,6 @@
   ],
   "next": [
     {
-      "slug": "monstera-care-kumamoto",
-      "title": "モンステラの育て方｜熊本の気候に合わせた水やりと置き場所",
-      "keyword": "モンステラ 育て方",
-      "image": "/prod-monstera.webp"
-    },
-    {
       "slug": "gift-plants-kumamoto",
       "title": "開店祝い・新築祝いに贈る観葉植物｜熊本で選ぶときの目安",
       "keyword": "開店祝い 観葉植物 熊本",
@@ -54,6 +48,10 @@
     }
   ],
   "done": [
+    {
+      "slug": "monstera-care-kumamoto",
+      "date": "2026/09/11"
+    },
     {
       "slug": "kumamoto-kanyoshokubutsu-shop",
       "date": "2026/09/10"
