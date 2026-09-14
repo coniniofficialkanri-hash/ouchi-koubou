@@ -1,1 +1,19 @@
-[]
+[
+  {
+    "date": "2026-09-14",
+    "range": "2026年6月〜9月",
+    "interactions_total": 335,
+    "interactions_monthly_approx": {
+      "2026-06": 25,
+      "2026-07": 135,
+      "2026-08": 137,
+      "2026-09(途中)": 40
+    },
+    "profile_views_last_month": 595,
+    "calls": null,
+    "directions": null,
+    "website_clicks": null,
+    "rating": "5.0（2件）",
+    "note": "内訳（通話・ルート・サイトクリック）はオーナーパネルのタブを押しても表示が切り替わらず取得できず。月別値はグラフ目盛りからの読み取り（概算）"
+  }
+]
