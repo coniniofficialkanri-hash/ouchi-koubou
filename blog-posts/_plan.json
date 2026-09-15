@@ -11,12 +11,6 @@
   ],
   "next": [
     {
-      "slug": "gift-plants-kumamoto",
-      "title": "開店祝い・新築祝いに贈る観葉植物｜熊本で選ぶときの目安",
-      "keyword": "開店祝い 観葉植物 熊本",
-      "image": "/prod-gomu.webp"
-    },
-    {
       "slug": "hokuo-zakka-select",
       "title": "北欧雑貨の選び方｜暮らしになじむ道具の見つけ方",
       "keyword": "北欧雑貨 熊本",
@@ -48,6 +42,10 @@
     }
   ],
   "done": [
+    {
+      "slug": "gift-plants-kumamoto",
+      "date": "2026/09/15"
+    },
     {
       "slug": "monstera-care-kumamoto",
       "date": "2026/09/11"
