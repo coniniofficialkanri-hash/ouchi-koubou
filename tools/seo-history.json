@@ -54,5 +54,28 @@
     "warn": 0,
     "bad": 0,
     "issues": []
+  },
+  {
+    "date": "2026-09-17",
+    "ok": 15,
+    "warn": 0,
+    "bad": 1,
+    "issues": [
+      "[サイトマップ] 未掲載の記事 1件: hokuo-zakka-select.html"
+    ]
+  },
+  {
+    "date": "2026-09-17",
+    "ok": 16,
+    "warn": 0,
+    "bad": 0,
+    "issues": []
+  },
+  {
+    "date": "2026-09-21",
+    "ok": 16,
+    "warn": 0,
+    "bad": 0,
+    "issues": []
   }
 ]

@@ -45,5 +45,172 @@
     ],
     "pages": null,
     "note": "上位ページは未取得（3日分でページ別の差がほぼ無いため）"
+  },
+  {
+    "date": "2026-09-21",
+    "range": "過去28日（実データは2026-09-09〜09-19）",
+    "clicks": 4,
+    "impr": 149,
+    "ctr": 2.7,
+    "pos": 8.8,
+    "queries": [
+      {
+        "q": "hygge（ヒュッゲ）",
+        "clicks": 0,
+        "impr": 14,
+        "ctr": 0,
+        "pos": 13.4
+      },
+      {
+        "q": "熊本市 観葉植物",
+        "clicks": 0,
+        "impr": 7,
+        "ctr": 0,
+        "pos": 3.3
+      },
+      {
+        "q": "熊本 観葉植物",
+        "clicks": 0,
+        "impr": 6,
+        "ctr": 0,
+        "pos": 30.3
+      },
+      {
+        "q": "hygge",
+        "clicks": 0,
+        "impr": 5,
+        "ctr": 0,
+        "pos": 1.2
+      },
+      {
+        "q": "観葉植物 熊本",
+        "clicks": 0,
+        "impr": 5,
+        "ctr": 0,
+        "pos": 16.0
+      },
+      {
+        "q": "ヒュッゲ 熊本",
+        "clicks": 0,
+        "impr": 3,
+        "ctr": 0,
+        "pos": 1.0
+      },
+      {
+        "q": "ヒュッゲ",
+        "clicks": 0,
+        "impr": 3,
+        "ctr": 0,
+        "pos": 6.3
+      },
+      {
+        "q": "熊本 観葉植物 店",
+        "clicks": 0,
+        "impr": 3,
+        "ctr": 0,
+        "pos": 18.0
+      },
+      {
+        "q": "うつわのhygge",
+        "clicks": 0,
+        "impr": 2,
+        "ctr": 0,
+        "pos": 1.5
+      },
+      {
+        "q": "ガーデニング 雑貨 おしゃれ",
+        "clicks": 0,
+        "impr": 2,
+        "ctr": 0,
+        "pos": 9.0
+      },
+      {
+        "q": "熊本 園芸店",
+        "clicks": 0,
+        "impr": 2,
+        "ctr": 0,
+        "pos": 46.5
+      },
+      {
+        "q": "うつわのヒュッゲ",
+        "clicks": 0,
+        "impr": 1,
+        "ctr": 0,
+        "pos": 1.0
+      },
+      {
+        "q": "ヒュッゲ 自転車",
+        "clicks": 0,
+        "impr": 1,
+        "ctr": 0,
+        "pos": 1.0
+      },
+      {
+        "q": "hygg",
+        "clicks": 0,
+        "impr": 1,
+        "ctr": 0,
+        "pos": 2.0
+      },
+      {
+        "q": "haghag",
+        "clicks": 0,
+        "impr": 1,
+        "ctr": 0,
+        "pos": 4.0
+      },
+      {
+        "q": "観葉植物日光",
+        "clicks": 0,
+        "impr": 1,
+        "ctr": 0,
+        "pos": 5.0
+      },
+      {
+        "q": "熊本 照明 ショップ",
+        "clicks": 0,
+        "impr": 1,
+        "ctr": 0,
+        "pos": 9.0
+      },
+      {
+        "q": "観葉植物 熊本市",
+        "clicks": 0,
+        "impr": 1,
+        "ctr": 0,
+        "pos": 11.0
+      },
+      {
+        "q": "近くのホームセンター",
+        "clicks": 0,
+        "impr": 1,
+        "ctr": 0,
+        "pos": 11.0
+      },
+      {
+        "q": "ガーデニング アイアン雑貨",
+        "clicks": 0,
+        "impr": 1,
+        "ctr": 0,
+        "pos": 13.0
+      }
+    ],
+    "pages": [
+      {
+        "page": "https://hygge-kumamoto.com/",
+        "clicks": 4,
+        "impr": 147,
+        "ctr": 2.7,
+        "pos": 8.9
+      },
+      {
+        "page": "http://hygge-kumamoto.com/",
+        "clicks": 0,
+        "impr": 7,
+        "ctr": 0,
+        "pos": 3.9
+      }
+    ],
+    "note": "ブログ記事ページの表示は0（表示はトップのみ）。httpは308でhttpsへ転送済み"
   }
 ]

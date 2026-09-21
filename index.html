@@ -2221,8 +2221,16 @@
     <h2 class="section-title-en">読みもの</h2>
     <p class="blog-sub">植物の育て方や、暮らしを彩るヒントをお届けします。</p>
   </div>
-  <div class="blog-grid" id="blogGrid">
-    <p class="blog-empty">ブログは近日公開予定です。</p>
+  <div class="blog-grid" id="blogGrid" data-static="1">
+<!-- BLOG-LATEST:START（build-blog.js が自動で書き換えます） -->
+    <a href="blog/hokuo-zakka-select.html" class="blog-card reveal visible"><div class="blog-thumb"><img src="/case-2.webp" alt="北欧雑貨の選び方｜暮らしになじむ道具の見つけ方" loading="lazy"></div><div class="blog-body"><span class="blog-date">2026/09/18</span><h3 class="blog-title">北欧雑貨の選び方｜暮らしになじむ道具の見つけ方</h3><p class="blog-excerpt">北欧雑貨を選ぶときに見ておきたい、色・素材・大きさの考え方をまとめました。熊本市南区のセレクトショップで実際に手に取って選ぶときのポイントもご紹介します。</p><span class="blog-more">続きを読む →</span></div></a>
+    <a href="blog/gift-plants-kumamoto.html" class="blog-card reveal visible"><div class="blog-thumb"><img src="/prod-gomu.webp" alt="開店祝い・新築祝いに贈る観葉植物｜熊本で選ぶときの目安" loading="lazy"></div><div class="blog-body"><span class="blog-date">2026/09/15</span><h3 class="blog-title">開店祝い・新築祝いに贈る観葉植物｜熊本で選ぶときの目安</h3><p class="blog-excerpt">開店祝いや新築祝いに観葉植物を贈るときの、大きさ・品種・置き場所の考え方をまとめました。熊本市南区のお店で選ぶときの注意点もあわせてご紹介します。</p><span class="blog-more">続きを読む →</span></div></a>
+    <a href="blog/monstera-care-kumamoto.html" class="blog-card reveal visible"><div class="blog-thumb"><img src="/prod-monstera.webp" alt="モンステラの育て方｜熊本の気候に合わせた水やりと置き場所" loading="lazy"></div><div class="blog-body"><span class="blog-date">2026/09/11</span><h3 class="blog-title">モンステラの育て方｜熊本の気候に合わせた水やりと置き場所</h3><p class="blog-excerpt">切れ込みの入った葉が人気のモンステラ。熊本の夏の日差しと冬の冷え込みに合わせた置き場所と、水やりの目安をまとめました。</p><span class="blog-more">続きを読む →</span></div></a>
+    <a href="blog/kumamoto-kanyoshokubutsu-shop.html" class="blog-card reveal visible"><div class="blog-thumb"><img src="/shop-01.webp" alt="熊本で観葉植物を買うなら｜初めての一鉢の選び方" loading="lazy"></div><div class="blog-body"><span class="blog-date">2026/09/10</span><h3 class="blog-title">熊本で観葉植物を買うなら｜初めての一鉢の選び方</h3><p class="blog-excerpt">置き場所・大きさ・水やりの3点で、はじめての観葉植物は選べます。熊本の気候に合わせた育て方のコツもあわせてご紹介します。</p><span class="blog-more">続きを読む →</span></div></a>
+    <a href="blog/bikakushida-care.html" class="blog-card reveal visible"><div class="blog-thumb"><img src="https://lh3.googleusercontent.com/d/18gkIXIqdW8HvbaMA2Hd7zl9kfwdjYO0Y" alt="ビカクシダの育て方｜水やりと置き場所の基本" loading="lazy"></div><div class="blog-body"><span class="blog-date">2026.06.25</span><h3 class="blog-title">ビカクシダの育て方｜水やりと置き場所の基本</h3><p class="blog-excerpt">板付けビカクシダを元気に育てる水やり頻度や置き場所のコツを、初めての方にもわかりやすく解説します。</p><span class="blog-more">続きを読む →</span></div></a>
+    <a href="blog/green-life.html" class="blog-card reveal visible"><div class="blog-thumb"><img src="https://lh3.googleusercontent.com/d/1tDDjGTfO6aLw2qyAzHdMEYT89zQ6gTYE" alt="観葉植物のある暮らし｜お部屋に緑を取り入れるコツ" loading="lazy"></div><div class="blog-body"><span class="blog-date">2026.06.18</span><h3 class="blog-title">観葉植物のある暮らし｜お部屋に緑を取り入れるコツ</h3><p class="blog-excerpt">インテリアになじむ植物の選び方や飾り方を、実例を交えてご紹介。はじめの一鉢にもおすすめです。</p><span class="blog-more">続きを読む →</span></div></a>
+    <p class="blog-all" style="grid-column:1/-1;text-align:center;margin-top:8px;"><a href="blog/">記事の一覧を見る →</a></p>
+<!-- BLOG-LATEST:END -->
   </div>
 </section>
 
@@ -2591,6 +2599,8 @@
   function renderBlog(items){
     var grid = document.getElementById('blogGrid');
     if (!grid) return;
+    // 記事一覧は build-blog.js が静的に書き込む（検索エンジンにもリンクが見えるように）。上書きしない
+    if (grid.getAttribute('data-static') === '1') return;
     if (!items.length){ grid.innerHTML = '<p class="blog-empty">ブログは近日公開予定です。</p>'; return; }
     grid.innerHTML = items.map(function(b, i){
       var slug = (b.slug||'').toString().trim().toLowerCase().replace(/[^a-z0-9\-]+/g,'-').replace(/^-+|-+$/g,'') || ('post-'+(i+1));

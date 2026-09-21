@@ -15,7 +15,7 @@ const path = require('path');
 // ---- 設定 ----------------------------------------------------
 const GAS_URL  = 'https://script.google.com/macros/s/AKfycbyWDymEg-5fa75qh0o-NYM8e3T667Qcugv1j27nITZHYDI3gPc1XJkZ0Bm9QdgeDOta/exec';
 const SITE_URL = 'https://hygge-kumamoto.com';     // 本番ドメイン（2026-09-10 取得・末尾スラッシュなし）
-const SITE_NAME = 'HYGGE PLANTS & ZAKKA';
+const SITE_NAME = 'HYGGE（ヒュッゲ）熊本';   // GBPの店名表記に合わせる（2026-09-21・店名検索13位対策）
 const OUT_DIR  = path.join(__dirname, 'blog');
 const POSTS_DIR = path.join(__dirname, 'blog-posts'); // 自動生成の記事（1記事1JSON）
 // -------------------------------------------------------------
@@ -214,6 +214,26 @@ ${urls.map(u => `  <url><loc>${u}</loc></url>`).join('\n')}
 </urlset>`;
 }
 
+// トップページ（index.html）の「読みもの」欄に最新記事のカードを静的に書き込む。
+// 以前はGASからJSで描画していたため、検索エンジンにもスプレッドシート外の記事にもリンクが無かった（2026-09-21）
+function writeTopLatest(posts){
+  const file = path.join(__dirname, 'index.html');
+  const START = '<!-- BLOG-LATEST:START（build-blog.js が自動で書き換えます） -->';
+  const END = '<!-- BLOG-LATEST:END -->';
+  const html = fs.readFileSync(file, 'utf8');
+  const a = html.indexOf(START), z = html.indexOf(END);
+  if (a < 0 || z < a) { console.log('index.html に BLOG-LATEST の目印が無いため、トップの記事欄は更新しません'); return; }
+  const cards = posts.map(p => {
+    const img = p.image ? `<div class="blog-thumb"><img src="${attr(p.image.replace(SITE_URL, ''))}" alt="${attr(p.title)}" loading="lazy"></div>` : '';
+    const date = p.date ? `<span class="blog-date">${esc(p.date)}</span>` : '';
+    return `    <a href="blog/${p._slug}.html" class="blog-card reveal visible">${img}<div class="blog-body">${date}<h3 class="blog-title">${esc(p.title)}</h3><p class="blog-excerpt">${esc(p.excerpt || '')}</p><span class="blog-more">続きを読む →</span></div></a>`;
+  }).join('\n');
+  const body = (cards || '    <p class="blog-empty">ブログは近日公開予定です。</p>') +
+    '\n    <p class="blog-all" style="grid-column:1/-1;text-align:center;margin-top:8px;"><a href="blog/">記事の一覧を見る →</a></p>';
+  const out = html.slice(0, a + START.length) + '\n' + body + '\n' + html.slice(z);
+  if (out !== html) { fs.writeFileSync(file, out); console.log('トップの記事欄: ' + posts.length + ' 件を書き込み'); }
+}
+
 async function main(){
   const data = await getData();
   const fromSheet = (data.blog || []).filter(b => b && b.title);
@@ -234,6 +254,7 @@ async function main(){
   });
   fs.writeFileSync(path.join(OUT_DIR, 'index.html'), indexHTML(posts));
   fs.writeFileSync(path.join(__dirname, 'sitemap.xml'), sitemap(posts));
+  writeTopLatest(posts.slice(0, 6));
 
   console.log(`生成完了: 記事 ${posts.length} 件 / blog/index.html / sitemap.xml`);
   posts.forEach(b => console.log('  - blog/' + b._slug + '.html  (' + b.title + ')'));
