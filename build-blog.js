@@ -226,7 +226,8 @@ function writeTopLatest(posts){
   const cards = posts.map(p => {
     const img = p.image ? `<div class="blog-thumb"><img src="${attr(p.image.replace(SITE_URL, ''))}" alt="${attr(p.title)}" loading="lazy"></div>` : '';
     const date = p.date ? `<span class="blog-date">${esc(p.date)}</span>` : '';
-    return `    <a href="blog/${p._slug}.html" class="blog-card reveal visible">${img}<div class="blog-body">${date}<h3 class="blog-title">${esc(p.title)}</h3><p class="blog-excerpt">${esc(p.excerpt || '')}</p><span class="blog-more">続きを読む →</span></div></a>`;
+    const href = (p.link && /^https?:\/\//i.test(p.link)) ? attr(p.link) : `blog/${p._slug}.html`;
+    return `    <a href="${href}" class="blog-card reveal visible">${img}<div class="blog-body">${date}<h3 class="blog-title">${esc(p.title)}</h3><p class="blog-excerpt">${esc(p.excerpt || '')}</p><span class="blog-more">続きを読む →</span></div></a>`;
   }).join('\n');
   const body = (cards || '    <p class="blog-empty">ブログは近日公開予定です。</p>') +
     '\n    <p class="blog-all" style="grid-column:1/-1;text-align:center;margin-top:8px;"><a href="blog/">記事の一覧を見る →</a></p>';
