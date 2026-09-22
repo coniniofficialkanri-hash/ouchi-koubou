@@ -107,5 +107,21 @@
     "issues": [
       "[サイトマップ] 未掲載の記事 1件: winter-plants-care.html"
     ]
+  },
+  {
+    "date": "2026-09-22",
+    "ok": 15,
+    "warn": 0,
+    "bad": 1,
+    "issues": [
+      "[サイトマップ] 未掲載の記事 1件: winter-plants-care.html"
+    ]
+  },
+  {
+    "date": "2026-09-22",
+    "ok": 16,
+    "warn": 0,
+    "bad": 0,
+    "issues": []
   }
 ]
