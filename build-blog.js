@@ -18,6 +18,7 @@ const SITE_URL = 'https://hygge-kumamoto.com';     // 本番ドメイン（2026-
 const SITE_NAME = 'HYGGE（ヒュッゲ）熊本';   // GBPの店名表記に合わせる（2026-09-21・店名検索13位対策）
 const OUT_DIR  = path.join(__dirname, 'blog');
 const POSTS_DIR = path.join(__dirname, 'blog-posts'); // 自動生成の記事（1記事1JSON）
+const GA_ID    = 'G-4MZWE8W358';                     // GA4「HYGGE（ヒュッゲ）熊本」2026-09-22 作成
 // -------------------------------------------------------------
 
 function esc(s){
@@ -116,6 +117,25 @@ function renderBody(body){
   return { html, toc };
 }
 
+// GA4 のタグ。ブログの全ページと、トップ・プライバシーポリシー（ensureGA で目印の間に入れる）に同じものを入れる
+function gaTag(){
+  return `<!-- GA4:START（build-blog.js が自動で入れます） -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=${GA_ID}"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${GA_ID}');</script>
+<!-- GA4:END -->`;
+}
+
+// 手で作ったページ（index.html・privacy.html）の <head> にGAタグを入れる。何度実行しても1つだけ
+function ensureGA(file){
+  const f = path.join(__dirname, file);
+  if (!fs.existsSync(f)) return;
+  const html = fs.readFileSync(f, 'utf8');
+  const base = html.replace(/<!-- GA4:START[\s\S]*?<!-- GA4:END -->\n?/, '');
+  const at = /<meta charset[^>]*>\n?/i.test(base) ? /<meta charset[^>]*>\n?/i : /<head>\n?/i;   // 文字コード宣言の直後に置く
+  const out = base.replace(at, m => (m.endsWith('\n') ? m : m + '\n') + gaTag() + '\n');
+  if (out !== html) { fs.writeFileSync(f, out); console.log('GAタグ: ' + file); }
+}
+
 function pageCSS(){
   return `
     :root{--ivory:#EFE8D7;--warm-white:#FBF7EF;--moss:#4A6741;--gold:#D4A629;
@@ -206,6 +226,7 @@ function articleHTML(b, slug, all){
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+${gaTag()}
 <title>${title}｜${esc(SITE_NAME)}</title>
 <meta name="description" content="${desc}">
 <link rel="canonical" href="${url}">
@@ -241,7 +262,7 @@ ${navBar()}
   </div>
   <a class="a-back" href="index.html">← ブログ一覧へ</a>
 </article>
-<div class="a-foot">© 2026 ${esc(SITE_NAME)}</div>
+<div class="a-foot">© 2026 ${esc(SITE_NAME)}｜<a href="../privacy.html" style="color:inherit">プライバシーポリシー</a></div>
 </body>
 </html>`;
 }
@@ -259,6 +280,7 @@ function indexHTML(posts){
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+${gaTag()}
 <title>ブログ｜${esc(SITE_NAME)}</title>
 <meta name="description" content="${esc(SITE_NAME)}のブログ。植物の育て方や暮らしのヒントをお届けします。">
 <link rel="canonical" href="${SITE_URL}/blog/">
@@ -278,7 +300,7 @@ ${navBar()}
 ${cards || '<p style="grid-column:1/-1;text-align:center;color:var(--text-light)">記事は近日公開予定です。</p>'}
   </div>
 </main>
-<div class="a-foot">© 2026 ${esc(SITE_NAME)}</div>
+<div class="a-foot">© 2026 ${esc(SITE_NAME)}｜<a href="../privacy.html" style="color:inherit">プライバシーポリシー</a></div>
 </body>
 </html>`;
 }
@@ -334,6 +356,8 @@ async function main(){
   fs.writeFileSync(path.join(OUT_DIR, 'index.html'), indexHTML(posts));
   fs.writeFileSync(path.join(__dirname, 'sitemap.xml'), sitemap(posts));
   writeTopLatest(posts.slice(0, 6));
+  ensureGA('index.html');
+  ensureGA('privacy.html');
 
   console.log(`生成完了: 記事 ${posts.length} 件 / blog/index.html / sitemap.xml`);
   posts.forEach(b => console.log('  - blog/' + b._slug + '.html  (' + b.title + ')'));
