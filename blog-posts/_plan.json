@@ -11,13 +11,6 @@
   ],
   "next": [
     {
-      "slug": "gardening-zakka-kumamoto",
-      "title": "ガーデニング雑貨の選び方｜熊本で庭やベランダをおしゃれに見せる小物",
-      "keyword": "ガーデニング雑貨 おしゃれ",
-      "image": "/prod-tanikubu.webp",
-      "why": "2026-09-21 PDCA: 「ガーデニング 雑貨 おしゃれ」9.0位・「ガーデニング アイアン雑貨」13位・「ガーデニング雑貨店」16位で表示あり（計4回）。店の事実はDIY用品欄の『塗料・金具・ガーデニング資材』の範囲で書く"
-    },
-    {
       "slug": "winter-plants-care",
       "title": "冬の観葉植物の管理｜水やりを減らす時期と置き場所",
       "keyword": "観葉植物 冬 管理",
@@ -37,6 +30,10 @@
     }
   ],
   "done": [
+    {
+      "slug": "gardening-zakka-kumamoto",
+      "date": "2026/09/22"
+    },
     {
       "slug": "hokuo-zakka-select",
       "date": "2026/09/18"
