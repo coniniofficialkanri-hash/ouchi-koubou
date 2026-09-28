@@ -1,0 +1,42 @@
+[
+  {
+    "date": "2026-09-28",
+    "range": "過去7日",
+    "users": 23,
+    "sessions": 24,
+    "views": 34,
+    "channels": [
+      {
+        "ch": "Direct",
+        "sessions": 17
+      },
+      {
+        "ch": "Organic Search",
+        "sessions": 4
+      },
+      {
+        "ch": "Cross-network",
+        "sessions": 2
+      },
+      {
+        "ch": "AI Assistant",
+        "sessions": 1
+      }
+    ],
+    "pages": [
+      {
+        "path": "/",
+        "views": 31
+      },
+      {
+        "path": "/blog/winter-plants-care.html",
+        "views": 2
+      },
+      {
+        "path": "/blog/gardening-zakka-kumamoto.html",
+        "views": 1
+      }
+    ],
+    "note": "GA4は9/22導入。organicはyahoo3・google1、AIはchatgpt.com 1。地域はKumamoto 6人"
+  }
+]
