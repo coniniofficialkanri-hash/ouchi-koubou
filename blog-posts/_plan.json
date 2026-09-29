@@ -16,19 +16,29 @@
   ],
   "next": [
     {
-      "slug": "gajumaru-care",
-      "title": "ガジュマルの育て方｜枯らさないための3つのポイント",
-      "keyword": "ガジュマル 育て方",
-      "image": "/prod-gajumaru.webp"
-    },
-    {
       "slug": "pot-cover-select",
       "title": "鉢カバーの選び方｜サイズ合わせと部屋になじませるコツ",
       "keyword": "鉢カバー 選び方",
       "image": "/prod-pot.webp"
+    },
+    {
+      "slug": "gomunoki-care",
+      "title": "ゴムの木の育て方｜葉が落ちる原因と置き場所のコツ",
+      "keyword": "ゴムの木 育て方",
+      "image": "/prod-gomu.webp"
+    },
+    {
+      "slug": "selloum-care",
+      "title": "セロームの育て方｜大きく広がる葉を元気に保つ置き場所と水やり",
+      "keyword": "セローム 育て方",
+      "image": "/prod-selloum.webp"
     }
   ],
   "done": [
+    {
+      "slug": "gajumaru-care",
+      "date": "2026/09/29"
+    },
     {
       "slug": "winter-plants-care",
       "date": "2026/09/22"
