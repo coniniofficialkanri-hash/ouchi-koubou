@@ -38,5 +38,37 @@
       }
     ],
     "note": "GA4は9/22導入。organicはyahoo3・google1、AIはchatgpt.com 1。地域はKumamoto 6人"
+  },
+  {
+    "date": "2026-10-05",
+    "range": "過去7日",
+    "users": 17,
+    "sessions": 17,
+    "views": 19,
+    "channels": [
+      {
+        "ch": "Direct",
+        "sessions": 6
+      },
+      {
+        "ch": "Organic Search",
+        "sessions": 5
+      },
+      {
+        "ch": "Organic Social",
+        "sessions": 5
+      },
+      {
+        "ch": "Cross-network",
+        "sessions": 1
+      }
+    ],
+    "pages": [
+      {
+        "path": "/",
+        "views": 19
+      }
+    ],
+    "note": "期間 9/28〜10/4。記事ページの閲覧は0（タグは記事にも入っていることを確認）。Organic Searchのエンゲージ率80%・平均48秒。Organic Socialが初めて5件"
   }
 ]
