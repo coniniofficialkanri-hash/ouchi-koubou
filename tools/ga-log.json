@@ -70,5 +70,45 @@
       }
     ],
     "note": "期間 9/28〜10/4。記事ページの閲覧は0（タグは記事にも入っていることを確認）。Organic Searchのエンゲージ率80%・平均48秒。Organic Socialが初めて5件"
+  },
+  {
+    "date": "2026-10-12",
+    "range": "過去7日",
+    "users": 20,
+    "sessions": 25,
+    "views": 29,
+    "channels": [
+      {
+        "ch": "Direct",
+        "sessions": 10
+      },
+      {
+        "ch": "Organic Search",
+        "sessions": 8
+      },
+      {
+        "ch": "Organic Social",
+        "sessions": 5
+      },
+      {
+        "ch": "AI Assistant",
+        "sessions": 2
+      }
+    ],
+    "pages": [
+      {
+        "path": "/",
+        "views": 25
+      },
+      {
+        "path": "/blog/gajumaru-care.html",
+        "views": 2
+      },
+      {
+        "path": "/blog/kumamoto-kanyoshokubutsu-shop.html",
+        "views": 2
+      }
+    ],
+    "note": "期間 10/5〜10/11。ホーム画面のカードから取得（セッション数はチャネル別の合計）。ページはタイトル別の表示回数をパスに対応づけ。記事ページの閲覧が初めて出た（ガジュマル2・熊本の観葉植物店2）。chatgpt.com経由のAI Assistantが2"
   }
 ]

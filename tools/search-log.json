@@ -567,5 +567,192 @@
       }
     ],
     "note": "クエリ全54件中上位20件。表示のある記事は2本だけ（熊本の観葉植物店・冬の管理）"
+  },
+  {
+    "date": "2026-10-12",
+    "range": "過去28日（実データは2026-09-12〜10-09）",
+    "clicks": 17,
+    "impr": 450,
+    "ctr": 3.8,
+    "pos": 8.9,
+    "queries": [
+      {
+        "q": "熊本 観葉植物",
+        "clicks": 1,
+        "impr": 26,
+        "ctr": 3.8,
+        "pos": 17.6
+      },
+      {
+        "q": "ヒュッゲ",
+        "clicks": 1,
+        "impr": 24,
+        "ctr": 4.2,
+        "pos": 3.1
+      },
+      {
+        "q": "観葉植物 熊本",
+        "clicks": 1,
+        "impr": 23,
+        "ctr": 4.3,
+        "pos": 13.9
+      },
+      {
+        "q": "ヒュッゲ 熊本",
+        "clicks": 1,
+        "impr": 8,
+        "ctr": 12.5,
+        "pos": 1.0
+      },
+      {
+        "q": "植物",
+        "clicks": 1,
+        "impr": 2,
+        "ctr": 50.0,
+        "pos": 1.0
+      },
+      {
+        "q": "ひゅっげ",
+        "clicks": 1,
+        "impr": 1,
+        "ctr": 100.0,
+        "pos": 2.0
+      },
+      {
+        "q": "hygge（ヒュッゲ）",
+        "clicks": 0,
+        "impr": 23,
+        "ctr": 0.0,
+        "pos": 11.7
+      },
+      {
+        "q": "観葉植物",
+        "clicks": 0,
+        "impr": 7,
+        "ctr": 0.0,
+        "pos": 10.1
+      },
+      {
+        "q": "熊本 植物屋",
+        "clicks": 0,
+        "impr": 7,
+        "ctr": 0.0,
+        "pos": 10.6
+      },
+      {
+        "q": "熊本 観葉植物 店",
+        "clicks": 0,
+        "impr": 7,
+        "ctr": 0.0,
+        "pos": 13.0
+      },
+      {
+        "q": "熊本 園芸店",
+        "clicks": 0,
+        "impr": 7,
+        "ctr": 0.0,
+        "pos": 24.0
+      },
+      {
+        "q": "ホームセンター",
+        "clicks": 0,
+        "impr": 6,
+        "ctr": 0.0,
+        "pos": 22.5
+      },
+      {
+        "q": "hygge",
+        "clicks": 0,
+        "impr": 5,
+        "ctr": 0.0,
+        "pos": 1.2
+      },
+      {
+        "q": "熊本 観葉植物専門店",
+        "clicks": 0,
+        "impr": 4,
+        "ctr": 0.0,
+        "pos": 12.8
+      },
+      {
+        "q": "熊本 ガーデニング 雑貨",
+        "clicks": 0,
+        "impr": 3,
+        "ctr": 0.0,
+        "pos": 8.3
+      },
+      {
+        "q": "熊本観葉植物",
+        "clicks": 0,
+        "impr": 3,
+        "ctr": 0.0,
+        "pos": 17.0
+      },
+      {
+        "q": "熊本 植物",
+        "clicks": 0,
+        "impr": 3,
+        "ctr": 0.0,
+        "pos": 21.7
+      },
+      {
+        "q": "diy お店",
+        "clicks": 0,
+        "impr": 2,
+        "ctr": 0.0,
+        "pos": 1.0
+      },
+      {
+        "q": "うつわのhygge",
+        "clicks": 0,
+        "impr": 2,
+        "ctr": 0.0,
+        "pos": 1.5
+      },
+      {
+        "q": "hage",
+        "clicks": 0,
+        "impr": 2,
+        "ctr": 0.0,
+        "pos": 3.0
+      }
+    ],
+    "pages": [
+      {
+        "page": "https://hygge-kumamoto.com/",
+        "clicks": 17,
+        "impr": 439,
+        "ctr": 3.9,
+        "pos": 9.0
+      },
+      {
+        "page": "https://hygge-kumamoto.com/blog/winter-plants-care.html",
+        "clicks": 0,
+        "impr": 10,
+        "ctr": 0.0,
+        "pos": 5.0
+      },
+      {
+        "page": "https://hygge-kumamoto.com/blog/kumamoto-kanyoshokubutsu-shop.html",
+        "clicks": 0,
+        "impr": 3,
+        "ctr": 0.0,
+        "pos": 7.7
+      },
+      {
+        "page": "http://hygge-kumamoto.com/",
+        "clicks": 0,
+        "impr": 1,
+        "ctr": 0.0,
+        "pos": 2.0
+      },
+      {
+        "page": "https://hygge-kumamoto.com/blog/",
+        "clicks": 0,
+        "impr": 1,
+        "ctr": 0.0,
+        "pos": 4.0
+      }
+    ]
   }
 ]
