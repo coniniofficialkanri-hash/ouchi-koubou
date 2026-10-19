@@ -1,114 +1,166 @@
 [
-  {
-    "date": "2026-09-28",
-    "range": "過去7日",
-    "users": 23,
-    "sessions": 24,
-    "views": 34,
-    "channels": [
-      {
-        "ch": "Direct",
-        "sessions": 17
-      },
-      {
-        "ch": "Organic Search",
-        "sessions": 4
-      },
-      {
-        "ch": "Cross-network",
-        "sessions": 2
-      },
-      {
-        "ch": "AI Assistant",
-        "sessions": 1
-      }
-    ],
-    "pages": [
-      {
-        "path": "/",
-        "views": 31
-      },
-      {
-        "path": "/blog/winter-plants-care.html",
-        "views": 2
-      },
-      {
-        "path": "/blog/gardening-zakka-kumamoto.html",
-        "views": 1
-      }
-    ],
-    "note": "GA4は9/22導入。organicはyahoo3・google1、AIはchatgpt.com 1。地域はKumamoto 6人"
-  },
-  {
-    "date": "2026-10-05",
-    "range": "過去7日",
-    "users": 17,
-    "sessions": 17,
-    "views": 19,
-    "channels": [
-      {
-        "ch": "Direct",
-        "sessions": 6
-      },
-      {
-        "ch": "Organic Search",
-        "sessions": 5
-      },
-      {
-        "ch": "Organic Social",
-        "sessions": 5
-      },
-      {
-        "ch": "Cross-network",
-        "sessions": 1
-      }
-    ],
-    "pages": [
-      {
-        "path": "/",
-        "views": 19
-      }
-    ],
-    "note": "期間 9/28〜10/4。記事ページの閲覧は0（タグは記事にも入っていることを確認）。Organic Searchのエンゲージ率80%・平均48秒。Organic Socialが初めて5件"
-  },
-  {
-    "date": "2026-10-12",
-    "range": "過去7日",
-    "users": 20,
-    "sessions": 25,
-    "views": 29,
-    "channels": [
-      {
-        "ch": "Direct",
-        "sessions": 10
-      },
-      {
-        "ch": "Organic Search",
-        "sessions": 8
-      },
-      {
-        "ch": "Organic Social",
-        "sessions": 5
-      },
-      {
-        "ch": "AI Assistant",
-        "sessions": 2
-      }
-    ],
-    "pages": [
-      {
-        "path": "/",
-        "views": 25
-      },
-      {
-        "path": "/blog/gajumaru-care.html",
-        "views": 2
-      },
-      {
-        "path": "/blog/kumamoto-kanyoshokubutsu-shop.html",
-        "views": 2
-      }
-    ],
-    "note": "期間 10/5〜10/11。ホーム画面のカードから取得（セッション数はチャネル別の合計）。ページはタイトル別の表示回数をパスに対応づけ。記事ページの閲覧が初めて出た（ガジュマル2・熊本の観葉植物店2）。chatgpt.com経由のAI Assistantが2"
-  }
+ {
+  "date": "2026-09-28",
+  "range": "過去7日",
+  "users": 23,
+  "sessions": 24,
+  "views": 34,
+  "channels": [
+   {
+    "ch": "Direct",
+    "sessions": 17
+   },
+   {
+    "ch": "Organic Search",
+    "sessions": 4
+   },
+   {
+    "ch": "Cross-network",
+    "sessions": 2
+   },
+   {
+    "ch": "AI Assistant",
+    "sessions": 1
+   }
+  ],
+  "pages": [
+   {
+    "path": "/",
+    "views": 31
+   },
+   {
+    "path": "/blog/winter-plants-care.html",
+    "views": 2
+   },
+   {
+    "path": "/blog/gardening-zakka-kumamoto.html",
+    "views": 1
+   }
+  ],
+  "note": "GA4は9/22導入。organicはyahoo3・google1、AIはchatgpt.com 1。地域はKumamoto 6人"
+ },
+ {
+  "date": "2026-10-05",
+  "range": "過去7日",
+  "users": 17,
+  "sessions": 17,
+  "views": 19,
+  "channels": [
+   {
+    "ch": "Direct",
+    "sessions": 6
+   },
+   {
+    "ch": "Organic Search",
+    "sessions": 5
+   },
+   {
+    "ch": "Organic Social",
+    "sessions": 5
+   },
+   {
+    "ch": "Cross-network",
+    "sessions": 1
+   }
+  ],
+  "pages": [
+   {
+    "path": "/",
+    "views": 19
+   }
+  ],
+  "note": "期間 9/28〜10/4。記事ページの閲覧は0（タグは記事にも入っていることを確認）。Organic Searchのエンゲージ率80%・平均48秒。Organic Socialが初めて5件"
+ },
+ {
+  "date": "2026-10-12",
+  "range": "過去7日",
+  "users": 20,
+  "sessions": 25,
+  "views": 29,
+  "channels": [
+   {
+    "ch": "Direct",
+    "sessions": 10
+   },
+   {
+    "ch": "Organic Search",
+    "sessions": 8
+   },
+   {
+    "ch": "Organic Social",
+    "sessions": 5
+   },
+   {
+    "ch": "AI Assistant",
+    "sessions": 2
+   }
+  ],
+  "pages": [
+   {
+    "path": "/",
+    "views": 25
+   },
+   {
+    "path": "/blog/gajumaru-care.html",
+    "views": 2
+   },
+   {
+    "path": "/blog/kumamoto-kanyoshokubutsu-shop.html",
+    "views": 2
+   }
+  ],
+  "note": "期間 10/5〜10/11。ホーム画面のカードから取得（セッション数はチャネル別の合計）。ページはタイトル別の表示回数をパスに対応づけ。記事ページの閲覧が初めて出た（ガジュマル2・熊本の観葉植物店2）。chatgpt.com経由のAI Assistantが2"
+ },
+ {
+  "date": "2026-10-19",
+  "range": "過去7日",
+  "users": 23,
+  "sessions": 24,
+  "views": 27,
+  "channels": [
+   {
+    "ch": "Direct",
+    "sessions": 15
+   },
+   {
+    "ch": "Organic Search",
+    "sessions": 4
+   },
+   {
+    "ch": "Organic Social",
+    "sessions": 2
+   },
+   {
+    "ch": "AI Assistant",
+    "sessions": 2
+   },
+   {
+    "ch": "Unassigned",
+    "sessions": 1
+   }
+  ],
+  "pages": [
+   {
+    "path": "/",
+    "views": 24
+   },
+   {
+    "path": "/blog/gajumaru-care.html",
+    "views": 1
+   },
+   {
+    "path": "/blog/gardening-zakka-kumamoto.html",
+    "views": 1
+   },
+   {
+    "path": "/blog/",
+    "views": 1
+   },
+   {
+    "path": "/blog/kumamoto-kanyoshokubutsu-shop.html",
+    "views": 0
+   }
+  ],
+  "note": "期間 10/12〜10/18。ホーム画面のカードから取得（セッション数はチャネル別の合計）。ユーザー23は前週比+15%、表示27は-6.9%。参照元は direct 16・google 2・ig 2・chatgpt.com 1・yahoo 1。市区町村は大阪4・熊本2（米国Council Bluffs/Glenviewはbot疑い）"
+ }
 ]
