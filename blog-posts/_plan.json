@@ -16,16 +16,22 @@
  ],
  "next": [
   {
-   "slug": "gomunoki-care",
-   "title": "ゴムの木の育て方｜葉が落ちる原因と置き場所のコツ",
-   "keyword": "ゴムの木 育て方",
-   "image": "/prod-gomu.webp"
-  },
-  {
    "slug": "selloum-care",
    "title": "セロームの育て方｜大きく広がる葉を元気に保つ置き場所と水やり",
    "keyword": "セローム 育て方",
    "image": "/prod-selloum.webp"
+  },
+  {
+   "slug": "alocasia-care",
+   "title": "アロカシアの育て方｜葉が垂れる・黄色くなるときの見直し方",
+   "keyword": "アロカシア 育て方",
+   "image": "/prod-alocasia.webp"
+  },
+  {
+   "slug": "tanikushokubutsu-indoor",
+   "title": "多肉植物を室内で育てるコツ｜日当たり不足と水やりの見直し方",
+   "keyword": "多肉植物 室内 育て方",
+   "image": "/prod-tanikubu.webp"
   }
  ],
  "done": [
@@ -71,6 +77,13 @@
    "rewrite": true,
    "note": "2026-10-05 PDCA: 既存記事（9/10・1,125字）の書き直し。スラッグとURLは変えずに上書きし、date を当日にする（重複ではなく作り直し）。検索で「熊本 観葉植物」21.7位・「観葉植物 熊本」13.7位・「熊本 観葉植物 店」13.0位・「熊本 植物屋」12.0位・「熊本 園芸店」26.6位が11〜25位に固まっており、受け皿がこの記事だけで本文が薄い。3,000字以上に作り直し、店の選び方（植物屋・園芸店・ホームセンターの違い）と初めての一鉢を両方扱う",
    "published": "2026-10-07"
+  },
+  {
+   "slug": "gomunoki-care",
+   "title": "ゴムの木の育て方｜葉が落ちる原因と置き場所のコツ",
+   "keyword": "ゴムの木 育て方",
+   "image": "/prod-gomu.webp",
+   "published": "2026-10-20"
   }
  ]
 }
