@@ -16,10 +16,42 @@
  ],
  "next": [
   {
+   "slug": "about-hygge",
+   "title": "HYGGE（ヒュッゲ）熊本とは｜南区幸田の観葉植物と北欧雑貨のお店",
+   "keyword": "ヒュッゲ 熊本",
+   "image": "/shop-01.webp",
+   "rewrite": true,
+   "note": "2026-10-20 店名検索・索引の点検: 本文150字前後のため noindex 中（build-blog.js の MIN_INDEX_CHARS=800 未満）。同じスラッグで blog-posts/ に書き直せばスプレッドシート版より優先され、800字を超えた時点で自動で索引対象に戻る。date を当日にする。最優先: 「ヒュッゲ 熊本」で東区の飲食店・天草のサウナなど同名の店が上に出て、このサイトが1ページ目に出ない。店名＋熊本で検索した人の受け皿になる店紹介記事にする（どんな店か・扱っているもの・場所と行き方・駐車場・営業日・支払い・おうち工房と同じ敷地であること）。店の事実は index.html と clients.md にあるものだけ。開店の経緯やバイヤーの話など載っていない事実は書かず、本人に確認する"
+  },
+  {
+   "slug": "beginner-plants-5",
+   "title": "初心者におすすめの観葉植物5選｜枯らしにくい種類と最初の置き場所",
+   "keyword": "観葉植物 初心者 おすすめ",
+   "image": "/prod-gomu.webp",
+   "rewrite": true,
+   "note": "2026-10-20 店名検索・索引の点検: 本文150字前後のため noindex 中（build-blog.js の MIN_INDEX_CHARS=800 未満）。同じスラッグで blog-posts/ に書き直せばスプレッドシート版より優先され、800字を超えた時点で自動で索引対象に戻る。date を当日にする"
+  },
+  {
+   "slug": "monstera-care-kumamoto",
+   "title": "モンステラの育て方｜熊本の夏と冬に合わせた水やり・置き場所",
+   "keyword": "モンステラ 育て方",
+   "image": "/prod-monstera.webp",
+   "rewrite": true,
+   "note": "2026-10-20 店名検索・索引の点検: 本文1,100〜1,300字で今のルール（3,000字〜）より薄い。同じスラッグ・URLのまま書き直す"
+  },
+  {
    "slug": "selloum-care",
    "title": "セロームの育て方｜大きく広がる葉を元気に保つ置き場所と水やり",
    "keyword": "セローム 育て方",
    "image": "/prod-selloum.webp"
+  },
+  {
+   "slug": "bikakushida-care",
+   "title": "ビカクシダの育て方｜板付け・水やり・冬越しの基本",
+   "keyword": "ビカクシダ 育て方",
+   "image": "/prod-bikaku.webp",
+   "rewrite": true,
+   "note": "2026-10-20 店名検索・索引の点検: 本文150字前後のため noindex 中（build-blog.js の MIN_INDEX_CHARS=800 未満）。同じスラッグで blog-posts/ に書き直せばスプレッドシート版より優先され、800字を超えた時点で自動で索引対象に戻る。date を当日にする"
   },
   {
    "slug": "alocasia-care",
@@ -28,10 +60,50 @@
    "image": "/prod-alocasia.webp"
   },
   {
+   "slug": "kokedama-guide",
+   "title": "苔玉の育て方｜水やりのタイミングと長く楽しむ飾り方",
+   "keyword": "苔玉 育て方",
+   "image": "/prod-kokedama.webp",
+   "rewrite": true,
+   "note": "2026-10-20 店名検索・索引の点検: 本文150字前後のため noindex 中（build-blog.js の MIN_INDEX_CHARS=800 未満）。同じスラッグで blog-posts/ に書き直せばスプレッドシート版より優先され、800字を超えた時点で自動で索引対象に戻る。date を当日にする"
+  },
+  {
+   "slug": "gift-plants-kumamoto",
+   "title": "開店祝い・新築祝いに贈る観葉植物｜熊本で選ぶときの大きさと種類",
+   "keyword": "開店祝い 観葉植物 熊本",
+   "image": "/shop-05.webp",
+   "rewrite": true,
+   "note": "2026-10-20 店名検索・索引の点検: 本文1,100〜1,300字で今のルール（3,000字〜）より薄い。同じスラッグ・URLのまま書き直す"
+  },
+  {
    "slug": "tanikushokubutsu-indoor",
    "title": "多肉植物を室内で育てるコツ｜日当たり不足と水やりの見直し方",
    "keyword": "多肉植物 室内 育て方",
    "image": "/prod-tanikubu.webp"
+  },
+  {
+   "slug": "green-life",
+   "title": "観葉植物のある暮らし｜部屋に緑を取り入れる置き方とインテリアのコツ",
+   "keyword": "観葉植物 インテリア 置き方",
+   "image": "/case-1.webp",
+   "rewrite": true,
+   "note": "2026-10-20 店名検索・索引の点検: 本文150字前後のため noindex 中（build-blog.js の MIN_INDEX_CHARS=800 未満）。同じスラッグで blog-posts/ に書き直せばスプレッドシート版より優先され、800字を超えた時点で自動で索引対象に戻る。date を当日にする"
+  },
+  {
+   "slug": "hokuo-zakka-select",
+   "title": "北欧雑貨の選び方｜暮らしになじむ道具と熊本で実物を見て選ぶコツ",
+   "keyword": "北欧雑貨 熊本",
+   "image": "/shop-02.webp",
+   "rewrite": true,
+   "note": "2026-10-20 店名検索・索引の点検: 本文1,100〜1,300字で今のルール（3,000字〜）より薄い。同じスラッグ・URLのまま書き直す"
+  },
+  {
+   "slug": "gardening-zakka-kumamoto",
+   "title": "ガーデニング雑貨の選び方｜熊本で庭やベランダをおしゃれに見せる小物",
+   "keyword": "熊本 ガーデニング 雑貨",
+   "image": "/shop-03.webp",
+   "rewrite": true,
+   "note": "2026-10-20 店名検索・索引の点検: 本文1,100〜1,300字で今のルール（3,000字〜）より薄い。同じスラッグ・URLのまま書き直す"
   }
  ],
  "done": [

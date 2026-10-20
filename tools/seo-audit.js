@@ -64,6 +64,9 @@ async function auditTop(){
   const types = ld.map(x => x && x['@type']).filter(Boolean);
   const biz = ld.find(x => ['Store','LocalBusiness','GardenStore','HomeGoodsStore'].includes(x && x['@type']));
   const faq = ld.find(x => x && x['@type'] === 'FAQPage');
+  const site = ld.find(x => x && x['@type'] === 'WebSite');
+  site && site.name ? ok('トップ', `サイト名の構造化データあり（${site.name}）`) : warn('トップ', 'サイト名（WebSite）の構造化データが無い');
+  if (biz && !/ヒュッゲ/.test(biz.name || '')) warn('MEO', `店舗の構造化データの店名「${biz.name}」がGBPの表記（HYGGE（ヒュッゲ））と違う`);
   biz ? ok('MEO', `店舗の構造化データあり（${biz['@type']}）`) : bad('MEO', '店舗の構造化データ（LocalBusiness系）が無い');
   faq ? ok('AIO', `FAQの構造化データあり（${(faq.mainEntity||[]).length}問）`) : warn('AIO', 'FAQの構造化データが無い');
   if (ld.some(x => x && x._broken)) bad('構造化データ', 'JSON-LDが壊れている');
@@ -92,7 +95,15 @@ async function auditArticles(){
   const urls = [...sm.text.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m => m[1]);
   urls.some(u => u.includes('example.com')) ? bad('サイトマップ', 'example.com が残っている') : ok('サイトマップ', `${urls.length}件`);
 
-  const files = fs.readdirSync(path.join(ROOT, 'blog')).filter(f => f.endsWith('.html') && f !== 'index.html' && !f.includes('backup') && f !== 'detail.html');
+  const blogDir = path.join(ROOT, 'blog');
+  const isNoindex = f => /<meta name="robots" content="[^"]*noindex/.test(fs.readFileSync(path.join(blogDir, f), 'utf8'));
+  const all = fs.readdirSync(blogDir).filter(f => f.endsWith('.html') && f !== 'index.html');
+  const files = all.filter(f => !isNoindex(f));
+  for (const f of ['detail.html', 'index_static_backup.html']) if (all.includes(f) && !isNoindex(f)) bad('記事', `${f}（記事ではないページ）が検索に出る設定になっている`);
+  const thin = all.filter(f => isNoindex(f) && !['detail.html', 'index_static_backup.html'].includes(f));
+  if (thin.length) warn('記事', `本文が薄いため noindex 中 ${thin.length}本（書き直し待ち）: ${thin.join(', ')}`);
+  const noLastmod = (sm.text.match(/<url>/g) || []).length - (sm.text.match(/<lastmod>/g) || []).length;
+  noLastmod ? warn('サイトマップ', `更新日(lastmod)の無いURL ${noLastmod}件`) : ok('サイトマップ', '全URLに更新日あり');
   const missing = files.filter(f => !urls.some(u => u.endsWith('/blog/' + f)));
   missing.length ? bad('サイトマップ', `未掲載の記事 ${missing.length}件: ${missing.join(', ')}`) : ok('サイトマップ', '記事がすべて載っている');
 
@@ -109,8 +120,10 @@ async function auditArticles(){
     if (ld['@type'] !== 'BlogPosting') bad('記事', `${name} に記事の構造化データが無い`);
     else if (!ld.datePublished) warn('記事', `${name} に公開日が入っていない`);
     const body = text(h).replace(/\s+/g, '');
-    if (body.length < 600) warn('記事', `${name} の本文が${body.length}字（1000字以上が目安）`);
-    if (!/href="[^"]*hygge-kumamoto\.com\/?"|href="\.\.\/index\.html"/.test(h)) warn('記事', `${name} から店舗ページへのリンクが無い`);
+    if (/<meta name="robots" content="[^"]*noindex/.test(h)) bad('記事', `${name} がサイトマップに載っているのに noindex`);
+    const main = text((h.match(/<div class="a-body">([\s\S]*?)<section class="a-(?:shop|rel)"/) || [, h])[1]).replace(/\s+/g, '');
+    if (main.length < 2000) warn('記事', `${name} の本文が${main.length}字（3000字以上が目安）`);
+    if (!/href="[^"]*hygge-kumamoto\.com\/?"|href="\.\.\/(?:index\.html)?(?:#[^"]*)?"/.test(h)) warn('記事', `${name} から店舗ページへのリンクが無い`);
     const imgs = [...h.matchAll(/<img [^>]*>/g)].map(m => m[0]);
     const noAlt = imgs.filter(t => !/alt="[^"]+"/.test(t)).length;
     if (noAlt) warn('記事', `${name} に説明文(alt)の無い画像 ${noAlt}枚`);

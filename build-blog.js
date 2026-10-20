@@ -19,6 +19,9 @@ const SITE_NAME = 'HYGGE（ヒュッゲ）熊本';   // GBPの店名表記に合
 const OUT_DIR  = path.join(__dirname, 'blog');
 const POSTS_DIR = path.join(__dirname, 'blog-posts'); // 自動生成の記事（1記事1JSON）
 const GA_ID    = 'G-4MZWE8W358';                     // GA4「HYGGE（ヒュッゲ）熊本」2026-09-22 作成
+// 本文がこの字数に満たない記事は noindex にしてサイトマップから外す。書き直して超えれば自動で戻る。
+// 5月〜6月の記事が本文150字ほどで、薄いページがサイト全体の評価を下げ、記事が索引に入らない一因と判断（2026-10-20）
+const MIN_INDEX_CHARS = 800;
 // -------------------------------------------------------------
 
 function esc(s){
@@ -89,6 +92,21 @@ function inline(s){
   return out + txt(s.slice(last));
 }
 
+// 本文の字数（書式の記号と空白を除く）。リード・FAQも読み手にとっては本文なので含める
+function bodyChars(b){
+  const faq = Array.isArray(b.faq) ? b.faq.map(f => (f && f.q || '') + (f && f.a || '')).join('') : '';
+  return (String(b.body || '') + (b.lead || '') + faq)
+    .replace(/!\[[^\]]*\]\([^)]*\)/g, '').replace(/\]\([^)]*\)/g, '')
+    .replace(/[#>*\-\[\]]|^\d+[.．]/gm, '').replace(/\s+/g, '').length;
+}
+function isThin(b){ return !b.link && bodyChars(b) < MIN_INDEX_CHARS; }
+
+// 「2026/09/10」などを「2026-09-10」に（1桁の月日は0で埋める）
+function isoOf(s){
+  const m = String(s || '').replace(/[.\/]/g, '-').match(/(\d{4})-(\d{1,2})-(\d{1,2})/);
+  return m ? `${m[1]}-${m[2].padStart(2, '0')}-${m[3].padStart(2, '0')}` : '';
+}
+
 // JSON-LD を <script> に埋めるとき、本文中の </script> で抜けられないようにする
 function ldJSON(o){ return JSON.stringify(o).replace(/</g, '\\u003c'); }
 
@@ -147,6 +165,8 @@ function pageCSS(){
     .a-nav a{display:inline-flex;align-items:center;gap:8px;text-decoration:none;color:var(--text-dark);}
     .a-nav img{height:42px;width:auto;display:block;}
     .a-wrap{max-width:720px;margin:0 auto;padding:40px 20px 80px;}
+    .a-crumb{font-size:12px;color:var(--text-light);margin-bottom:14px;}
+    .a-crumb a{color:var(--text-mid);text-decoration:none;}
     .a-date{font-size:13px;letter-spacing:.08em;color:var(--gold);font-weight:600;}
     .a-title{font-family:'Noto Serif JP',serif;font-size:clamp(24px,4.5vw,34px);font-weight:700;
       line-height:1.5;margin:10px 0 22px;color:var(--text-dark);}
@@ -197,7 +217,8 @@ function pageCSS(){
 
 function navBar(){
   // 表示用リンクは相対パス（ドメイン未設定でも動く）。blog/配下から見たルートは ../
-  return `<div class="a-nav"><a href="../index.html"><img src="../logo.png" alt="${attr(SITE_NAME)}"></a></div>`;
+  // トップへのリンクは正規URL（/）にそろえる。../index.html だと別URL扱いになり評価が割れる（2026-10-20）
+  return `<div class="a-nav"><a href="../"><img src="../logo.png" alt="${attr(SITE_NAME)}"></a></div>`;
 }
 
 function articleHTML(b, slug, all){
@@ -208,16 +229,22 @@ function articleHTML(b, slug, all){
   const desc  = esc((b.excerpt || String(b.body||'').replace(/\s+/g,' ').slice(0,110)).trim());
   const img   = b.image ? esc(b.image) : `${SITE_URL}/logo.png`;
   const date  = esc(b.date || '');
-  const isoDate = (String(b.date||'').replace(/[.\/]/g,'-').match(/\d{4}-\d{1,2}-\d{1,2}/)||[''])[0];
+  const isoDate = isoOf(b.date);
+  const thin = isThin(b);
   const ld = {
     "@context":"https://schema.org","@type":"BlogPosting",
     "headline": b.title || '', "description": b.excerpt || '',
     "image": img, "datePublished": isoDate || undefined,
-    "author":{"@type":"Organization","name":SITE_NAME},
-    "publisher":{"@type":"Organization","name":SITE_NAME,"logo":{"@type":"ImageObject","url":`${SITE_URL}/logo.png`}},
+    "author":{"@type":"Organization","name":SITE_NAME,"url":`${SITE_URL}/`},
+    "publisher":{"@type":"Organization","@id":`${SITE_URL}/#store`,"name":SITE_NAME,"url":`${SITE_URL}/`,"logo":{"@type":"ImageObject","url":`${SITE_URL}/logo.png`}},
     "mainEntityOfPage": url
   };
-  if (b.updated) ld.dateModified = (String(b.updated).replace(/[.\/]/g,'-').match(/\d{4}-\d{1,2}-\d{1,2}/)||[''])[0] || undefined;
+  if (b.updated) ld.dateModified = isoOf(b.updated) || undefined;
+  // パンくず（トップ → ブログ → 記事）。店名入りのリンクでトップへ流し、店名検索の受け皿を強くする
+  const crumbLd = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
+    {"@type":"ListItem","position":1,"name":SITE_NAME,"item":`${SITE_URL}/`},
+    {"@type":"ListItem","position":2,"name":"ブログ","item":`${SITE_URL}/blog/`},
+    {"@type":"ListItem","position":3,"name":b.title || '記事',"item":url}]};
   const faqLd = faq.length ? {"@context":"https://schema.org","@type":"FAQPage","mainEntity":faq.map(f => ({"@type":"Question","name":f.q,"acceptedAnswer":{"@type":"Answer","text":f.a}}))} : null;
   const related = (all || []).filter(p => p._slug !== slug && !p.link && (!b.related || b.related.includes(p._slug)))
     .slice(0, 3);
@@ -230,7 +257,7 @@ ${gaTag()}
 <title>${title}｜${esc(SITE_NAME)}</title>
 <meta name="description" content="${desc}">
 <link rel="canonical" href="${url}">
-<meta property="og:type" content="article">
+${thin ? '<meta name="robots" content="noindex,follow">\n' : ''}<meta property="og:type" content="article">
 <meta property="og:title" content="${title}">
 <meta property="og:description" content="${desc}">
 <meta property="og:image" content="${img}">
@@ -241,11 +268,13 @@ ${gaTag()}
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
 <script type="application/ld+json">${ldJSON(ld)}</script>
 ${faqLd ? `<script type="application/ld+json">${ldJSON(faqLd)}</script>` : ''}
+<script type="application/ld+json">${ldJSON(crumbLd)}</script>
 <style>${pageCSS()}</style>
 </head>
 <body>
 ${navBar()}
 <article class="a-wrap">
+  <nav class="a-crumb" aria-label="パンくず"><a href="../">${esc(SITE_NAME)}</a> › <a href="./">ブログ</a></nav>
   <div class="a-date">${date}</div>
   <h1 class="a-title">${title}</h1>
   ${b.image ? `<img class="a-hero" src="${img}" alt="${attr(b.title)}">` : ''}
@@ -257,10 +286,10 @@ ${navBar()}
       ${b.shopBox === false ? '' : `<section class="a-shop"><h2>HYGGE（ヒュッゲ）のお店</h2>
         <p>観葉植物と北欧雑貨のお店です。実物を見て選びたい方は、お気軽にお立ち寄りください。</p>
         <p>熊本市南区幸田1丁目7-15／11:00〜17:00（水・土定休）／駐車スペースあり</p>
-        <p><a href="../index.html#shopinfo">営業日・アクセスを見る →</a></p></section>`}
+        <p><a href="../#shopinfo">営業日・アクセスを見る →</a>／<a href="../">${esc(SITE_NAME)}のトップへ</a></p></section>`}
       ${related.length ? `<section class="a-rel"><h2>あわせて読みたい</h2><ul>${related.map(p => `<li><a href="${p._slug}.html">${esc(p.title)}</a></li>`).join('')}</ul></section>` : ''}
   </div>
-  <a class="a-back" href="index.html">← ブログ一覧へ</a>
+  <a class="a-back" href="./">← ブログ一覧へ</a>
 </article>
 <div class="a-foot">© 2026 ${esc(SITE_NAME)}｜<a href="../privacy.html" style="color:inherit">プライバシーポリシー</a></div>
 </body>
@@ -305,12 +334,16 @@ ${cards || '<p style="grid-column:1/-1;text-align:center;color:var(--text-light)
 </html>`;
 }
 
+// noindex の薄い記事は載せない。lastmod を付けて、書き直した記事をGoogleに読み直してもらう（2026-10-20）
 function sitemap(posts){
-  const urls = [`${SITE_URL}/`, `${SITE_URL}/blog/`]
-    .concat(posts.map(p => `${SITE_URL}/blog/${p._slug}.html`));
+  const listed = posts.filter(p => !p.link && !isThin(p));
+  const mod = p => isoOf(p.updated) || isoOf(p.date);
+  const newest = listed.map(mod).filter(Boolean).sort().pop() || '';
+  const urls = [[`${SITE_URL}/`, newest], [`${SITE_URL}/blog/`, newest]]
+    .concat(listed.map(p => [`${SITE_URL}/blog/${p._slug}.html`, mod(p)]));
   return `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${urls.map(u => `  <url><loc>${u}</loc></url>`).join('\n')}
+${urls.map(([u, d]) => `  <url><loc>${u}</loc>${d ? `<lastmod>${d}</lastmod>` : ''}</url>`).join('\n')}
 </urlset>`;
 }
 
@@ -355,12 +388,12 @@ async function main(){
   });
   fs.writeFileSync(path.join(OUT_DIR, 'index.html'), indexHTML(posts));
   fs.writeFileSync(path.join(__dirname, 'sitemap.xml'), sitemap(posts));
-  writeTopLatest(posts.slice(0, 6));
+  writeTopLatest(posts.filter(p => !isThin(p)).slice(0, 6));
   ensureGA('index.html');
   ensureGA('privacy.html');
 
   console.log(`生成完了: 記事 ${posts.length} 件 / blog/index.html / sitemap.xml`);
-  posts.forEach(b => console.log('  - blog/' + b._slug + '.html  (' + b.title + ')'));
+  posts.forEach(b => console.log('  - blog/' + b._slug + '.html  (' + b.title + ')' + (isThin(b) ? `  ※本文${bodyChars(b)}字のため noindex` : '')));
 }
 
 main().catch(e => { console.error(e); process.exit(1); });
