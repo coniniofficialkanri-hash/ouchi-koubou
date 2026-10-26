@@ -214,5 +214,31 @@
     "warn": 0,
     "bad": 0,
     "issues": []
+  },
+  {
+    "date": "2026-10-26",
+    "ok": 18,
+    "warn": 5,
+    "bad": 0,
+    "issues": [
+      "[記事] 本文が薄いため noindex 中 5本（書き直し待ち）: about-hygge.html, beginner-plants-5.html, bikakushida-care.html, green-life.html, kokedama-guide.html",
+      "[記事] gardening-zakka-kumamoto.html の本文が1095字（3000字以上が目安）",
+      "[記事] hokuo-zakka-select.html の本文が1270字（3000字以上が目安）",
+      "[記事] gift-plants-kumamoto.html の本文が1317字（3000字以上が目安）",
+      "[記事] monstera-care-kumamoto.html の本文が1319字（3000字以上が目安）"
+    ]
+  },
+  {
+    "date": "2026-10-26",
+    "ok": 18,
+    "warn": 5,
+    "bad": 0,
+    "issues": [
+      "[記事] 本文が薄いため noindex 中 5本（書き直し待ち）: about-hygge.html, beginner-plants-5.html, bikakushida-care.html, green-life.html, kokedama-guide.html",
+      "[記事] gardening-zakka-kumamoto.html の本文が1095字（3000字以上が目安）",
+      "[記事] hokuo-zakka-select.html の本文が1270字（3000字以上が目安）",
+      "[記事] gift-plants-kumamoto.html の本文が1317字（3000字以上が目安）",
+      "[記事] monstera-care-kumamoto.html の本文が1319字（3000字以上が目安）"
+    ]
   }
 ]

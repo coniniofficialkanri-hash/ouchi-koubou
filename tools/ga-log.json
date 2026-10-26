@@ -162,5 +162,49 @@
    }
   ],
   "note": "期間 10/12〜10/18。ホーム画面のカードから取得（セッション数はチャネル別の合計）。ユーザー23は前週比+15%、表示27は-6.9%。参照元は direct 16・google 2・ig 2・chatgpt.com 1・yahoo 1。市区町村は大阪4・熊本2（米国Council Bluffs/Glenviewはbot疑い）"
+ },
+ {
+  "date": "2026-10-26",
+  "range": "過去7日",
+  "users": 21,
+  "sessions": 23,
+  "views": 30,
+  "channels": [
+   {
+    "ch": "Organic Search",
+    "sessions": 11
+   },
+   {
+    "ch": "Direct",
+    "sessions": 5
+   },
+   {
+    "ch": "Organic Social",
+    "sessions": 4
+   },
+   {
+    "ch": "AI Assistant",
+    "sessions": 3
+   }
+  ],
+  "pages": [
+   {
+    "path": "/",
+    "views": 27
+   },
+   {
+    "path": "/blog/gajumaru-care.html",
+    "views": 1
+   },
+   {
+    "path": "/blog/gardening-zakka-kumamoto.html",
+    "views": 1
+   },
+   {
+    "path": "/blog/gomunoki-care.html",
+    "views": 1
+   }
+  ],
+  "note": "期間 10/19〜10/25。トラフィック獲得・ページとスクリーンのレポートから取得。ユーザー21（前週23・-8.7%）、セッション23（前週24）、表示30（前週27）。Organic Search が4→11に増え最多チャネルに（Direct 15→5）。エンゲージメント率73.9%・平均41秒。ゴムの木記事は1閲覧で2分09秒。GA4は引き続き Search Console とのリンクを推奨（設定変更なので自動ではやらない）"
  }
 ]

@@ -935,5 +935,235 @@
    }
   ],
   "note": "クエリ72件中上位20。『鉢』7.5位・『園芸店』9.5位も表示あり。鉢カバー記事（10/13公開）はまだページ一覧に出ていない"
+ },
+ {
+  "date": "2026-10-26",
+  "range": "過去28日（実データは2026-09-26〜10-23）",
+  "clicks": 20,
+  "impr": 644,
+  "ctr": 3.1,
+  "pos": 7.9,
+  "queries": [
+   {
+    "q": "ヒュッゲ 熊本",
+    "clicks": 2,
+    "impr": 10,
+    "ctr": 20.0,
+    "pos": 1.2
+   },
+   {
+    "q": "観葉植物 熊本",
+    "clicks": 1,
+    "impr": 39,
+    "ctr": 2.6,
+    "pos": 11.8
+   },
+   {
+    "q": "ヒュッゲ",
+    "clicks": 1,
+    "impr": 30,
+    "ctr": 3.3,
+    "pos": 3.2
+   },
+   {
+    "q": "熊本 観葉植物",
+    "clicks": 1,
+    "impr": 28,
+    "ctr": 3.6,
+    "pos": 16.4
+   },
+   {
+    "q": "植物 店",
+    "clicks": 1,
+    "impr": 3,
+    "ctr": 33.3,
+    "pos": 1.0
+   },
+   {
+    "q": "植物",
+    "clicks": 1,
+    "impr": 3,
+    "ctr": 33.3,
+    "pos": 1.3
+   },
+   {
+    "q": "近くの園芸店",
+    "clicks": 1,
+    "impr": 2,
+    "ctr": 50.0,
+    "pos": 2.5
+   },
+   {
+    "q": "hygge（ヒュッゲ）",
+    "clicks": 0,
+    "impr": 21,
+    "ctr": 0.0,
+    "pos": 10.0
+   },
+   {
+    "q": "観葉植物",
+    "clicks": 0,
+    "impr": 17,
+    "ctr": 0.0,
+    "pos": 10.8
+   },
+   {
+    "q": "熊本 ガーデニング 雑貨",
+    "clicks": 0,
+    "impr": 11,
+    "ctr": 0.0,
+    "pos": 5.4
+   },
+   {
+    "q": "ゴムの木 育て方 葉が落ちる",
+    "clicks": 0,
+    "impr": 10,
+    "ctr": 0.0,
+    "pos": 10.6
+   },
+   {
+    "q": "熊本 植物屋",
+    "clicks": 0,
+    "impr": 7,
+    "ctr": 0.0,
+    "pos": 10.6
+   },
+   {
+    "q": "ホームセンター",
+    "clicks": 0,
+    "impr": 7,
+    "ctr": 0.0,
+    "pos": 23.3
+   },
+   {
+    "q": "hygge",
+    "clicks": 0,
+    "impr": 4,
+    "ctr": 0.0,
+    "pos": 5.8
+   },
+   {
+    "q": "熊本 観葉植物専門店",
+    "clicks": 0,
+    "impr": 4,
+    "ctr": 0.0,
+    "pos": 8.2
+   },
+   {
+    "q": "うつわのヒュッゲ",
+    "clicks": 0,
+    "impr": 3,
+    "ctr": 0.0,
+    "pos": 1.0
+   },
+   {
+    "q": "植物 ホームセンター",
+    "clicks": 0,
+    "impr": 3,
+    "ctr": 0.0,
+    "pos": 2.3
+   },
+   {
+    "q": "熊本 観葉植物 店",
+    "clicks": 0,
+    "impr": 3,
+    "ctr": 0.0,
+    "pos": 7.7
+   },
+   {
+    "q": "園芸店",
+    "clicks": 0,
+    "impr": 3,
+    "ctr": 0.0,
+    "pos": 10.0
+   },
+   {
+    "q": "熊本観葉植物",
+    "clicks": 0,
+    "impr": 3,
+    "ctr": 0.0,
+    "pos": 13.7
+   },
+   {
+    "q": "熊本 園芸店",
+    "clicks": 0,
+    "impr": 3,
+    "ctr": 0.0,
+    "pos": 17.3
+   }
+  ],
+  "pages": [
+   {
+    "page": "https://hygge-kumamoto.com/",
+    "clicks": 18,
+    "impr": 508,
+    "ctr": 3.5,
+    "pos": 7.6
+   },
+   {
+    "page": "https://hygge-kumamoto.com/blog/gomunoki-care.html",
+    "clicks": 1,
+    "impr": 34,
+    "ctr": 2.9,
+    "pos": 7.5
+   },
+   {
+    "page": "https://hygge-kumamoto.com/blog/gajumaru-care.html",
+    "clicks": 1,
+    "impr": 19,
+    "ctr": 5.3,
+    "pos": 6.7
+   },
+   {
+    "page": "https://hygge-kumamoto.com/blog/winter-plants-care.html",
+    "clicks": 0,
+    "impr": 37,
+    "ctr": 0.0,
+    "pos": 6.4
+   },
+   {
+    "page": "https://hygge-kumamoto.com/blog/kumamoto-kanyoshokubutsu-shop.html",
+    "clicks": 0,
+    "impr": 37,
+    "ctr": 0.0,
+    "pos": 11.2
+   },
+   {
+    "page": "https://hygge-kumamoto.com/blog/",
+    "clicks": 0,
+    "impr": 12,
+    "ctr": 0.0,
+    "pos": 2.8
+   },
+   {
+    "page": "https://hygge-kumamoto.com/blog/pot-cover-select.html",
+    "clicks": 0,
+    "impr": 12,
+    "ctr": 0.0,
+    "pos": 10.9
+   },
+   {
+    "page": "https://hygge-kumamoto.com/blog/gardening-zakka-kumamoto.html",
+    "clicks": 0,
+    "impr": 5,
+    "ctr": 0.0,
+    "pos": 10.4
+   },
+   {
+    "page": "https://hygge-kumamoto.com/blog/hokuo-zakka-select.html",
+    "clicks": 0,
+    "impr": 2,
+    "ctr": 0.0,
+    "pos": 8.5
+   },
+   {
+    "page": "https://hygge-kumamoto.com/blog/monstera-care-kumamoto.html",
+    "clicks": 0,
+    "impr": 1,
+    "ctr": 0.0,
+    "pos": 9.0
+   }
+  ],
+  "note": "全81クエリ中上位21件。記事の表示は合計159回（全体の25%・前週は約49回＝9%）。site:hygge-kumamoto.com は10件（前週4件・pot-cover-select のみ未登録）。「ヒュッゲ 熊本」の通常検索ではHPは依然1ページ目に無い（1位Instagram・他は同名の飲食店・サウナ）"
  }
 ]
