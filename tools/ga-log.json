@@ -258,5 +258,73 @@
       }
     ],
     "note": "期間 10/26〜11/1。ユーザー（アクティブ）29（前週21）、セッション32（前週23）、表示46（前週30）。Organic Search 11→20 で最多を維持（Direct 5→11）。エンゲージメント率78.1%・平均1分20秒。熊本の観葉植物店記事が5閲覧・2分01秒、冬の観葉植物が3閲覧・2分22秒"
+  },
+  {
+    "date": "2026-11-09",
+    "range": "過去7日",
+    "users": 35,
+    "sessions": 37,
+    "views": 46,
+    "channels": [
+      {
+        "ch": "Organic Search",
+        "sessions": 19
+      },
+      {
+        "ch": "Direct",
+        "sessions": 9
+      },
+      {
+        "ch": "Organic Social",
+        "sessions": 8
+      },
+      {
+        "ch": "Referral",
+        "sessions": 1
+      }
+    ],
+    "pages": [
+      {
+        "path": "/",
+        "views": 28
+      },
+      {
+        "path": "/blog/pot-cover-select.html",
+        "views": 4
+      },
+      {
+        "path": "/blog/about-hygge.html",
+        "views": 3
+      },
+      {
+        "path": "/blog/gomunoki-care.html",
+        "views": 2
+      },
+      {
+        "path": "/blog/kumamoto-kanyoshokubutsu-shop.html",
+        "views": 2
+      },
+      {
+        "path": "/blog/monstera-care-kumamoto.html",
+        "views": 2
+      },
+      {
+        "path": "/blog/bikakushida-care.html",
+        "views": 1
+      },
+      {
+        "path": "/blog/gajumaru-care.html",
+        "views": 1
+      },
+      {
+        "path": "/blog/gardening-zakka-kumamoto.html",
+        "views": 1
+      },
+      {
+        "path": "/blog/hokuo-zakka-select.html",
+        "views": 1
+      }
+    ],
+    "note": "期間 11/2〜11/8。ユーザー（アクティブ）35（前週29）、セッション37（前週32）、表示46（前週46）。Organic Search 19（前週20）で最多、Organic Social 1→8。エンゲージメント率59.5%・平均48秒。11/3公開の about-hygge が3閲覧、鉢カバーが4閲覧"
   }
 ]

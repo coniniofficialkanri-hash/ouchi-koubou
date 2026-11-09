@@ -16,20 +16,20 @@
  ],
  "next": [
   {
-   "slug": "beginner-plants-5",
-   "title": "初心者におすすめの観葉植物5選｜枯らしにくい種類と最初の置き場所",
-   "keyword": "観葉植物 初心者 おすすめ",
-   "image": "/prod-gomu.webp",
-   "rewrite": true,
-   "note": "2026-10-20 店名検索・索引の点検: 本文150字前後のため noindex 中（build-blog.js の MIN_INDEX_CHARS=800 未満）。同じスラッグで blog-posts/ に書き直せばスプレッドシート版より優先され、800字を超えた時点で自動で索引対象に戻る。date を当日にする"
-  },
-  {
    "slug": "monstera-care-kumamoto",
    "title": "モンステラの育て方｜熊本の夏と冬に合わせた水やり・置き場所",
    "keyword": "モンステラ 育て方",
    "image": "/prod-monstera.webp",
    "rewrite": true,
    "note": "2026-10-20 店名検索・索引の点検: 本文1,100〜1,300字で今のルール（3,000字〜）より薄い。同じスラッグ・URLのまま書き直す"
+  },
+  {
+   "slug": "beginner-plants-5",
+   "title": "初心者におすすめの観葉植物5選｜枯らしにくい種類と最初の置き場所",
+   "keyword": "観葉植物 初心者 おすすめ",
+   "image": "/prod-gomu.webp",
+   "rewrite": true,
+   "note": "2026-10-20 店名検索・索引の点検: 本文150字前後のため noindex 中（build-blog.js の MIN_INDEX_CHARS=800 未満）。同じスラッグで blog-posts/ に書き直せばスプレッドシート版より優先され、800字を超えた時点で自動で索引対象に戻る。date を当日にする"
   },
   {
    "slug": "selloum-care",
