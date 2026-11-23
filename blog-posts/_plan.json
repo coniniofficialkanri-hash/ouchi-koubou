@@ -16,12 +16,6 @@
   ],
   "next": [
     {
-      "slug": "selloum-care",
-      "title": "セロームの育て方｜大きく広がる葉を元気に保つ置き場所と水やり",
-      "keyword": "セローム 育て方",
-      "image": "/prod-selloum.webp"
-    },
-    {
       "slug": "bikakushida-care",
       "title": "ビカクシダの育て方｜板付け・水やり・冬越しの基本",
       "keyword": "ビカクシダ 育て方",
@@ -83,6 +77,13 @@
     }
   ],
   "done": [
+    {
+      "slug": "selloum-care",
+      "title": "セロームの育て方｜大きく広がる葉を元気に保つ置き場所と水やり",
+      "keyword": "セローム 育て方",
+      "image": "/prod-selloum.webp",
+      "published": "2026-11-24"
+    },
     {
       "slug": "pot-cover-select",
       "title": "鉢カバーの選び方｜サイズ合わせと部屋になじませるコツ",
